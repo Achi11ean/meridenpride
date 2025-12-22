@@ -22,10 +22,11 @@ export default function Resources() {
           <h1 className="text-4xl sm:text-5xl font-extrabold text-yellow-300">
             Community Resources
           </h1>
-          <p className="mt-4 text-lg text-yellow-100/90 font-semibold">
-            Support, safety, education, and connection — curated for the LGBTQIA+ community
-            and allies in and around Hartford, CT.
-          </p>
+     <p className="mt-4 text-lg text-yellow-100/90 font-semibold">
+  Support, safety, education, and connection — curated for the LGBTQIA+ 
+  community and allies in and around South Haven, Michigan and Southwest MI.
+</p>
+
         </motion.div>
 
         {/* Resource Sections */}
@@ -54,27 +55,27 @@ export default function Resources() {
           />
 
           {/* Local Community */}
-          <ResourceCard
-            icon={<FaHandsHelping />}
-            title="Local Community & Advocacy"
-            items={[
-              {
-                label: "Hartford Pride Center",
-                desc: "Local LGBTQ+ support, programming, and events",
-                link: "https://hartfordpridecenter.org",
-              },
-              {
-                label: "True Colors",
-                desc: "Support for LGBTQ+ youth experiencing homelessness",
-                link: "https://ourtruecolors.org",
-              },
-              {
-                label: "PFLAG Hartford",
-                desc: "Support for families, allies, and loved ones",
-                link: "https://pflag.org",
-              },
-            ]}
-          />
+<ResourceCard
+  icon={<FaHandsHelping />}
+  title="Local Community & Advocacy"
+  items={[
+    {
+      label: "OutCenter Southwest Michigan — Benton Harbor",
+      desc: "LGBTQ+ programs, counseling, youth communities, and local events.",
+      link: "https://www.outcenter.org",
+    },
+    {
+      label: "True Colors",
+      desc: "Support for LGBTQ+ youth experiencing homelessness",
+      link: "https://ourtruecolors.org",
+    },
+    {
+      label: "PFLAG Southwest Michigan — Kalamazoo Chapter",
+      desc: "Support for families, friends & LGBTQ+ loved ones.",
+      link: "https://pflag.org/chapter/pflag-kalamazoo",
+    },
+  ]}
+/>
 
           {/* Health & Wellness */}
           <ResourceCard

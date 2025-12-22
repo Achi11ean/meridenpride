@@ -244,7 +244,7 @@ export default function HomePage() {
                 Empowering the LGBTQ+ community through support, creativity, and compassion.
               </p>
               <p className="mt-3 text-sm text-yellow-100/70 font-semibold">
-                📍 Hartford, Connecticut
+                📍 South Haven, Michigan
               </p>
             </div>
 
