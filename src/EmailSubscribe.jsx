@@ -124,9 +124,9 @@ export default function EmailSubscribe({ prideId = 1 }) {
       {/* Subscribe Toggle */}
       <button
         onClick={() => setShowForm(!showForm)}
-        className="mt-6 px-8 py-3 font-bold text-black border border-black shadow-lg
-        bg-gradient-to-r from-yellow-300 via-yellow-400 to-amber-500 
-        hover:from-amber-500 hover:via-yellow-400 hover:to-yellow-300
+        className="mt-6 px-8 py-2 text-md font-bold text-black border border-black shadow-lg
+        bg-gradient-to-r from-green-300 via-green-400 to-green-500 
+        hover:from-amber-500 hover:via-green-400 hover:to-green-300
         transition-all duration-300"
       >
         {showForm ? "Hide Form" : "Subscribe"}
@@ -236,7 +236,7 @@ export default function EmailSubscribe({ prideId = 1 }) {
       </AnimatePresence>
 
       {/* NEW — UNSUBSCRIBE SECTION */}
-      <div className="mt-14">
+      <div className="mt-4">
         <p className="text-yellow-100/80 font-semibold text-lg">
           Want to unsubscribe?
         </p>
@@ -244,7 +244,7 @@ export default function EmailSubscribe({ prideId = 1 }) {
         <button
           onClick={() => setShowUnsub(!showUnsub)}
           className="mt-3 px-6 py-2 text-black font-bold border border-black shadow-lg
-          bg-gradient-to-r from-red-400 via-red-500 to-red-600 
+          bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 
           hover:from-red-600 hover:via-red-500 hover:to-red-400 
           transition-all duration-300"
         >

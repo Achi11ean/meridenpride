@@ -202,12 +202,13 @@ export default function HomePage() {
                 desc="Support the community with your time & talent."
                 to="/volunteer"
               />
-              <FeatureCard
-                icon={<FaUsers className="text-2xl text-yellow-300" />}
-                title="Connect"
-                desc="Reach out for support, questions, or partnership."
-                to="/contact"
-              />
+<FeatureCard
+  icon={<FaUsers className="text-2xl text-yellow-300" />}
+  title="Sponsor"
+  desc="Support the programs that impact the community & get recognition."
+  to="/sponsors"
+/>
+
             </div>
 
             {/* Featured Link */}
@@ -342,15 +343,30 @@ function FeatureCard({ icon, title, desc, to }) {
   return (
     <Link
       to={to}
-      className="block p-4 bg-black/40 border border-white/10 shadow-lg hover:bg-white/10 transition"
+      className="
+        block p-6 bg-black/40 border border-white/10 shadow-lg
+        hover:bg-white/10 transition text-center
+      "
     >
-      <div className="flex items-center gap-3">
-        <div className="p-2 bg-white/10 border border-yellow-400/20">{icon}</div>
-        <div>
-          <p className="font-extrabold text-yellow-200">{title}</p>
-          <p className="text-sm text-yellow-100/80 font-semibold">{desc}</p>
+      <div className="flex flex-col items-center gap-4">
+        
+        {/* ICON ON TOP */}
+        <div className="p-3 bg-white/10 border border-yellow-400/20 rounded-md">
+          {icon}
         </div>
+
+        {/* TEXT UNDER ICON */}
+        <div>
+          <p className="font-extrabold text-yellow-200 text-lg">
+            {title}
+          </p>
+          <p className="text-sm text-yellow-100/80 font-semibold mt-1">
+            {desc}
+          </p>
+        </div>
+
       </div>
     </Link>
   );
 }
+
