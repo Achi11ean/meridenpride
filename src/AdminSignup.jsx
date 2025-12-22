@@ -137,7 +137,7 @@ const roleOptions = ROLE_OPTIONS.map((role) => ({
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
- const prideName = "Hartford Pride Center";
+ const prideName = "South Haven LGBTQIA+ Advocacy ";
 
 
 const handleSubmit = async (e) => {
@@ -146,7 +146,7 @@ const handleSubmit = async (e) => {
 
   try {
    const res = await axios.post(
-`${API}/api/pride/2/admins`,
+`${API}/api/pride/1/admins`,
   {
     name: form.name,
     email: form.email,
@@ -207,9 +207,7 @@ const handleSubmit = async (e) => {
         rounded-none shadow-2xl
         p-2
       ">
-        <h1 className="text-4xl border-b font-extrabold text-center text-yellow-300 mb-2">
-        Admin Signup
-        </h1>
+
 
         <p className="text-center text-yellow-200 mb-8">
           Admin account for:
