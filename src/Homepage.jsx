@@ -32,9 +32,9 @@ export default function HomePage() {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              src="https://t4.ftcdn.net/jpg/06/96/89/13/360_F_696891328_utj80ZwXsdy8SloC9IBaFGDIcGNBrEze.jpg"
+              src="/logo1.png"
               alt="South Haven LGBTQIA+ Advocacy Logo"
-              className="w-full max-w-md sm:max-w-lg shadow-2xl border border-yellow-400/40"
+              className="w-full max-w-md sm:max-w-lg border-2 border-white shadow-2xl border border-"
             />
 
             <motion.div

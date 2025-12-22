@@ -60,11 +60,11 @@ const navItems = [
 
         {/* LOGO */}
         <Link to="/" className="inline-block">
-          <div className="inline-block border border-yellow-600">
+          <div className="inline-block  ">
             <img
-              src="https://t4.ftcdn.net/jpg/06/96/89/13/360_F_696891328_utj80ZwXsdy8SloC9IBaFGDIcGNBrEze.jpg"
+              src="/logo1.png"
               alt="Pride Logo"
-              className="block bg-white p-1 h-12 sm:h-20 md:h-24"
+              className="block  border-2 border-white h-12 sm:h-20 md:h-24"
             />
           </div>
         </Link>

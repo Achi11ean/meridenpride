@@ -114,15 +114,15 @@ export default function ContactPageTemplate() {
         {/* Banner */}
         <div
           className="
-            w-full h-80 md:h-96
-            bg-center bg-cover
+            w-full h-80 md:h-[650px]           
+            bg-center bg-cover 
             relative shadow-2xl
             border-b-4 border-slate-700
           "
           style={{
             backgroundImage:
-              "url('https://images.pexels.com/photos/207142/pexels-photo-207142.jpeg?cs=srgb&dl=pexels-pixabay-207142.jpg&fm=jpg')",
-            backgroundPosition: "center 45%",
+              "url('/logo1.png')",
+            backgroundPosition: "center 15%",
           }}
         >
           <div
