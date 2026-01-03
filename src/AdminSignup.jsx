@@ -137,7 +137,7 @@ const roleOptions = ROLE_OPTIONS.map((role) => ({
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
- const prideName = "South Haven LGBTQIA+ Advocacy ";
+ const prideName = "South Haven LGBTQ+ Advocacy ";
 
 
 const handleSubmit = async (e) => {

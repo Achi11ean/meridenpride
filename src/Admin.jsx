@@ -72,9 +72,11 @@ const [editForm, setEditForm] = useState({
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
-      setAdmins((prev) =>
-        prev.map((a) => (a.id === admin.id ? res.data : a))
-      );
+     setAdmins((prev) =>
+  prev.map((a) =>
+    a.id === admin.id ? res.data.admin ?? res.data : a
+  )
+);
 
       toast.success(res.data.is_active ? "Admin activated" : "Admin deactivated");
     } catch {
@@ -196,12 +198,17 @@ const payload = {
     );
 
     toast.success("Admin updated");
+    console.log("PATCH response admin:", res.data.admin);
+
     setEditingAdmin(null);
   } catch (err) {
     toast.error(err.response?.data?.error || "Update failed");
   }
 };
 
+useEffect(() => {
+  console.log("Admins from GET:", admins);
+}, [admins]);
 
   // ───────────────────────────────
   // Delete Admin

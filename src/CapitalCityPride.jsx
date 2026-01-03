@@ -309,7 +309,7 @@ useEffect(() => {
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 divide-y lg:divide-y-0 lg:divide-x lg:divide-yellow-700">
           <div className="text-center lg:text-left">
             <h3 className="text-2xl font-bold text-yellow-400 border-b-2 border-yellow-400 inline-block mb-2">
-              South Haven LGBTQIA+ Advocacy 🌟
+              South Haven LGBTQ+ Advocacy 🌟
             </h3>
             <p className="text-sm font-bold">
               Celebrating identity, community, and love
