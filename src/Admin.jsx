@@ -226,56 +226,112 @@ const payload = {
   }
 
   return (
-    <div className="space-y-6">
-      <h2 className="text-3xl font-extrabold text-yellow-300">
-        👑 Admin Accounts
-      </h2>
+  <div className="space-y-8">
+  <h2 className="text-3xl font-extrabold text-yellow-300">
+    👑 Admin Accounts
+  </h2>
+<div
+  className="
+    grid
+    grid-cols-1
+    lg:grid-cols-2
+    gap-8
+  "
+>
 
-      {admins.map((admin) => (
-        <div
-          key={admin.id}
-          className="bg-black/60 border border-yellow-500/30 rounded-2xl p-5 shadow-xl flex flex-col md:flex-row justify-between gap-4"
-        >
-          <div>
-            <p className="text-xl font-bold text-yellow-300">{admin.name}</p>
-            <p className="text-sm text-yellow-200">@{admin.username}</p>
-            <p className="text-xs text-yellow-400">{admin.email}</p>
-            {admin.other_roles && (
-  <p className="text-xs text-yellow-300 mt-1">
-    Roles: Admin, {admin.other_roles}
-  </p>
-)}
-
+  {admins.map((admin) => (
+    <div
+      key={admin.id}
+      className="
+        bg-black/60 border border-yellow-500/30
+        rounded-3xl p-6 shadow-xl
+        space-y-6
+      "
+    >
+      {/* ───────── Header ───────── */}
+      <div className="flex items-center gap-4">
+        {admin.image_url ? (
+          <img
+            src={admin.image_url}
+            alt={admin.name}
+            className="w-16 h-16 rounded-full object-cover border border-yellow-400"
+          />
+        ) : (
+          <div className="w-16 h-16 rounded-full bg-yellow-400/20 flex items-center justify-center text-yellow-300 font-bold">
+            {admin.name?.[0]}
           </div>
+        )}
 
-          <div className="flex gap-3">
-            <button
-              onClick={() => openEdit(admin)}
-              className="px-4 py-2 rounded-xl bg-blue-500 text-black font-bold hover:bg-blue-600"
-            >
-              Edit
-            </button>
-
-            <button
-              onClick={() => toggleActive(admin)}
-              className={`px-4 py-2 rounded-xl font-bold ${
-                admin.is_active
-                  ? "bg-green-500 text-black"
-                  : "bg-orange-400 text-black"
-              }`}
-            >
-              {admin.is_active ? "Active" : "Inactive"}
-            </button>
-
-            <button
-              onClick={() => deleteAdmin(admin.id)}
-              className="px-4 py-2 rounded-xl bg-red-600 text-white font-bold"
-            >
-              Delete
-            </button>
-          </div>
+        <div>
+                    <p
+            className={`font-bold ${
+              admin.is_active
+                ? "text-green-400"
+                : "text-orange-400"
+            }`}
+          >
+            {admin.is_active ? "Active" : "Inactive"}
+          </p>
+          <p className="text-2xl font-extrabold text-yellow-300">
+            {admin.name}
+          </p>
+          <p className="text-sm text-yellow-200">
+            @{admin.username}
+          </p>
+          <p className="text-xs text-yellow-400">
+            {admin.email}
+          </p>
         </div>
-      ))}
+        
+      </div>
+
+      {/* ───────── Content Grid ───────── */}
+
+ <div className="bg-black/40 rounded-2xl p-4 border border-yellow-500/20">
+ 
+  <h4 className="text-yellow-300 font-bold">Roles</h4>
+          <p className="text-sm text-yellow-100">
+            Admin
+            {admin.other_roles && `, ${admin.other_roles}`}
+          </p>
+
+
+          <h4 className="text-yellow-300 font-bold mb-2">Public Bio</h4>
+          <p className="text-sm text-yellow-100 whitespace-pre-wrap">
+            {admin.bio || "No bio provided."}
+          </p>
+          
+        </div>
+      {/* ───────── Actions ───────── */}
+      <div className="flex flex-wrap gap-3 justify-end pt-2 border-t border-yellow-500/20">
+        <button
+          onClick={() => openEdit(admin)}
+          className="px-4 py-2 rounded-xl bg-blue-500 text-black font-bold hover:bg-blue-600"
+        >
+          Edit
+        </button>
+
+        <button
+          onClick={() => toggleActive(admin)}
+          className={`px-4 py-2 rounded-xl font-bold ${
+            admin.is_active
+              ? "bg-green-500 text-black"
+              : "bg-orange-400 text-black"
+          }`}
+        >
+          {admin.is_active ? "Deactivate" : "Activate"}
+        </button>
+
+        <button
+          onClick={() => deleteAdmin(admin.id)}
+          className="px-4 py-2 rounded-xl bg-red-600 text-white font-bold"
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  ))}</div>
+
 
       {/* ───────────── Edit Modal ───────────── */}
       {editingAdmin && (

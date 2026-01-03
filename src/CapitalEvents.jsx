@@ -154,7 +154,7 @@ if (loading)
 
 if (events.length === 0)
   return (
-    <div className="text-center text-yellow-300 text-xl py-10">
+    <div className="text-center text-black text-xl py-10">
       ⭐ No Pride Center events found yet.
     </div>
   );

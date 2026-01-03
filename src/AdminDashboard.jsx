@@ -40,13 +40,13 @@ const [newsletterSubTab, setNewsletterSubTab] = useState("subscribers");
     navigate("/login");
   };
   console.log("AUTH USER:", user);
-const [sponsorSubTab, setSponsorSubTab] = useState("add");
+const [sponsorSubTab, setSponsorSubTab] = useState("add_prospect");
 
 
 
  return (
   <div className="min-h-screen bg-gradient-to-br from-[#18453B] via-black to-[#0f2d25] text-yellow-100 pb-16 pt-24">
-    <div className="max-w-7xl mx-auto px">
+    <div className="max-w-full px-1 mx-auto px">
 
       {/* Header */}
       <div className="mb-10 mt-16 text-center sm:text-left">
@@ -69,7 +69,7 @@ const [sponsorSubTab, setSponsorSubTab] = useState("add");
         ">
  
 
-          <div className="grid grid-cols-3 gap-3">
+<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
                         <TabButton
               label="Admins"
               active={activeTab === "admins"}
@@ -129,8 +129,8 @@ const [sponsorSubTab, setSponsorSubTab] = useState("add");
 
         {/* RIGHT COLUMN — Content */}
         <section className="
-          bg-black/40 border border-yellow-500/20
-          rounded-2xl p-6 justify-center items-center flex
+          bg-black/40 border border-white w-full
+          rounded-none mt-6 p-6 justify-center items-center flex
           shadow-2xl min-h-[300px]
         ">
             {activeTab === "vendors" && (
@@ -155,9 +155,7 @@ const [sponsorSubTab, setSponsorSubTab] = useState("add");
 
     {vendorsSubTab === "manage" && (
       <ManageVendors />
-      /* or Placeholder until ready:
-      <Placeholder title="Vendor Management" />
-      */
+
     )}
 
   </div>
@@ -233,6 +231,19 @@ const [sponsorSubTab, setSponsorSubTab] = useState("add");
 
     {/* Sponsor Sub Tabs */}
 <div className="flex gap-3 flex-wrap">
+   <SubTabButton
+    label="Add Prospect"
+    active={sponsorSubTab === "add_prospect"}
+    onClick={() => setSponsorSubTab("add_prospect")}
+  />
+  <SubTabButton
+    label="Manage Prospects"
+    active={sponsorSubTab === "manage_prospects"}
+    onClick={() => setSponsorSubTab("manage_prospects")}
+  />
+ 
+ 
+ 
   <SubTabButton
     label="Add Sponsor"
     active={sponsorSubTab === "add"}
@@ -243,16 +254,7 @@ const [sponsorSubTab, setSponsorSubTab] = useState("add");
     active={sponsorSubTab === "manage"}
     onClick={() => setSponsorSubTab("manage")}
   />
-  <SubTabButton
-    label="Add Prospect"
-    active={sponsorSubTab === "add_prospect"}
-    onClick={() => setSponsorSubTab("add_prospect")}
-  />
-  <SubTabButton
-    label="Manage Prospects"
-    active={sponsorSubTab === "manage_prospects"}
-    onClick={() => setSponsorSubTab("manage_prospects")}
-  />
+
 </div>
 
 
@@ -306,7 +308,7 @@ function TabButton({ label, active, onClick }) {
     <button
       onClick={onClick}
       className={`
-        w-full py-3 rounded-xl font-semibold transition text-sm
+        w-full py-3 rounded-none font-semibold transition text-xl
         ${
           active
             ? "bg-yellow-400 text-black shadow-md"

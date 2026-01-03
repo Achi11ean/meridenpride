@@ -129,7 +129,7 @@ export default function EmailSubscribe({ prideId = 1 }) {
         hover:from-amber-500 hover:via-green-400 hover:to-green-300
         transition-all duration-300"
       >
-        {showForm ? "Hide Form" : "Subscribe"}
+        {showForm ? "Hide Form" : "Subscribe"} 
       </button>
 
       {/* Subscribe Form */}

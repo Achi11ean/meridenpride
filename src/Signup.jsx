@@ -24,7 +24,7 @@ export default function Signup() {
         </h1>
 
         {/* Toggle */}
-        <div className="flex mb-8 rounded-xl overflow-hidden border border-yellow-500/40">
+        <div className="flex mb-8 rounded-none overflow-hidden border border-yellow-500/40">
           <button
             type="button"
             onClick={() => setMode("admin")}

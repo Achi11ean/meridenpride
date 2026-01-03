@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
+import SponsorSlider from "./SponsorSlider";
 import {
   FaInstagram,
   FaFacebook,
@@ -16,6 +18,7 @@ export default function HartfordCityPride() {
   const [showSponsorModal, setShowSponsorModal] = React.useState(false);
   const [prideEvent, setPrideEvent] = useState(null);
 const [vendors, setVendors] = useState([]);
+const navigate = useNavigate();
 
 useEffect(() => {
   axios
@@ -104,7 +107,7 @@ useEffect(() => {
         </h2>
 
         <p className="text-yellow-100 leading-relaxed text-lg">
-          Every June, thousands come together in Hartford to celebrate love,
+          Every June, thousands come together in South Haven, MI to celebrate love,
           identity, diversity, and resilience. The Hartford City Pride Festival
           features live entertainment, vendors, community resources, a massive
           parade, and a celebration that lights up the city.
@@ -155,10 +158,12 @@ useEffect(() => {
       </section>
 {/* 🛍️ PRIDE VENDORS */}
 <section className="max-w-6xl mx-auto px-6 py-12">
-  <h2 className="text-3xl font-extrabold text-center text-yellow-300 mb-8">
-    🌈 Pride Vendors & Community Partners
+  <h2 className="text-3xl font-extrabold text-center border-b text-yellow-300 mb-8">
+    🌈 Pride Sponsors, Vendors & Community Partners!
   </h2>
 
+  <h3 className="text-6xl font-[Aspire]"> Sponsors</h3>
+<SponsorSlider/>
   {vendors.length === 0 ? (
     <p className="text-center text-yellow-200 italic">
       Vendor list coming soon.
@@ -230,12 +235,20 @@ useEffect(() => {
             features, and VIP options.
           </p>
 
-          <button
-            onClick={() => setShowSponsorModal(true)}
-            className="inline-block px-8 py-3 rounded-none bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-600 font-bold text-black border-2 border-white shadow-lg hover:scale-105 transition"
-          >
-            View Sponsorship Options
-          </button>
+<button
+  onClick={() => navigate("/sponsorinvitation")}
+  className="
+    inline-block px-8 py-3 rounded-none
+    bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-600
+    font-bold text-black
+    border-2 border-white
+    shadow-lg
+    hover:scale-105 transition
+  "
+>
+  View Sponsorship Options
+</button>
+
         </div>
 
         {/* 🟡 Volunteer */}
