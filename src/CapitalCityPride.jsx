@@ -54,7 +54,7 @@ useEffect(() => {
 
         <div className="relative z-10 px-6">
           <h1 className="text-4xl sm:text-6xl font-extrabold drop-shadow-lg">
-            Hartford <span className="text-yellow-300">City Pride</span>
+            South Haven <span className="text-yellow-300">Pride</span>
           </h1>
           <p className="mt-3 text-lg sm:text-xl text-yellow-200 font-semibold">
             The Official Pride Celebration of Hartford, Connecticut
@@ -94,7 +94,7 @@ useEffect(() => {
                 • {prideEvent.city}, {prideEvent.state}
               </>
             ) : (
-              "🌟 June 2025 • Downtown Hartford"
+              "🌟 June 2025 • Family Johnston Park, South Haven"
             )}
           </div>
         </div>

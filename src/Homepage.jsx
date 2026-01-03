@@ -44,7 +44,7 @@ export default function HomePage() {
               className="max-w-3xl"
             >
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight">
-                South Haven LGBTQIA+ Advocacy
+                South Haven LGBTQ+ Advocacy
               </h1>
               <p className="mt-4 text-lg sm:text-xl text-yellow-100/90 font-semibold">
                 Supporting & promoting LGBTQIA+ safe spaces, resources, and community connection
@@ -239,7 +239,7 @@ export default function HomePage() {
             {/* Org */}
             <div>
               <h3 className="text-xl font-extrabold text-yellow-300">
-                South Haven LGBTQIA+ Advocacy 🌈
+                South Haven LGBTQ+ Advocacy 🌈
               </h3>
               <p className="mt-2 text-yellow-100/80 font-semibold">
                 Empowering the LGBTQ+ community through support, creativity, and compassion.
@@ -290,10 +290,10 @@ export default function HomePage() {
               <p className="mt-3 text-sm font-semibold">
                 📧{" "}
                 <a
-                  href="mailto:info@hartfordpridecenter.org"
+                  href="mailto:southhavenpride@gmail.com"
                   className="underline hover:text-yellow-300"
                 >
-                  info@hartfordpridecenter.org
+                  Southhavenpride@gmail.com
                 </a>
               </p>
 
@@ -328,7 +328,7 @@ export default function HomePage() {
           </div>
 
           <div className="mt-10 text-center text-xs text-white/50 font-semibold">
-            © {year} Hartford Pride Center — All Rights Reserved.{" "}
+            © {year} South haven LGBTQ+ Pride Center — All Rights Reserved.{" "}
             <Link to="/privacy" className="hover:text-yellow-300 underline">
               Privacy Policy
             </Link>
