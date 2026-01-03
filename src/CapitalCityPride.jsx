@@ -103,7 +103,7 @@ useEffect(() => {
       {/* 🟡 EVENT OVERVIEW */}
       <section className="max-w-4xl mx-auto text-center px-6 py-10">
         <h2 className="text-3xl font-bold text-yellow-300 mb-4">
-          The Biggest Pride Event in Hartford
+          The Biggest Pride Event in South Haven, MI
         </h2>
 
         <p className="text-yellow-100 leading-relaxed text-lg">
