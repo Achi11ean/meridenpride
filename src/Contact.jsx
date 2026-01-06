@@ -101,12 +101,11 @@ export default function ContactPageTemplate() {
     <div
       className="
         min-h-screen
-        bg-[conic-gradient(at_top_left,_red,_orange,_yellow,_green,_blue,_indigo,_violet,_red)]
+        bg-gradient-to-br from-pink-400 via-black to-pink-600
         text-white bg-fixed relative
       "
     >
       {/* DARK OVERLAY */}
-      <div className="absolute inset-0 bg-black/70" />
 
       {/* --- PAGE CONTENT WRAPPER --- */}
       <div className="relative z-10">
@@ -117,7 +116,6 @@ export default function ContactPageTemplate() {
             w-full h-80 md:h-[650px]           
             bg-center bg-cover 
             relative shadow-2xl
-            border-b-4 border-slate-700
           "
           style={{
             backgroundImage:
@@ -125,36 +123,34 @@ export default function ContactPageTemplate() {
             backgroundPosition: "center 15%",
           }}
         >
-          <div
-            className="
-              absolute inset-0
-              bg-gradient-to-r
-              from-red-600/10 via-yellow-300/10 to-blue-600/10
-            "
-          />
+  
+
+
+        </div>
+               <hr className="rainbow-hr" />
 
           <div
             className="
-              absolute sm:bottom-[-50px] bottom-[-40px]
-              left-1/2 -translate-x-1/2
-              px-6 py-4 rounded-xl shadow-xl
-              bg-black/60 border border-slate-600 backdrop-blur-md
+              
+              w-full
+              px-6 py-4 rounded-none shadow-xl
+              bg-black/60  backdrop-blur-md
             "
           >
-            <h2 className="text-4xl lg:text-5xl font-extrabold text-white">
+            <h2 className="text-6xl font-[Aspire] lg:text-5xl font-extrabold text-white">
               Contact Us
             </h2>
           </div>
-        </div>
+                 <hr className="rainbow-hr" />
 
         {/* Content Section */}
-        <section className="max-w-6xl mx-auto p-8 pt-24 space-y-6">
+        <section className="max-w-6xl mx-auto p-8  space-y-6">
 
           {/* Header */}
           <p
             className="
-              text-2xl sm:text-3xl font-extrabold text-center pb-3
-              bg-gradient-to-r from-yellow-200 via-white to-yellow-200
+              text-xl sm:text-3xl font-extrabold text-center pb-3
+              bg-gradient-to-r from-pink-200 via-white to-pink-200
               bg-clip-text text-transparent
             "
           >
@@ -169,7 +165,7 @@ export default function ContactPageTemplate() {
             className="
               bg-slate-900/70
               border border-slate-700
-              rounded-xl p-6 shadow-xl backdrop-blur-sm
+              rounded-none p-6 shadow-xl backdrop-blur-sm
             "
           >
 
@@ -186,7 +182,7 @@ export default function ContactPageTemplate() {
                   onChange={handleChange}
                   required
                   className="
-                    w-full p-3 rounded-lg
+                    w-full p-3 rounded-none
                     bg-slate-800 border border-slate-600
                     text-white placeholder-slate-400
                     focus:ring-2 focus:ring-indigo-400
@@ -245,7 +241,7 @@ export default function ContactPageTemplate() {
                 onClick={() => setShowTerms(!showTerms)}
                 className="text-sm underline cursor-pointer"
               >
-                I agree to the Terms and Conditions
+                Agree To Terms & Conditions
               </span>
             </div>
 
@@ -259,10 +255,10 @@ export default function ContactPageTemplate() {
                   className="mb-4 text-sm text-yellow-200 bg-slate-800 p-3 rounded-md"
                 >
                   <p>
-                    You consent to being contacted using your info.
+                    You consent to being contacted  regarding your inquiry using the information submitted.
                   </p>
                   <p className="mt-2 font-semibold text-red-300">
-                    Hate, harassment, or threats will lock this device immediately.
+                    Hate, harassment, or threats will lock this device immediately and submit IP address for a possible report to authorities.
                   </p>
                 </motion.div>
               )}

@@ -110,7 +110,7 @@ to-[#EA580C]
               hover:from-yellow-600 hover:via-amber-500 hover:to-yellow-400
               transition-all duration-300"
             >
-            Sponsor
+            Sponsors
           </Link>
                                 <Link
             to="/resources"
@@ -171,7 +171,7 @@ to-[#EA580C]
             <p className="text-base md:text-lg leading-7">
               To create a welcoming and affirming space for all members of the LGBTQIA+ community by fostering connection,
               promoting self-expression, and providing essential resources that empower individuals and strengthen our
-              collective voice in Greater Hartford.
+              collective voice in South Haven, MI.
             </p>
           </article>
 

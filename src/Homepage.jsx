@@ -57,7 +57,7 @@ export default function HomePage() {
               </h1>
               <p className="mt-4 text-lg sm:text-xl text-yellow-100/90 font-semibold">
                 Supporting & promoting LGBTQIA+ safe spaces, resources, and
-                community connection in and around Hartford, CT.
+                community connection in and around South Haven, MI
               </p>
 
               {/* CTAs */}
@@ -335,17 +335,9 @@ export default function HomePage() {
               </p>
 
               <div className="mt-6 flex items-center gap-4 border-t border-yellow-400/30 pt-4">
+
                 <a
-                  href="https://www.instagram.com/hartfordpride/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-yellow-300"
-                  aria-label="Instagram"
-                >
-                  <FaInstagram className="text-2xl" />
-                </a>
-                <a
-                  href="https://www.facebook.com/HartfordPrideCenter"
+                  href="https://www.facebook.com/SouthHavenLGBTQAdvocacy"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-yellow-300"
@@ -354,7 +346,7 @@ export default function HomePage() {
                   <FaFacebook className="text-2xl" />
                 </a>
                 <a
-                  href="mailto:info@hartfordpridecenter.org"
+                  href="mailto:blanca@lgbtqadvocacy.org"
                   className="hover:text-yellow-300"
                   aria-label="Email"
                 >

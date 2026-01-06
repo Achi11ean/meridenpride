@@ -57,7 +57,7 @@ useEffect(() => {
             South Haven <span className="text-yellow-300">Pride</span>
           </h1>
           <p className="mt-3 text-lg sm:text-xl text-yellow-200 font-semibold">
-            The Official Pride Celebration of Hartford, Connecticut
+            The Official Pride Celebration of South Haven, MI
           </p>
 
           {/* 🌞 CLICKABLE DATE BANNER */}
@@ -108,7 +108,7 @@ useEffect(() => {
 
         <p className="text-yellow-100 leading-relaxed text-lg">
           Every June, thousands come together in South Haven, MI to celebrate love,
-          identity, diversity, and resilience. The Hartford City Pride Festival
+          identity, diversity, and resilience. The South Haven, MI Pride Festival
           features live entertainment, vendors, community resources, a massive
           parade, and a celebration that lights up the city.
         </p>
@@ -136,7 +136,7 @@ useEffect(() => {
             Pride Parade
           </h3>
           <ul className="text-yellow-100 text-sm space-y-2">
-            <li>• Downtown Hartford route</li>
+            <li>• South Haven Parade route</li>
             <li>• Floats, performers & community groups</li>
             <li>• Accessible viewing zones</li>
             <li>• Parade lineup announced in May</li>
@@ -230,7 +230,7 @@ useEffect(() => {
           </h2>
 
           <p className="text-yellow-100 text-lg mb-6">
-            Support Hartford City Pride while gaining powerful brand visibility.
+            Support South Haven LGBTQ+ Advocacy while gaining powerful brand visibility.
             Sponsorship levels include logo placements, stage mentions, parade
             features, and VIP options.
           </p>
@@ -351,14 +351,6 @@ useEffect(() => {
             </h4>
             <div className="flex items-center justify-center lg:justify-start gap-4 text-2xl">
               <a
-                href="https://www.instagram.com/hartfordpride/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-yellow-300"
-              >
-                <FaInstagram />
-              </a>
-              <a
                 href="https://www.facebook.com/SouthHavenLGBTQAdvocacy/"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -366,7 +358,7 @@ useEffect(() => {
               >
                 <FaFacebook />
               </a>
-              <a href="mailto:info@hartfordpridecenter.org" className="hover:text-yellow-300">
+              <a href="mailto:blanca@lgbtqadvocacy.org" className="hover:text-yellow-300">
                 <FaEnvelope />
               </a>
             </div>
@@ -374,7 +366,7 @@ useEffect(() => {
         </div>
 
         <div className="mt-6 text-center text-xs text-yellow-500">
-          © {new Date().getFullYear()} Hartford Pride Center — All Rights Reserved.
+          © {new Date().getFullYear()} South Haven LGBTQ+ Advocacy — All Rights Reserved.
         </div>
       </section>
     </div>

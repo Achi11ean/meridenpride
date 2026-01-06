@@ -18,13 +18,17 @@ import ManageContacts from "./ManageContacts";
 import AdminMessaging from "./AdminMessaging";
 import ManageSubscribers from "./ManageSubscribers";
 import CreateNewsletters from "./CreateNewsletters";
+import CreateCommittee from "./CreateCommittee";
+import ManageCommittee from "./ManageCommittee";
 import PastNewsletters from "./PastNewsletters";
+import CommitteesPublic from "./CommitteesPublic";
 export default function AdminDashboard() {
   const navigate = useNavigate();
   const { isAuthenticated, isAdmin, user, logout } = useAuth();
 const [servicesSubTab, setServicesSubTab] = useState("add");
 const [vendorsSubTab, setVendorsSubTab] = useState("add");
 const [newsletterSubTab, setNewsletterSubTab] = useState("subscribers");
+const [committeesSubTab, setCommitteesSubTab] = useState("create");
 
   const [activeTab, setActiveTab] = useState("staff");
 
@@ -80,6 +84,12 @@ const [sponsorSubTab, setSponsorSubTab] = useState("add_prospect");
               active={activeTab === "staff"}
               onClick={() => setActiveTab("staff")}
             />
+            <TabButton
+  label="Committees"
+  active={activeTab === "committees"}
+  onClick={() => setActiveTab("committees")}
+/>
+
             <TabButton
               label="Volunteers"
               active={activeTab === "volunteers"}
@@ -160,6 +170,41 @@ const [sponsorSubTab, setSponsorSubTab] = useState("add_prospect");
 
   </div>
 )}
+
+
+{activeTab === "committees" && (
+  <div className="w-full space-y-6">
+
+    {/* Committees Sub Tabs */}
+    <div className="flex gap-3 flex-wrap">
+      <SubTabButton
+        label="➕ Create"
+        active={committeesSubTab === "create"}
+        onClick={() => setCommitteesSubTab("create")}
+      />
+      <SubTabButton
+        label="🛠 Manage"
+        active={committeesSubTab === "manage"}
+        onClick={() => setCommitteesSubTab("manage")}
+      />
+      <SubTabButton
+        label="👁 View"
+        active={committeesSubTab === "view"}
+        onClick={() => setCommitteesSubTab("view")}
+      />
+    </div>
+
+    {/* Sub Tab Content */}
+    {committeesSubTab === "create" && <CreateCommittee />}
+    {committeesSubTab === "manage" && <ManageCommittee />}
+    {committeesSubTab === "view" && <CommitteesPublic />}
+
+
+
+  </div>
+)}
+
+
 {activeTab === "messaging" && <AdminMessaging />}
 
           {activeTab === "staff" && <Staff />}
