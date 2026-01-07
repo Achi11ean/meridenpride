@@ -303,6 +303,64 @@ useEffect(() => {
           ></iframe>
         </div>
       </section>
+<section className="max-w-4xl mx-auto px-6 pb-16">
+  <h2 className="text-3xl font-bold text-center text-white mb-4">
+    Pride Parade Route
+  </h2>
+
+  <hr className="rainbow-hr my-4" />
+
+  <div className="bg-black/70 border-4 border-purple-400 rounded-2xl shadow-2xl p-6 text-white">
+    <p className="text-center text-lg font-semibold text-pink-300 mb-4">
+      🌈 Celebrate Loud. March Proud. Love Out Loud.
+    </p>
+
+    <p className="text-sm leading-relaxed mb-4 text-white/90">
+      The South Haven Pride Parade traditionally winds through the heart of
+      downtown, highlighting the charm of the city’s walkable streets and
+      lakeshore atmosphere. The route below reflects patterns from previous
+      years and is provided for general guidance.
+    </p>
+
+    <ul className="space-y-3 text-sm">
+      <li>
+        <span className="font-bold text-yellow-300">📍 Parade Line-Up:</span>{" "}
+        Downtown South Haven staging area near{" "}
+        <span className="italic">Phoenix Street</span>
+      </li>
+
+      <li>
+        <span className="font-bold text-yellow-300">🚦 Step-Off:</span>{" "}
+        Parade begins heading west toward the waterfront
+      </li>
+
+      <li>
+        <span className="font-bold text-yellow-300">🏙️ Route:</span>{" "}
+        March proceeds along <strong>Phoenix Street</strong>, passing local
+        shops, restaurants, and community gathering spots
+      </li>
+
+      <li>
+        <span className="font-bold text-yellow-300">🎉 Turn & Finish:</span>{" "}
+        Parade turns toward the lakeshore area near{" "}
+        <strong>Dyckman Park</strong>
+      </li>
+
+      <li>
+        <span className="font-bold text-yellow-300">🏁 Parade Ends:</span>{" "}
+        Pride Festival Grounds near the waterfront
+      </li>
+    </ul>
+
+    <div className="mt-6 bg-gradient-to-r from-pink-500/20 via-purple-500/20 to-indigo-500/20 border border-pink-400 rounded-lg p-4">
+      <p className="text-xs text-center text-white/80 italic">
+        ⚠️ Route details are subject to change based on city coordination,
+        safety planning, and permits. Please check back closer to the event
+        date for official confirmation.
+      </p>
+    </div>
+  </div>
+</section>
 
       {/* ⭐ FOOTER — YELLOW THEME */}
       <section className="bg-gradient-to-br from-yellow-900 via-black to-amber-900 text-yellow-200 py-6 border-t-4 border-yellow-500">
