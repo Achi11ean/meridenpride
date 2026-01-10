@@ -125,16 +125,20 @@ useEffect(() => {
         `${API}/karaokeevents/pride/${PRIDE_ID}`
       );
 
+      if (!res.ok) {
+        throw new Error(`HTTP ${res.status}`);
+      }
+
       const data = await res.json();
 
-      const enriched = data.map((ev) => ({
+      const enriched = (data || []).map((ev) => ({
         ...ev,
         alsoOccurs: extractAlsoOccursDays(ev.notes || ""),
       }));
 
       setEvents(enriched);
     } catch (err) {
-      console.error("Failed to load Pride Center events", err);
+      console.error("❌ Failed to load Pride Center events", err);
     } finally {
       setLoading(false);
     }
@@ -142,6 +146,7 @@ useEffect(() => {
 
   load();
 }, []);
+
 
 
   // ---------- UI ----------
@@ -154,8 +159,8 @@ if (loading)
 
 if (events.length === 0)
   return (
-    <div className="text-center text-black text-xl py-10">
-      ⭐ No Pride Center events found yet.
+    <div className="text-center text-white text-xl py-10">
+      ⭐ No Pride Center events scheduled yet. Check back soon! ⭐
     </div>
   );
 

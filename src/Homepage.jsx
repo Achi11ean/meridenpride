@@ -45,6 +45,7 @@ export default function HomePage() {
               alt="South Haven LGBTQ+ Advocacy Logo"
               className="w-full max-w-md sm:max-w-lg border-2 border-white shadow-2xl border border-"
             />
+<hr className="rainbow-hr" />
 
             <motion.div
               initial={{ opacity: 0, y: 14 }}
@@ -60,9 +61,17 @@ export default function HomePage() {
                 community connection in and around South Haven, MI
               </p>
 
+                     <Link
+                to="/pride"
+                className="mt-3 inline-block w-full text-center px-6 py-3 font-extrabold text-white border border-white/20 shadow-lg
+                  bg-gradient-to-r from-[#0F2D25] via-[#18453B] to-[#0F2D25]
+                  hover:brightness-110 transition-all duration-300"
+              >
+                Capital City Pride 2026
+              </Link>
               {/* CTAs */}
               <nav aria-label="Primary">
-                <div className="grid mt-12 grid-cols-3 gap-3 sm:gap-4">
+                <div className="grid mt-6 grid-cols-3 gap-3 sm:gap-4">
                   {/* Contact */}
                   <Link
                     to="/contact"
@@ -74,56 +83,27 @@ export default function HomePage() {
                     Contact
                   </Link>
 
-                  {/* Events */}
-                  <Link
-                    to="/events"
+                  <a
+                    href="https://karaoverse.com/events"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="block text-center px-6 py-3 font-semibold text-black border border-black shadow-lg 
-              bg-gradient-to-r from-amber-300 via-yellow-400 to-yellow-500 
-              hover:from-yellow-600 hover:via-yellow-400 hover:to-amber-300 
-              transition-all duration-300"
+    bg-gradient-to-r from-amber-300 via-yellow-400 to-yellow-500 
+    hover:from-yellow-600 hover:via-yellow-400 hover:to-amber-300 
+    transition-all duration-300"
                   >
                     Events
-                  </Link>
+                  </a>
 
                   {/* Volunteer */}
                   <Link
-                    to="/volunteer"
+                    to="/sponsors"
                     className="block text-center px-2 py-3 font-semibold text-black border border-black shadow-lg 
               bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-600 
               hover:from-yellow-600 hover:via-amber-500 hover:to-yellow-400
               transition-all duration-300"
                   >
-                    Volunteer
-                  </Link>
-                  <Link
-                    to="/sponsors"
-                    state={{ openSponsors: true }}
-                    className="block text-center px-6 py-3 font-semibold text-black border border-black shadow-lg 
-              bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-600 
-              hover:from-yellow-600 hover:via-amber-500 hover:to-yellow-400
-              transition-all duration-300"
-                  >
-                    Sponsor
-                  </Link>
-                  <Link
-                    to="/resources"
-                    state={{ openSponsors: true }}
-                    className="block text-center px- py-3 font-semibold text-black border border-black shadow-lg 
-              bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-600 
-              hover:from-yellow-600 hover:via-amber-500 hover:to-yellow-400
-              transition-all duration-300"
-                  >
-                    Resources
-                  </Link>
-                  <Link
-                    to="https://givebutter.com/lgbtqadvocacy"
-                    state={{ openSponsors: true }}
-                    className="block text-center px-6 py-3 font-semibold text-black border border-black shadow-lg 
-              bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-600 
-              hover:from-yellow-600 hover:via-amber-500 hover:to-yellow-400
-              transition-all duration-300"
-                  >
-                    Donate
+                    Sponsors
                   </Link>
                 </div>
               </nav>
@@ -136,7 +116,7 @@ export default function HomePage() {
       <hr className="rainbow-hr" />
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-6 pb-16">
+     <main className="max-w-7xl mx-auto px-6 pb-16">
         {/* Mission + Impact Cards */}
         <section className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-12">
           {/* Mission */}
@@ -163,14 +143,35 @@ export default function HomePage() {
               authenticity shines and every voice matters. 🌈
             </p>
 
-            <div className="mt-6 flex flex-col sm:flex-row gap-3">
+<div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+
               <Link
                 to="/about"
                 className="px-6 py-3 font-bold border border-white/20 shadow-lg
                   bg-black/40 hover:bg-black/60 text-yellow-200
-                  transition-all duration-300 text-center"
+                  transition-all duration-300 text-center "
               >
                 About Us
+              </Link>
+                                          <Link
+                to="/ourteam"
+                state={{ openSponsors: true }}
+                className="block text-center px-6 py-3 font-semibold text-black border border-black shadow-lg 
+              bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-600 
+              hover:from-yellow-600 hover:via-amber-500 hover:to-yellow-400
+              transition-all duration-300"
+              >
+                Team
+              </Link>
+                            <Link
+                to="/services"
+                state={{ openSponsors: true }}
+                className="block text-center px-6 py-3 font-semibold text-black border border-black shadow-lg 
+              bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-600 
+              hover:from-yellow-600 hover:via-amber-500 hover:to-yellow-400
+              transition-all duration-300"
+              >
+                Services
               </Link>
               <Link
                 to="/resources"
@@ -179,8 +180,32 @@ export default function HomePage() {
                   hover:from-amber-500 hover:via-yellow-400 hover:to-yellow-300
                   transition-all duration-300 text-center"
               >
-                Explore Resources
+                Resources
               </Link>
+              <Link
+                to="https://givebutter.com/lgbtqadvocacy"
+                state={{ openSponsors: true }}
+                className="block text-center px-6 py-3 font-semibold text-black border border-black shadow-lg 
+              bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-600 
+              hover:from-yellow-600 hover:via-amber-500 hover:to-yellow-400
+              transition-all duration-300"
+              >
+                Donate
+              </Link>
+
+
+
+                            <Link
+                to="/funders"
+                state={{ openSponsors: true }}
+                className="block text-center px-6 py-3 font-semibold text-black border border-black shadow-lg 
+              bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-600 
+              hover:from-yellow-600 hover:via-amber-500 hover:to-yellow-400
+              transition-all duration-300"
+              >
+                Funders
+              </Link>
+
             </div>
           </motion.div>
 
@@ -204,6 +229,7 @@ export default function HomePage() {
                 desc="See what’s happening next, updated regularly."
                 to="/events"
               />
+
               <FeatureCard
                 icon={
                   <FaHandHoldingHeart className="text-2xl text-yellow-300" />
@@ -214,27 +240,54 @@ export default function HomePage() {
               />
               <FeatureCard
                 icon={<FaUsers className="text-2xl text-yellow-300" />}
-                title="Sponsor"
-                desc="Support the programs that impact the community & get recognition."
-                to="/sponsors"
+                title="Connect"
+                desc="Reach out for support, questions, or partnership."
+                to="/contact"
               />
             </div>
 
             {/* Featured Link */}
             <div className="mt-7 p-5 bg-white/10 border border-yellow-400/20 shadow-xl">
               <p className="text-yellow-100 font-bold text-lg">Featured:</p>
-              <Link
-                to="/pride"
-                className="mt-3 inline-block w-full text-center px-6 py-3 font-extrabold text-white border border-white/20 shadow-lg
-                  bg-gradient-to-r from-[#0F2D25] via-[#18453B] to-[#0F2D25]
-                  hover:brightness-110 transition-all duration-300"
+              <video
+                src="/Video2.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="
+    w-[100%]
+    max-w-[420px]
+    sm:max-w-[600px]
+    drop-shadow-2xl 
+    border-b-4 border-t border-l border-r
+    rounded-none
+  "
               >
-                South Haven Pride Event 2026
-              </Link>
+                <img
+                  src="/karaoversebanner.jpeg"
+                  alt="Karaoverse Logo Fallback"
+                />
+              </video>
+
+              <a
+                href="https://karaoverse.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-3 inline-block w-full text-center px-6 py-3 font-extrabold text-white  border border-white/20 shadow-lg
+    bg-gradient-to-br from-red-500 via-black to-red-800
+    hover:brightness-110 transition-all duration-300"
+              >
+                Karaoverse.com
+                <br />{" "}
+                <span className="text-[11px] ">
+                  Local Events, Artist, Hosts & Venues
+                </span>
+              </a>
             </div>
           </motion.div>
         </section>
-        <EmailSubscribe prideId={1} />
+        <EmailSubscribe prideId={2} />
       </main>
       <hr className="rainbow-hr" />
 

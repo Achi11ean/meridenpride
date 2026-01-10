@@ -7,11 +7,129 @@ const PRIDE_ID = 1;
 
 export default function ContactPageTemplate() {
   const [status, setStatus] = useState("");
+  const [committees, setCommittees] = useState([]);
+
   const [isLoading, setIsLoading] = useState(false);
   const [phone, setPhone] = useState("");
   const [showTerms, setShowTerms] = useState(false);
   const [termsAccepted, setTermsAccepted] = useState(false);
+  const [admins, setAdmins] = useState([]);
+const [staff, setStaff] = useState([]);
+
   const [localBlocked, setLocalBlocked] = useState(false);
+const [services, setServices] = useState([]);
+const [selectedTopic, setSelectedTopic] = useState("");
+useEffect(() => {
+  const fetchAllContactTargets = async () => {
+    try {
+      const [
+        servicesRes,
+        committeesRes,
+        adminsRes,
+        staffRes
+      ] = await Promise.all([
+        axios.get(`${API}/api/pride/${PRIDE_ID}/services`),
+        axios.get(`${API}/api/pride-committees/pride/${PRIDE_ID}`),
+        axios.get(`${API}/api/pride/${PRIDE_ID}/admins`),
+        axios.get(`${API}/api/pride/${PRIDE_ID}/staff`)
+      ]);
+
+      setServices(servicesRes.data || []);
+      setCommittees((committeesRes.data || []).filter(c => c.is_active));
+      setAdmins((adminsRes.data || []).filter(a => a.is_active));
+      setStaff((staffRes.data || []).filter(s => s.is_active));
+
+      console.log("📦 Contact targets loaded");
+    } catch (err) {
+      console.error("❌ Failed to fetch Pride contact targets:", err);
+    }
+  };
+
+  fetchAllContactTargets();
+}, []);
+
+useEffect(() => {
+  const fetchServicesAndCommittees = async () => {
+    try {
+      const [servicesRes, committeesRes] = await Promise.all([
+        axios.get(`${API}/api/pride/${PRIDE_ID}/services`),
+        axios.get(`${API}/api/pride-committees/pride/${PRIDE_ID}`)
+      ]);
+
+      console.log("🧩 Pride services:", servicesRes.data);
+      console.log("🧭 Pride committees:", committeesRes.data);
+
+      setServices(servicesRes.data || []);
+      setCommittees(
+        (committeesRes.data || []).filter(c => c.is_active)
+      );
+    } catch (err) {
+      console.error("❌ Failed to fetch Pride data:", err);
+    }
+  };
+
+  fetchServicesAndCommittees();
+}, []);
+
+useEffect(() => {
+  const fetchServices = async () => {
+  try {
+    const res = await axios.get(
+      `${API}/api/pride/${PRIDE_ID}/services`
+    );
+
+    console.log("🧩 Pride services response:", res.data);
+
+    setServices(res.data || []);
+  } catch (err) {
+    console.error("❌ Failed to fetch Pride services:", err);
+  }
+};
+
+
+  fetchServices();
+}, []);
+
+
+const handleTopicSelect = (e) => {
+  const value = e.target.value;
+  setSelectedTopic(value);
+
+  if (!value) return;
+
+  const service = services.find(s => s.title === value);
+  const committee = committees.find(c => c.name === value);
+  const admin = admins.find(a => a.id === Number(value));
+  const staffMember = staff.find(s => s.id === Number(value));
+
+  let finalTopic = value;
+
+  if (service) {
+    finalTopic = `${service.title} Services`;
+  } else if (committee) {
+    finalTopic = `${committee.name} Committee`;
+  } else if (admin) {
+    finalTopic = `I would like to connect with ${admin.name} (Admin)`;
+  } else if (staffMember) {
+    finalTopic = `I would like to connect with ${staffMember.first_name} ${staffMember.last_name} (${staffMember.role})`;
+  }
+
+  const prefix = `${finalTopic}\n\n`;
+
+  setForm((prev) => {
+    const cleanedMessage = prev.message.replace(
+      /^[\s\S]*?\n\n/,
+      ""
+    );
+
+    return {
+      ...prev,
+      message: prefix + cleanedMessage,
+    };
+  });
+};
+
+
 
   // read block on load
   useEffect(() => {
@@ -88,6 +206,8 @@ export default function ContactPageTemplate() {
       setStatus("✅ Thank you! Our team will reach out shortly.");
       setForm({ name: "", email: "", message: "" });
       setPhone("");
+      setSelectedTopic(""); // 👈 ADD THIS
+
 
     } catch (err) {
       console.error(err);
@@ -98,59 +218,71 @@ export default function ContactPageTemplate() {
   };
 
   return (
-    <div
-      className="
-        min-h-screen
-        bg-gradient-to-br from-pink-400 via-black to-pink-600
-        text-white bg-fixed relative
-      "
-    >
+<div
+  className="
+    min-h-screen
+    bg-[conic-gradient(at_top_left,_#2e1065,_#4c1d95,_#6d28d9,_#4c1d95,_#2e1065)]
+    text-white bg-fixed relative
+  "
+>
+
       {/* DARK OVERLAY */}
+      <div className="absolute inset-0 bg-black/40" />
 
       {/* --- PAGE CONTENT WRAPPER --- */}
       <div className="relative z-10">
 
         {/* Banner */}
-        <div
-          className="
-            w-full h-80 md:h-[650px]           
-            bg-center bg-cover 
-            relative shadow-2xl
-          "
-          style={{
-            backgroundImage:
-              "url('/logo1.png')",
-            backgroundPosition: "center 15%",
-          }}
-        >
-  
+{/* Banner */}
+<div
+  className="
+    w-full h-80 md:h-96
+    bg-center bg-contain bg-no-repeat
+    relative shadow-2xl
+    border-b-4 border-slate-700
+    mt-24 sm:mt-28  /* 👈 ADD THIS LINE */
+  "
+  style={{
+    backgroundImage: "url('/PrideLogo3.jpg')",
+  }}
+>
+  <div
+    className="
+      absolute inset-0
+      bg-gradient-to-r
+      from-red-600/10 via-yellow-300/10 to-blue-600/10
+    "
+  />
 
 
-        </div>
-               <hr className="rainbow-hr" />
+</div>
+      <hr className="rainbow-hr" />
 
-          <div
-            className="
-              
-              w-full
-              px-6 py-4 rounded-none shadow-xl
-              bg-black/60  backdrop-blur-md
-            "
-          >
-            <h2 className="text-6xl font-[Aspire] lg:text-5xl font-extrabold text-white">
-              Contact Us
-            </h2>
-          </div>
-                 <hr className="rainbow-hr" />
+<h2
+  className="
+    pt-4 text-7xl lg:text-8xl
+    font-extrabold font-[Aspire] tracking-tight text-center
+    relative
+    bg-gradient-to-r from-violet-700 via-violet-400 to-violet-900
+text-white
+    drop-shadow-[0_4px_10px_rgba(0,0,0,0.9)]
+    border-b-2 border-white/70
+    shadow-[inset_0_2px_4px_rgba(255,255,255,0.35)]
+  "
+>
+Contact Us  
+
+</h2>
+      <hr className="rainbow-hr" />
 
         {/* Content Section */}
-        <section className="max-w-6xl mx-auto p-8  space-y-6">
+        <section className="max-w-6xl mx-auto p-8 pt-24 space-y-6">
 
           {/* Header */}
           <p
             className="
-              text-xl sm:text-3xl font-extrabold text-center pb-3
-              bg-gradient-to-r from-pink-200 via-white to-pink-200
+              text-2xl sm:text-3xl font-extrabold text-center pb-3
+              bg-gradient-to-r from-yellow-200 via-white to-yellow-200
               bg-clip-text text-transparent
             "
           >
@@ -163,9 +295,9 @@ export default function ContactPageTemplate() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             className="
-              bg-slate-900/70
+              bg-black/70
               border border-slate-700
-              rounded-none p-6 shadow-xl backdrop-blur-sm
+              rounded-xl p-6 shadow-xl backdrop-blur-sm
             "
           >
 
@@ -183,8 +315,8 @@ export default function ContactPageTemplate() {
                   required
                   className="
                     w-full p-3 rounded-none
-                    bg-slate-800 border border-slate-600
-                    text-white placeholder-slate-400
+                    bg-white border border-slate-600
+                    text-black placeholder-slate-400
                     focus:ring-2 focus:ring-indigo-400
                   "
                 />
@@ -202,12 +334,83 @@ export default function ContactPageTemplate() {
                 onChange={handlePhoneChange}
                 className="
                   w-full p-3 rounded-lg
-                  bg-slate-800 border border-slate-600
-                  text-white placeholder-slate-400
+                  bg-white border border-slate-600
+                  text-black placeholder-slate-400
                   focus:ring-2 focus:ring-indigo-400
                 "
               />
             </div>
+{/* TOPIC / INTEREST */}
+<div className="mb-4">
+  <label className="block mb-1 font-semibold text-slate-200">
+    TOPIC / INTEREST
+  </label>
+
+ <select
+  value={selectedTopic}
+  onChange={handleTopicSelect}
+  className="
+    w-full p-3 rounded-lg
+    bg-white border border-slate-600
+    text-black
+    focus:ring-2 focus:ring-indigo-400
+  "
+>
+  <option value="">Select a topic…</option>
+
+  {/* General */}
+  <optgroup label="General">
+    <option value="I want to volunteer">I want to volunteer</option>
+    <option value="I want to Partner">I want to Partner</option>
+  </optgroup>
+
+  {/* Services */}
+  {services.length > 0 && (
+    <optgroup label="Pride Services">
+      {services.map(service => (
+        <option key={service.id} value={service.title}>
+          {service.title}
+        </option>
+      ))}
+    </optgroup>
+  )}
+
+  {/* Committees */}
+  {committees.length > 0 && (
+    <optgroup label="Pride Committees">
+      {committees.map(committee => (
+        <option key={committee.id} value={committee.name}>
+          {committee.name} 
+        </option>
+      ))}
+    </optgroup>
+  )}
+
+  {/* Admins */}
+  {admins.length > 0 && (
+    <optgroup label="Pride Admins">
+      {admins.map(admin => (
+        <option key={admin.id} value={admin.id}>
+          {admin.name}
+        </option>
+      ))}
+    </optgroup>
+  )}
+
+  {/* Staff */}
+  {staff.length > 0 && (
+    <optgroup label="Pride Staff">
+      {staff.map(member => (
+        <option key={member.id} value={member.id}>
+          {member.first_name} {member.last_name} — {member.role}
+        </option>
+      ))}
+    </optgroup>
+  )}
+</select>
+
+
+</div>
 
             {/* MESSAGE */}
             <div className="mb-6">
@@ -222,8 +425,8 @@ export default function ContactPageTemplate() {
                 required
                 className="
                   w-full p-3 rounded-lg
-                  bg-slate-800 border border-slate-600
-                  text-white placeholder-slate-400
+                  bg-white  border border-slate-600
+                  text-black placeholder-slate-400
                   focus:ring-2 focus:ring-indigo-400
                 "
               />
@@ -241,12 +444,12 @@ export default function ContactPageTemplate() {
                 onClick={() => setShowTerms(!showTerms)}
                 className="text-sm underline cursor-pointer"
               >
-                Agree To Terms & Conditions
+                I agree to the Terms and Conditions
               </span>
             </div>
 
             {/* Expandable Terms */}
-            <AnimatePresence>
+          <AnimatePresence>
               {showTerms && (
                 <motion.div
                   initial={{ opacity: 0, height: 0 }}

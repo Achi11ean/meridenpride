@@ -8,16 +8,17 @@ export default function Events() {
     <div className="
       min-h-screen 
       bg-gradient-to-br 
-      from-[#5cdc6b] 
-      via-[#b7eadc] 
-      to-[#5fbb7c]
-      text-green-900
+      from-green-700
+      via-black 
+      to-emerald-700
+      text-white
         pt-2  ">
+
 
       {/* 🌈 Banner Image */}
 {/* 🌈 Banner Video */}
 {/* 🌟 Proud Partner Section */}
-<section className="w-full text-center mt-20 sm:mt-28 mb-10 px-6">
+<section className="w-full text-center mt-20 sm:mt-28 mb-10 ">
 
   {/* Video / Logo */}
   <div className="relative inline-block">
@@ -63,12 +64,12 @@ export default function Events() {
 
     <p
       className="
-        mt-5 text-lg sm:text-xl md:text-2xl text-green-900 font-semibold
+        mt-5 text-lg sm:text-xl md:text-2xl text-white font-semibold
         leading-relaxed drop-shadow-md
       "
     >
       United in creativity, inclusivity, and celebration — our partnership with 
-      <span className="font-bold text-green-700"> Karaoverse </span> 
+      <span className="font-bold text-yellow-400"> Karaoverse </span> 
       amplifies LGBTQIA+ voices, empowers community talent, and helps build 
       unforgettable moments across arts, entertainment, and culture.
     </p>
@@ -118,14 +119,14 @@ export default function Events() {
       tracking-wide
     "
   >
-    Build Safe Spaces. Be Seen. Get Connected. 🌈
+    Build Safe Spaces. Be Seen. Get Connected. 
   </h2>
 
   <p
     className="
       max-w-4xl mx-auto mt-6 
       text-lg sm:text-xl md:text-2xl 
-      text-green-900 font-semibold leading-relaxed
+      text-white font-semibold leading-relaxed
     "
   >
     Karaoverse empowers LGBTQIA+ artists, nightlife hosts, safe-space venues, and 
@@ -139,7 +140,7 @@ export default function Events() {
     className="
       max-w-4xl mx-auto mt-4 
       text-base sm:text-lg md:text-xl 
-      text-green-800 font-medium leading-relaxed
+      text-white font-medium leading-relaxed
     "
   >
     From drag shows to support groups — from karaoke hosts to queer musicians — 
@@ -167,7 +168,7 @@ export default function Events() {
   {/* Credit */}
   <p
     className="
-      mt-6 text-sm sm:text-base text-green-700 opacity-80 font-medium
+      mt-6 text-sm sm:text-base text-yellow-400 opacity-80 font-medium
     "
   >
     Karaoverse was created and engineered by our on-staff software designer
@@ -194,7 +195,7 @@ export default function Events() {
       >
         <FaRainbow className="text-5xl text-emerald-500 animate-pulse" />
 
-        <p className="text-sm text-green-700 font-medium italic">
+        <p className="text-sm text-white font-medium italic">
           “Pride never sleeps — and neither does our community.”
         </p>
       </motion.div>
