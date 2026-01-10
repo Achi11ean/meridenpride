@@ -21,15 +21,29 @@ export default function HartfordCityPride() {
   const [prideEvent, setPrideEvent] = useState(null);
 const [vendors, setVendors] = useState([]);
 const navigate = useNavigate();
+const hasPrideEvent = !!prideEvent?.slug;
 
 useEffect(() => {
+  let mounted = true;
+
   axios
-    .get("https://singspacebackend.onrender.com/karaokeevents/pride/2/annual")
-    .then((res) => setPrideEvent(res.data))
-    .catch((err) =>
-      console.error("Error loading Annual Pride event:", err)
-    );
+    .get("https://singspacebackend.onrender.com/karaokeevents/pride/1/annual")
+    .then((res) => {
+      if (!mounted) return;
+
+      // Backend guarantees either an event object or null
+      setPrideEvent(res.data ?? null);
+    })
+    .catch((err) => {
+      console.error("Error loading Annual Pride event:", err);
+      setPrideEvent(null);
+    });
+
+  return () => {
+    mounted = false;
+  };
 }, []);
+
 const SectionHeader = ({ icon, title, subtitle }) => (
   <div className="text-center mb-10">
     <h3 className="text-5xl sm:text-6xl font-[Aspire] text-yellow-300 drop-shadow-lg">
@@ -66,49 +80,51 @@ const RainbowDivider = () => (
 
         <div className="relative z-10 px-6">
           <h1 className="text-4xl sm:text-6xl font-extrabold drop-shadow-lg">
-            Capital <span className="text-yellow-300">City Pride</span>
+            South Haven, MI <span className="text-yellow-300">Pride</span>
           </h1>
           <p className="mt-3 text-lg sm:text-xl text-yellow-200 font-semibold">
-            The Official Pride Celebration of Hartford, Connecticut
+            The Official Pride Celebration of South Haven, MI
           </p>
 
           {/* 🌞 CLICKABLE DATE BANNER */}
-          <div
-            className="
-              mt-6 inline-block 
-              bg-gradient-to-r from-yellow-300 via-amber-400 to-yellow-600
-              px-6 py-3 
-              rounded-none font-bold shadow-xl border-2 border-white
-              cursor-pointer hover:opacity-90 transition
-              text-black
-            "
-            onClick={() => {
-              if (
-                window.confirm(
-                  "You’re being redirected to the full event page on Karaoverse!\n\nContinue?"
-                )
-              ) {
-                window.location.href = prideEvent
-                  ? `https://karaoverse.com/events/${prideEvent.slug}`
-                  : "https://karaoverse.com";
-              }
-            }}
-          >
-            {prideEvent ? (
-              <>
-                🌟{" "}
-                {new Date(prideEvent.date).toLocaleDateString("en-US", {
-                  weekday: "long",
-                  month: "long",
-                  day: "numeric",
-                  year: "numeric",
-                })}{" "}
-                • {prideEvent.city}, {prideEvent.state}
-              </>
-            ) : (
-              "🌟 June 2026 •  Pride Event"
-            )}
-          </div>
+         <div
+  className={`
+    mt-6 inline-block 
+    bg-gradient-to-r from-yellow-300 via-amber-400 to-yellow-600
+    px-6 py-3 
+    rounded-none font-bold shadow-xl border-2 border-white
+    text-black
+    transition
+    ${hasPrideEvent ? "cursor-pointer hover:opacity-90" : "cursor-default opacity-90"}
+  `}
+  onClick={() => {
+    if (!hasPrideEvent) return; // 🛑 hard stop
+
+    if (
+      window.confirm(
+        "You’re being redirected to the official Pride Festival page on Karaoverse!\n\nContinue?"
+      )
+    ) {
+      window.location.href = `https://karaoverse.com/events/${prideEvent.slug}`;
+    }
+  }}
+>
+  {hasPrideEvent ? (
+    <>
+      🌟{" "}
+      {new Date(prideEvent.date).toLocaleDateString("en-US", {
+        weekday: "long",
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+      })}{" "}
+      • {prideEvent.city}, {prideEvent.state}
+    </>
+  ) : (
+    "🌟 June 2026 • Pride Event"
+  )}
+</div>
+
         </div>
       </section>               <hr className="rainbow-hr" />
 
@@ -116,12 +132,12 @@ const RainbowDivider = () => (
       {/* 🟡 EVENT OVERVIEW */}
       <section className="max-w-4xl mx-auto text-center px-2 py-2">
         <h2 className="text-3xl font-bold text-yellow-300 mb-4">
-          The Biggest Pride Event <br/> in Hartford
+          The Biggest Pride Event <br/> in South Haven, MI
         </h2>
 
         <p className="text-yellow-100 leading-relaxed text-lg">
-          Every June, thousands come together in Hartford to celebrate love,
-          identity, diversity, and resilience. The Hartford City Pride Festival
+          Every June, thousands come together in South Haven, MI to celebrate love,
+          identity, diversity, and resilience. The South Haven, MI Pride Festival
           features live entertainment, vendors, community resources, a massive
           parade, and a celebration that lights up the city.
         </p>
@@ -137,8 +153,8 @@ const RainbowDivider = () => (
             Pride Itinerary
           </h3>
           <ul className="text-yellow-100 text-sm space-y-2">
-            <li>• Pride on Pratt: 11-5pm | Pop up Drag | Street Artists | Signature cocktails | </li>
-            <li>• Pride Fest & Concert 5-9pm | On the river front | Neon Dance Party | Food Trucks | Liquor | Live Entertainment</li>
+            <li>• Pride in the Park: 11-5pm | Pop up Drag | Street Artists | Signature cocktails | </li>
+            <li>• Pride Fest & Concert 5-9pm | On the river front | Neon Dance Party | Food Trucks | Alcohol | Live Entertainment</li>
 <li>
   • Official After Party: Hosted By{" "}
   <a
@@ -220,7 +236,7 @@ const RainbowDivider = () => (
   </h2>
 
   <p className="text-yellow-100 text-lg mb-6">
-    Support Capital City Pride by lending a helping hand!
+    Support South Haven Pride by lending a helping hand!
   </p>
 
   <button
@@ -303,15 +319,16 @@ const RainbowDivider = () => (
   </h2>
                <hr className="rainbow-hr my-4" />
 
-  <div className="relative w-full pt-[56.25%] rounded-2xl overflow-hidden shadow-2xl border-4 border-pink-400">
-    <iframe
-      className="absolute top-0 left-0 w-full h-full"
-      src="https://www.google.com/maps?q=Pratt+Street,+Hartford,+CT&z=17&output=embed"
-      allowFullScreen
-      loading="lazy"
-      referrerPolicy="no-referrer-when-downgrade"
-    />
-  </div>
+<div className="relative w-full pt-[56.25%] rounded-2xl overflow-hidden shadow-2xl border-4 border-pink-400">
+  <iframe
+    className="absolute top-0 left-0 w-full h-full"
+    src="https://www.google.com/maps?q=Stanley+Johnston+Park,+South+Haven,+MI&z=18&output=embed"
+    allowFullScreen
+    loading="lazy"
+    referrerPolicy="no-referrer-when-downgrade"
+  />
+</div>
+
 </section>
 
 
@@ -320,11 +337,11 @@ const RainbowDivider = () => (
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 divide-y lg:divide-y-0 lg:divide-x lg:divide-yellow-700">
           <div className="text-center lg:text-left">
             <h3 className="text-2xl font-bold text-yellow-400 border-b-2 border-yellow-400 inline-block mb-2">
-              Hartford Pride Center 🌟
+              South Haven LGBTQ+ Advocacy 🌟
             </h3>
             <p className="text-sm font-bold">
               Celebrating identity, community, and love
-              in the heart of Connecticut.
+              in the heart of South Haven, MI.
             </p>
           </div>
 
@@ -361,14 +378,7 @@ const RainbowDivider = () => (
               Connect
             </h4>
             <div className="flex items-center justify-center lg:justify-start gap-4 text-2xl">
-              <a
-                href="https://www.instagram.com/hartfordpride/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-yellow-300"
-              >
-                <FaInstagram />
-              </a>
+
               <a
                 href="https://www.facebook.com/SouthHavenLGBTQAdvocacy/"
                 target="_blank"
@@ -377,7 +387,7 @@ const RainbowDivider = () => (
               >
                 <FaFacebook />
               </a>
-              <a href="mailto:david@hartfordpridecenter.org" className="hover:text-yellow-300">
+              <a href="mailto:blanca@lgbtqadvocacy.org" className="hover:text-yellow-300">
                 <FaEnvelope />
               </a>
             </div>
@@ -385,7 +395,7 @@ const RainbowDivider = () => (
         </div>
 
         <div className="mt-6 text-center text-xs text-yellow-500">
-          © {new Date().getFullYear()} Hartford Pride Center - Non Profit Organization.
+          © {new Date().getFullYear()} South Haven LGBTQ+ Advocacy  - Non Profit Organization.
         </div>
       </section>
     </div>

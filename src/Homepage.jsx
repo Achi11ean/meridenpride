@@ -67,7 +67,7 @@ export default function HomePage() {
                   bg-gradient-to-r from-[#0F2D25] via-[#18453B] to-[#0F2D25]
                   hover:brightness-110 transition-all duration-300"
               >
-                Capital City Pride 2026
+                South Haven Pride 2026
               </Link>
               {/* CTAs */}
               <nav aria-label="Primary">
