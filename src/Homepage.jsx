@@ -134,7 +134,7 @@ export default function HomePage() {
 
             <p className="mt-5 text-yellow-50/90 text-lg leading-relaxed font-semibold">
               We believe every person deserves a space where they feel seen,
-              supported, and celebrated. Our mission is to uplift LGBTQIA+
+              supported, and celebrated. Our mission is to uplift LGBTQ+
               individuals through advocacy, education, and community connection.
             </p>
 
