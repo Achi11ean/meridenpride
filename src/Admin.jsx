@@ -343,7 +343,7 @@ useEffect(() => {
       {/* ───────────── Edit Modal ───────────── */}
       {editingAdmin && (
         <div className="fixed inset-0 z-50 bg-black/70 flex items-center justify-center px-4">
-          <div className="bg-gradient-to-br from-[#18453B] via-black to-[#0f2d25] p-6 rounded-3xl border border-yellow-400/40 w-full max-w-md">
+          <div className="bg-gradient-to-br from-[#18453B] max-h-[500px] overflow-auto via-black to-[#0f2d25] p-6 rounded-3xl border border-yellow-400/40 w-full max-w-md">
             <h3 className="text-2xl font-extrabold text-yellow-300 mb-4">
               ✏️ Edit Admin
             </h3>
