@@ -123,7 +123,7 @@ export default function CreateCommittee({ onCreated }) {
           name="name"
           value={formData.name}
           onChange={handleChange}
-          className="w-full border rounded px-3 py-2"
+          className="w-full border text-black bg-white rounded px-3 py-2"
           placeholder="e.g. Health & Wellness Committee"
           required
         />
@@ -137,7 +137,7 @@ export default function CreateCommittee({ onCreated }) {
           name="mission_statement"
           value={formData.mission_statement}
           onChange={handleChange}
-          className="w-full border rounded px-3 py-2 min-h-[100px]"
+          className="w-full border text-black bg-white  rounded px-3 py-2 min-h-[100px]"
           placeholder="What is this committee responsible for?"
           required
         />
@@ -149,7 +149,7 @@ export default function CreateCommittee({ onCreated }) {
           name="details"
           value={formData.details}
           onChange={handleChange}
-          className="w-full border rounded px-3 py-2 min-h-[80px]"
+          className="w-full border text-black bg-white  rounded px-3 py-2 min-h-[80px]"
           placeholder="Optional additional context"
         />
       </div>
@@ -162,7 +162,7 @@ export default function CreateCommittee({ onCreated }) {
             name="contact_email"
             value={formData.contact_email}
             onChange={handleChange}
-            className="w-full border rounded px-3 py-2"
+            className="w-full text-black bg-white  border rounded px-3 py-2"
             placeholder="committee@pride.org"
           />
         </div>
@@ -174,7 +174,7 @@ export default function CreateCommittee({ onCreated }) {
             name="contact_phone"
             value={formData.contact_phone}
             onChange={handleChange}
-            className="w-full border rounded px-3 py-2"
+            className="w-full text-black bg-white  border rounded px-3 py-2"
             placeholder="(555) 123-4567"
           />
         </div>
