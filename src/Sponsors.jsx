@@ -261,7 +261,7 @@ console.log("PATCH response:", res.data);
   }
 };
 
-const DELETE_PIN = "HPC2025";
+const DELETE_PIN = "2024";
 
   // ───────────────────────────────
   // Delete
