@@ -123,12 +123,15 @@ const isSingleVendor = vendors.length === 1;
                     Help us craft a unique, exciting , and inclusive Pride experience!
                   </p>
         
-                  <Link
-                    to="/volunteer"
-                    className="inline-block px-8 py-3 rounded-xl bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-600 font-bold text-black border-2 border-white shadow-lg hover:scale-105 transition"
-                  >
-                   Contact us
-                  </Link>
+<a
+  href="https://docs.google.com/forms/d/1J6jkAaV2LaV6yt-JDkXUTpTq4a7zxId0xz777NQF5Kg/viewform"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="inline-block px-8 py-3 rounded-xl bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-600 font-bold text-black border-2 border-white shadow-lg hover:scale-105 transition"
+>
+  Contact us
+</a>
+
                 </div>
       </div>
 
