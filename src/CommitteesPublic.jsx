@@ -216,23 +216,41 @@ function CommitteeModal({
               <div className="mb-6">
                 <h4 className="font-bold text-blue-300 mb-2">Members</h4>
                 <ul className="space-y-1">
-                  {members.map(m => {
-                    const name =
-                      m.member_type === "admin"
-                        ? adminsById[m.member_id]?.name
-                        : `${staffById[m.member_id]?.first_name || ""} ${staffById[m.member_id]?.last_name || ""}`;
+                {members.map(m => {
+  let displayName = "";
 
-                    return (
-                      <li key={m.id}>
-                        {name}
-                        {m.role_title && (
-                          <span className="text-blue-300 font-semibold">
-                            {" "}— {m.role_title}
-                          </span>
-                        )}
-                      </li>
-                    );
-                  })}
+  if (m.member_type === "admin") {
+    displayName = m.member?.name;
+  }
+
+  if (m.member_type === "staff") {
+    displayName = `${m.member?.first_name || ""} ${m.member?.last_name || ""}`;
+  }
+
+  if (m.member_type === "volunteer") {
+    displayName = m.member?.name;
+  }
+
+  return (
+    <li key={m.id} className="flex justify-between items-center">
+      <span>
+        {displayName}
+        {m.role_title && (
+          <span className="text-blue-300 font-semibold">
+            {" "}— {m.role_title}
+          </span>
+        )}
+      </span>
+
+      {m.member_type === "volunteer" && (
+        <span className="text-xs px-2 py-0.5 rounded bg-purple-600/40 text-purple-300">
+          Volunteer
+        </span>
+      )}
+    </li>
+  );
+})}
+
                 </ul>
               </div>
             )}
