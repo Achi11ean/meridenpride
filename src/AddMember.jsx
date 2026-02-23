@@ -6,7 +6,35 @@ const API_BASE = "https://singspacebackend.onrender.com";
 
 export default function AddMember({ committeeId, onMemberAdded }) {
   const { prideId, token, isAdmin } = useAuth();
-
+const ROLE_OPTIONS = [
+  "Admin",
+  "Director",
+  "Coordinator",
+  "Event Lead",
+  "Volunteer Manager",
+  "Software Engineer",
+  "Marketing",
+  "Finance",
+  "Community Outreach",
+  "Executive Director",
+  "Program Director",
+  "Operations Manager",
+  "Volunteer Coordinator",
+  "Web Designer",
+  "Community Outreach Coordinator",
+  "Events Coordinator",
+  "Fundraising Manager",
+  "Development Director",
+  "Communications Manager",
+  "Marketing & Social Media",
+  "Grant Writer",
+  "Finance Manager",
+  "Office Administrator",
+  "Board Member",
+  "Intern",
+  "Volunteer",
+  "Support Staff",
+];
   const [memberType, setMemberType] = useState("staff"); // staff | admin
   const [members, setMembers] = useState([]); // selectable admins/staff
   const [selectedMemberId, setSelectedMemberId] = useState("");
@@ -161,26 +189,29 @@ export default function AddMember({ committeeId, onMemberAdded }) {
 
         {/* Role Title */}
 <div>
-<label className="block text-sm font-semibold mb-1 text-yellow-200">
-Committee Role (optional)
-</label>
-<select
-value={roleTitle}
-onChange={(e) => setRoleTitle(e.target.value)}
-className="w-full p-2 rounded bg-black text-yellow-200 border border-yellow-500/40"
->
-<option value="">-- Select Role --</option>
-<option value="Chair">Chair</option>
-<option value="Co-Chair">Co-Chair</option>
-<option value="Secretary">Secretary</option>
-<option value="Treasurer">Treasurer</option>
-<option value="Outreach Lead">Outreach Lead</option>
-<option value="Events Coordinator">Events Coordinator</option>
-<option value="Volunteer Coordinator">Volunteer Coordinator</option>
-<option value="Communications Lead">Communications Lead</option>
-<option value="Member">Member</option>
-</select>
+  <label className="block text-sm font-semibold mb-1 text-yellow-200">
+    Committee Role (optional)
+  </label>
+
+  <select
+    value={roleTitle}
+    onChange={(e) => setRoleTitle(e.target.value)}
+    className="w-full p-2 rounded bg-black text-yellow-200 border border-yellow-500/40"
+  >
+    <option value="">-- Select Role --</option>
+
+    {ROLE_OPTIONS.map((role) => (
+      <option key={role} value={role}>
+        {role}
+      </option>
+    ))}
+  </select>
 </div>
+{!ROLE_OPTIONS.includes(roleTitle) && roleTitle && (
+  <p className="text-xs text-yellow-300 mt-1">
+    Custom role selected
+  </p>
+)}
         <div className="flex justify-end">
           <button
             type="submit"
