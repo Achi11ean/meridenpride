@@ -17,7 +17,7 @@ const isSingleSponsor = sponsors.length === 1;
     const fetchSponsors = async () => {
       try {
         const res = await axios.get(
-          `${API}/api/pride/${PRIDE_ID}/sponsors/approved`
+          `${API}/api/pride/${PRIDE_ID}/sponsors/pride`
         );
         setSponsors(res.data || []);
       } catch (err) {
