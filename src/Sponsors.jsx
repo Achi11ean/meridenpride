@@ -13,7 +13,9 @@ const STATUS_OPTIONS = [
   "contacted", 
   "Unpaid - Awaiting Payment",
   "approved",
+  "inactive",
   "declined",
+  "pride",
 
 ];
 
