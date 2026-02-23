@@ -143,7 +143,7 @@ export default function HomePage() {
               authenticity shines and every voice matters. 🌈
             </p>
 
-<div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div className="grid grid-cols-2 md:grid-cols-3 gap-4">
 
               <Link
                 to="/about"
@@ -192,19 +192,18 @@ export default function HomePage() {
               >
                 Donate
               </Link>
+<Link
+  to="/committees"
+  className="block text-center px- py-3 font-semibold text-black border border-black shadow-lg 
+  bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-600 
+  hover:from-yellow-600 hover:via-amber-500 hover:to-yellow-400
+  transition-all duration-300"
+>
+  Committees
+</Link>
 
 
-
-                            <Link
-                to="/funders"
-                state={{ openSponsors: true }}
-                className="block text-center px-6 py-3 font-semibold text-black border border-black shadow-lg 
-              bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-600 
-              hover:from-yellow-600 hover:via-amber-500 hover:to-yellow-400
-              transition-all duration-300"
-              >
-                Funders
-              </Link>
+               
 
             </div>
           </motion.div>
@@ -304,9 +303,17 @@ export default function HomePage() {
                 Empowering the LGBTQ+ community through support, creativity, and
                 compassion.
               </p>
-              <p className="mt-3 text-sm text-yellow-100/70 font-semibold">
-                📍 South Haven, Michigan
-              </p>
+      <p className="mt-3 text-sm text-yellow-100/70 font-semibold">
+  📍{" "}
+  <a
+    href="https://www.google.com/maps/search/?api=1&query=510+Williams+Street+South+Haven+Michigan"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="underline hover:text-yellow-200 transition"
+  >
+    510 Williams Street, South Haven, Michigan
+  </a>
+</p>
             </div>
 
             {/* Links */}
@@ -377,18 +384,26 @@ export default function HomePage() {
               <h4 className="text-lg font-bold text-yellow-200">
                 Get in Touch
               </h4>
-              <p className="mt-3 text-sm font-semibold">
-                📧{" "}
-                <a
-                  href="mailto:southhavenpride@gmail.com"
-                  className="underline hover:text-yellow-300"
-                >
-                  Southhavenpride@gmail.com
-                </a>
-              </p>
+<p className="mt-3 text-sm font-semibold">
+  📧{" "}
+  <a
+    href="mailto:southhavenpride@gmail.com"
+    className="underline hover:text-yellow-300"
+  >
+    southhavenpride@gmail.com
+  </a>
+</p>
 
+<p className="mt-2 text-sm font-semibold">
+  📞{" "}
+  <a
+    href="tel:+12697678262"
+    className="underline hover:text-yellow-300"
+  >
+    (269) 767-8262
+  </a>
+</p>
               <div className="mt-6 flex items-center gap-4 border-t border-yellow-400/30 pt-4">
-
                 <a
                   href="https://www.facebook.com/SouthHavenLGBTQAdvocacy"
                   target="_blank"

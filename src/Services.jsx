@@ -10,7 +10,6 @@ export default function Services({
   contactPath = "/contact",
 }) {
   const [services, setServices] = useState([]);
-  const [selectedService, setSelectedService] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -26,6 +25,8 @@ export default function Services({
             title: s.title,
             desc: s.description,
             details: s.description,
+                slug: s.slug,   // ⭐ ADD THIS
+
             image: s.image_url,
             contact_name: s.contact_name,
             contact_email: s.contact_email,
@@ -167,76 +168,50 @@ return (
       >
 
        
-  
-        {services.map((s) => (
-          <button
-            key={s.id}
-            onClick={() => setSelectedService(s)}
-            className="
-              group w-full text-left overflow-hidden rounded-3xl
-              bg-gradient-to-br from-white to-yellow-50
-              border-[6px] border-yellow-400 shadow-[0_8px_25px_rgba(0,0,0,0.25)]
-              hover:shadow-[0_20px_35px_rgba(0,0,0,0.35)]
-              hover:scale-[1.03] transition-all duration-500
-            "
-          >
+  {services.map((s) => (
+  <Link
+    key={s.id}
+    to={`/services/${s.slug}`}
+    className="
+      group w-full block text-left overflow-hidden rounded-3xl
+      bg-gradient-to-br from-white to-yellow-50
+      border-[6px] border-yellow-400 shadow-[0_8px_25px_rgba(0,0,0,0.25)]
+      hover:shadow-[0_20px_35px_rgba(0,0,0,0.35)]
+      hover:scale-[1.03] transition-all duration-500
+    "
+  >
+    {/* IMAGE */}
+    {s.image && (
+      <div className="relative h-56 w-full overflow-hidden">
+        <img
+          src={s.image}
+          alt={s.title}
+          className="
+            w-full h-full object-cover
+            group-hover:scale-110
+            transition-transform duration-[1600ms]
+          "
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+      </div>
+    )}
 
-            {/* IMAGE */}
-            {s.image && (
-              <div className="relative h-56 w-full overflow-hidden">
-                <img
-                  src={s.image}
-                  alt={s.title}
-                  className="
-                    w-full h-full object-cover
-                    group-hover:scale-110
-                    transition-transform duration-[1600ms]
-                  "
-                />
-                <div
-                  className="
-                    absolute inset-0 bg-gradient-to-t
-                    from-black/60 to-transparent
-                  "
-                />
-              </div>
-            )}
+    {/* TEXT */}
+    <div className="p-7">
+      <h3 className="text-3xl font-black tracking-tight bg-gradient-to-r from-yellow-800 to-yellow-600 bg-clip-text text-transparent drop-shadow">
+        {s.title}
+      </h3>
 
-            {/* TEXT */}
-            <div className="p-7">
-              <h3
-                className="
-                  text-3xl font-black tracking-tight
-                  bg-gradient-to-r from-yellow-800 to-yellow-600
-                  bg-clip-text text-transparent
-                  drop-shadow
-                "
-              >
-                {s.title}
-              </h3>
+      <p className="mt-4 text-[#5A4400]/90 font-medium leading-relaxed min-h-[65px]">
+        {s.desc}
+      </p>
 
-              <p
-                className="
-                  mt-4 text-[#5A4400]/90 font-medium leading-relaxed
-                  min-h-[65px]
-                "
-              >
-                {s.desc}
-              </p>
-
-              <p
-                className="
-                  mt-6 pr-2 text-right font-extrabold uppercase text-sm
-                  bg-gradient-to-r from-black to-yellow-700
-                  bg-clip-text text-transparent tracking-widest
-                "
-              >
-                Learn more →
-              </p>
-            </div>
-          </button>
-        ))}
-      </section>
+      <p className="mt-6 pr-2 text-right font-extrabold uppercase text-sm bg-gradient-to-r from-black to-yellow-700 bg-clip-text text-transparent tracking-widest">
+        View Service →
+      </p>
+    </div>
+  </Link>
+))}      </section>
     )}
 
 
@@ -280,87 +255,9 @@ return (
       >
         Every profile. Every voice. Every story adds strength.
       </p>
-    </div>{selectedService && (
-  <div
-    className="
-      fixed inset-0 bg-black/70 backdrop-blur-sm z-50
-      flex items-center justify-center p-6
-    "
-    onClick={() => setSelectedService(null)}
-  >
-    <div
-      className="
-        max-w-3xl w-full bg-white rounded-3xl
-        shadow-2xl overflow-hidden relative
-      "
-      onClick={(e) => e.stopPropagation()}
-    >
-      {/* CLOSE BUTTON */}
-      <button
-        className="
-          absolute top-3 right-3 bg-black/80 text-white
-          rounded-full w-10 h-10 text-xl font-bold shadow-lg
-          hover:bg-black/60 transition
-        "
-        onClick={() => setSelectedService(null)}
-      >
-        ✕
-      </button>
-
-      {/* IMAGE */}
-      {selectedService.image && (
-        <img
-          src={selectedService.image}
-          alt={selectedService.title}
-          className="w-full h-64 object-cover"
-        />
-      )}
-
-      <div className="p-8 text-[#503B00]">
-        <h2 className="text-4xl font-black bg-gradient-to-r from-yellow-800 to-yellow-600 bg-clip-text text-transparent">
-          {selectedService.title}
-        </h2>
-
-        <p className="mt-6 leading-relaxed text-lg whitespace-pre-line">
-          {selectedService.details}
-        </p>
-
-        {/* CONTACT INFO */}
-        <div className="mt-8 space-y-2 text-sm">
-          <p><strong>Contact Name:</strong> {selectedService.contact_name}</p>
-          <p><strong>Email:</strong> {selectedService.contact_email}</p>
-        </div>
-
-        {/* BUTTON LINKS */}
-        <div className="flex-col gap-4 mt-10">
-          {selectedService.service_url && (
-            <a
-              href={selectedService.service_url}
-              target="_blank"
-              rel="noreferrer"
-              className="
-                px-6 py-3 rounded-xl font-bold text-white text-center
-                bg-yellow-600 hover:bg-yellow-500 transition
-              "
-            >
-              Visit Service Page
-            </a>
-          )}
-
-          <Link
-            to={contactPath}
-            className="
-              px-6 py-3 rounded-xl font-bold text-black text-center
-              bg-yellow-300 hover:bg-yellow-200 transition
-            "
-          >
-            Contact Us
-          </Link>
-        </div>
-      </div>
     </div>
-  </div>
-)}
+    
+  
 
   </div>
 );

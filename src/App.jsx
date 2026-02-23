@@ -21,6 +21,8 @@ import Resources from "./Resources";
 import SponsorInvitationPage from "./SponsorInvitationPage";
 import PrideServicePage from "./PrideServicePage";
 import FundersPage from "./FundersPage";
+import CommitteePage from "./CommitteePage";
+import CommitteesPage from "./CommitteesPage";
 function App() {
   return (
     <Router>
@@ -48,6 +50,8 @@ function App() {
         <Route path="/sponsorinvitation" element={<SponsorInvitationPage/>}/>
 <Route path="/services/:slug" element={<PrideServicePage />} />
 <Route path="/funders" element={<FundersPage />} />
+<Route path="/committees" element={<CommitteesPage />} />
+<Route path="/committee/:slug" element={<CommitteePage />} />
 
 
       </Routes>
