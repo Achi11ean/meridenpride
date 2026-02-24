@@ -135,9 +135,28 @@ href={`https://karaoverse.com/artist/${p.slug}`}
     ))}
   </div>
 )}
+{item.hosts?.length > 0 && (
+  <div className="mt-3 flex flex-wrap gap-3">
+    {item.hosts.map((h) => (
+      <a
+        key={h.id}
+        href={`https://karaoverse.com/host/${h.slug}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex items-center gap-2 bg-gradient-to-r from-blue-500/20 to-indigo-500/20 border border-blue-400/40 px-3 py-2 rounded-xl hover:scale-105 transition"
+      >
+        <span className="text-lg">🎧</span>
+
+        <span className="font-semibold text-blue-200">
+          {h.dj_name}
+        </span>
+      </a>
+    ))}
+  </div>
+)}
 
             {item.description && (
-              <p className="text-sm text-yellow-100 italic">
+              <p className="text-sm border-t mt-3 text-yellow-100 italic">
                 {item.description}
               </p>
             )}
