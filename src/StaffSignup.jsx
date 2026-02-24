@@ -7,7 +7,7 @@ const API = "https://singspacebackend.onrender.com";
 
 export default function StaffSignup() {
   const [loading, setLoading] = useState(false);
-  const [prideName, setPrideName] = useState("Loading…");
+const [prideName, setPrideName] = useState("");
   const [successData, setSuccessData] = useState(null);
 const STAFF_ROLES = [
   "Executive Director",
@@ -522,15 +522,15 @@ const [form, setForm] = useState({
               <p className="text-yellow-200">
                 <strong>Username:</strong> {successData.username}
               </p>
-              {staff.email && (
+             {successData.email && (
   <p className="text-yellow-200">
-    <strong>Email:</strong> {staff.email}
+    <strong>Email:</strong> {successData.email}
   </p>
 )}
 
-{staff.phone && (
+{successData.phone && (
   <p className="text-yellow-200">
-    <strong>Phone:</strong> {staff.phone}
+    <strong>Phone:</strong> {successData.phone}
   </p>
 )}
 
