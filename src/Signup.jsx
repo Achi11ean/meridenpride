@@ -3,7 +3,7 @@ import AdminSignup from "./AdminSignup";
 import StaffSignup from "./StaffSignup";
 
 export default function Signup() {
-  const [mode, setMode] = useState("admin"); // admin | staff
+  const [mode, setMode] = useState("staff"); // admin | staff
 
   return (
     <div className="

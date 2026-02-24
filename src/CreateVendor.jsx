@@ -10,15 +10,14 @@ const CLOUD_NAME = "dcw0wqlse";
 const UPLOAD_PRESET = "karaoke";
 
 const VENDOR_TYPES = [
-  "Food",
-  "Retail",
-  "Non-Profit",
-  "Sponsor",
-  "Performer",
-  "Info Booth",
-  "Other",
+  "Merchandise",
+  "Arts and Crafts",
+  "Wellness or Beauty",
+  "Travel or Tourism Agency",
+  "Food and Beverage",
+  "Community Service or Nonprofit",
+  "Political or Activism",
 ];
-
 const STATUS_OPTIONS = [
   "pending",
   "approved",
