@@ -6,8 +6,8 @@ import Select from "react-select";
 const API = "https://singspacebackend.onrender.com";
 
 export default function StaffSignup() {
-  const [prides, setPrides] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [prideName, setPrideName] = useState("Loading…");
   const [successData, setSuccessData] = useState(null);
 const STAFF_ROLES = [
   "Executive Director",
@@ -36,7 +36,18 @@ const STAFF_ROLE_OPTIONS = STAFF_ROLES.map(r => ({
   value: r,
   label: r,
 }));
+useEffect(() => {
+  const fetchPride = async () => {
+    try {
+      const res = await axios.get(`${API}/api/pride/1`);
+      setPrideName(res.data.name);
+    } catch {
+      setPrideName("Pride Center");
+    }
+  };
 
+  fetchPride();
+}, []);
 // ---- Cloudinary Config ----
 const CLOUD_NAME = "dcw0wqlse";
 const UPLOAD_PRESET = "karaoke";
@@ -129,7 +140,7 @@ const uploadToCloudinary = async (file) => {
 
 
 const [form, setForm] = useState({
-  pride_id: "",
+  pride_id: 1,
   first_name: "",
   last_name: "",
   role: "",
@@ -144,29 +155,10 @@ const [form, setForm] = useState({
   // ───────────────────────────────
   // Load Pride Centers (auto-select first)
   // ───────────────────────────────
-  useEffect(() => {
-    fetchPrides();
-  }, []);
 
-  const fetchPrides = async () => {
-    try {
-      const res = await axios.get(`${API}/api/pride/active`);
-      const list = res.data || [];
-      setPrides(list);
 
-      if (list.length > 0) {
-        setForm((prev) => ({
-          ...prev,
-          pride_id: list[0].id,
-        }));
-      }
-    } catch {
-      toast.error("Failed to load Pride Centers");
-    }
-  };
 
-  const prideName =
-    prides.find((p) => p.id === form.pride_id)?.name || "Loading…";
+
 
   // ───────────────────────────────
   // Form handlers
@@ -198,13 +190,14 @@ const [form, setForm] = useState({
 
       const staff = res.data.staff;
 
-      setSuccessData({
-        prideName,
-        name: `${staff.first_name} ${staff.last_name}`,
-        username: staff.username,
-        role: staff.role,
-      });
-
+  setSuccessData({
+  prideName,
+  name: `${staff.first_name} ${staff.last_name}`,
+  username: staff.username,
+  role: staff.role,
+  email: staff.email,
+  phone: staff.phone,
+});
       toast.success("Pride staff account created 🎉");
 
      setForm({
