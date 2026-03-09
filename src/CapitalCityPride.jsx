@@ -24,26 +24,24 @@ export default function HartfordCityPride() {
   const navigate = useNavigate();
   const hasPrideEvent = !!prideEvent?.slug;
 
-  useEffect(() => {
-    let mounted = true;
+useEffect(() => {
+  let mounted = true;
 
-    axios
-      .get("https://singspacebackend.onrender.com/karaokeevents/pride/1/annual")
-      .then((res) => {
-        if (!mounted) return;
+  axios
+    .get("https://singspacebackend.onrender.com/pride/1/annual")
+    .then((res) => {
+      if (!mounted) return;
+      setPrideEvent(res.data ?? null);
+    })
+    .catch((err) => {
+      console.error("Error loading Annual Pride event:", err);
+      setPrideEvent(null);
+    });
 
-        // Backend guarantees either an event object or null
-        setPrideEvent(res.data ?? null);
-      })
-      .catch((err) => {
-        console.error("Error loading Annual Pride event:", err);
-        setPrideEvent(null);
-      });
-
-    return () => {
-      mounted = false;
-    };
-  }, []);
+  return () => {
+    mounted = false;
+  };
+}, []);
 
   const SectionHeader = ({ icon, title, subtitle }) => (
     <div className="text-center mb-10">

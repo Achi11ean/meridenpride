@@ -404,12 +404,15 @@ return (
                           transition
                         "
                       >
-                        <img
-                          src={host.photo_url || "https://img.freepik.com/free-vector/user-circles-set_78370-4704.jpg?semt=ais_rp_50_assets&w=740&q=80"}
-                          alt={host.dj_name}
-                          className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
-                          loading="lazy"
-                        />
+<img
+  src={
+    host.photo_url ||
+    "https://img.freepik.com/free-vector/user-circles-set_78370-4704.jpg?semt=ais_rp_50_assets&w=740&q=80"
+  }
+  alt={host.dj_name}
+  className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+  loading="lazy"
+/>
                       </div>
 
                       <span className="mt-2 font-extrabold text-sm text-yellow-100">
