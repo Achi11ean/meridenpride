@@ -61,11 +61,11 @@ export default function HomePage() {
                 community connection in and around South Haven, MI
               </p>
 
-                     <Link
+                  <Link
                 to="/pride"
-                className="mt-3 inline-block w-full text-center px-6 py-3 font-extrabold text-white border border-white/20 shadow-lg
-                  bg-gradient-to-r from-[#0F2D25] via-[#18453B] to-[#0F2D25]
-                  hover:brightness-110 transition-all duration-300"
+                className="mt-3 inline-block w-full text-center  px-6 py-3 font-extrabold text-white border border-white shadow-lg
+                  bg-gradient-to-r from-[#a21f1f] via-[#3fb541] to-[#a01fba]
+                  hover:brightness-110 transition-all duration-300 neon-pulse"
               >
                 South Haven Pride 2026
               </Link>
