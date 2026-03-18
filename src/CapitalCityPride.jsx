@@ -24,6 +24,7 @@ export default function HartfordCityPride() {
   const [vendors, setVendors] = useState([]);
   const navigate = useNavigate();
 const [showIntro, setShowIntro] = useState(true);
+const [fadeOut, setFadeOut] = useState(false);
 const scrollRef = React.useRef(null);
   useEffect(() => {
     axios
@@ -66,13 +67,8 @@ useEffect(() => {
     el.removeEventListener("mouseleave", handleLeave);
   };
 }, []);
-useEffect(() => {
-  const timer = setTimeout(() => {
-    setShowIntro(false);
-  }, 2000); // 2 seconds
 
-  return () => clearTimeout(timer);
-}, []);
+
   
   const SectionHeader = ({ icon, title, subtitle }) => (
     <div className="text-center mb-4 border-b">
@@ -97,22 +93,47 @@ useEffect(() => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-700 via-balck to-slate-700 text-white lg:pt-24 pt-4">
-      
-      {showIntro && (
+{showIntro && (
   <div
-    className="
+    className={`
       fixed inset-0 z-[9999]
       flex items-center justify-center
-      bg-black logo-overlay
+      bg-black/95
       transition-opacity duration-1000
-      animate-fadeOut 
-    "
+      ${fadeOut ? "opacity-0" : "opacity-100"}
+    `}
   >
-    <img
-      src="/logoo.PNG"
-      alt="Capital City Pride"
-      className="w-72 sm:w-96 md:w-[500px] drop-shadow-2xl"
+    <video
+      src="/pride.MOV"
+      autoPlay
+      muted
+      playsInline
+      className="
+        w-[90%] max-w-2xl
+        h-auto
+        max-h-[80vh]
+        object-contain
+        rounded-2xl
+        shadow-2xl
+      "
+
+      // 🔥 start fade in last second
+      onTimeUpdate={(e) => {
+        const video = e.target;
+        if (video.duration - video.currentTime < 1) {
+          setFadeOut(true);
+        }
+      }}
+
+      // 🔥 remove AFTER fade completes
+      onEnded={() => {
+        setTimeout(() => {
+          setShowIntro(false);
+        }, 1000); // must match duration
+      }}
     />
+
+    <div className="absolute inset-0 bg-black/40 pointer-events-none" />
   </div>
 )}
       {/* 🌞 HERO SECTION */}
