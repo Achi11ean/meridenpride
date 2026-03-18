@@ -7,6 +7,7 @@ import PublicFundersSection from "./PublicFundersSection";
 import VendorSlider from "./VendorSlider";
 import AnnualPrideEventDetails from "./AnnualPrideEventDetails";
 import PrideItinerary from "./PrideItinerary";
+
 import {
   FaInstagram,
   FaFacebook,
@@ -22,29 +23,59 @@ export default function HartfordCityPride() {
   const [prideEvent, setPrideEvent] = useState(null);
   const [vendors, setVendors] = useState([]);
   const navigate = useNavigate();
-  const hasPrideEvent = !!prideEvent?.slug;
+const [showIntro, setShowIntro] = useState(true);
+const scrollRef = React.useRef(null);
+  useEffect(() => {
+    axios
+      .get("https://singspacebackend.onrender.com/pride/2/annual")
+      .then((res) => setPrideEvent(res.data))
+      .catch((err) => console.error("Error loading Annual Pride event:", err));
+  }, []);
 
 useEffect(() => {
-  let mounted = true;
+  const el = scrollRef.current;
+  if (!el) return;
 
-  axios
-    .get("https://singspacebackend.onrender.com/pride/1/annual")
-    .then((res) => {
-      if (!mounted) return;
-      setPrideEvent(res.data ?? null);
-    })
-    .catch((err) => {
-      console.error("Error loading Annual Pride event:", err);
-      setPrideEvent(null);
-    });
+  const speed = 0.15;
+  let animationFrame;
+  let paused = false;
+
+  const scroll = () => {
+    if (!paused) {
+      if (el.scrollTop + el.clientHeight >= el.scrollHeight) {
+        el.scrollTop = 0;
+      } else {
+        el.scrollTop += speed;
+      }
+    }
+
+    animationFrame = requestAnimationFrame(scroll);
+  };
+
+  const handleEnter = () => (paused = true);
+  const handleLeave = () => (paused = false);
+
+  el.addEventListener("mouseenter", handleEnter);
+  el.addEventListener("mouseleave", handleLeave);
+
+  animationFrame = requestAnimationFrame(scroll);
 
   return () => {
-    mounted = false;
+    cancelAnimationFrame(animationFrame);
+    el.removeEventListener("mouseenter", handleEnter);
+    el.removeEventListener("mouseleave", handleLeave);
   };
 }, []);
+useEffect(() => {
+  const timer = setTimeout(() => {
+    setShowIntro(false);
+  }, 2000); // 2 seconds
 
+  return () => clearTimeout(timer);
+}, []);
+  
   const SectionHeader = ({ icon, title, subtitle }) => (
-    <div className="text-center mb-10">
+    <div className="text-center mb-4 border-b">
       <h3 className="text-5xl sm:text-6xl font-[Aspire] text-yellow-300 drop-shadow-lg">
         {icon} {title}
       </h3>
@@ -65,261 +96,399 @@ useEffect(() => {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-red-900  via-green-900 via-green-600 via-green-800 to-blue-400 text-white pt-24">
+    <div className="min-h-screen bg-gradient-to-br from-slate-700 via-balck to-slate-700 text-white lg:pt-24 pt-4">
+      
+      {showIntro && (
+  <div
+    className="
+      fixed inset-0 z-[9999]
+      flex items-center justify-center
+      bg-black logo-overlay
+      transition-opacity duration-1000
+      animate-fadeOut 
+    "
+  >
+    <img
+      src="/logoo.PNG"
+      alt="Capital City Pride"
+      className="w-72 sm:w-96 md:w-[500px] drop-shadow-2xl"
+    />
+  </div>
+)}
       {/* 🌞 HERO SECTION */}
-     <section
+    {/* 🌞 HERO SECTION */}
+<section
   className="
-    relative text-center py-20 
+    relative text-center py-28
     bg-[url('https://www.vacationer.travel/wp-content/uploads/2023/05/West-Hartford-Pride-1024x768.jpg')]
     bg-cover bg-center
-    shadow-2xl
+    shadow-[0_40px_100px_-30px_rgba(0,0,0,0.9)]
   "
 >
-  <div className="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
 
-  <div className="relative z-10 px-6">
-    <h1 className="text-4xl sm:text-6xl font-extrabold drop-shadow-lg">
-      South Haven, MI <span className="text-yellow-300">Pride</span>
+  {/* dark cinematic overlay */}
+  <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/90"></div>
+
+  {/* subtle rainbow glow */}
+  <div className="absolute inset-0 opacity-30 bg-gradient-to-r from-red-500 via-yellow-400 via-green-400 via-blue-500 to-purple-500 blur-3xl"></div>
+
+  <div className="relative z-10 max-w-5xl mx-auto px-6">
+
+    <h1 className="text-5xl sm:text-7xl font-[Aspire] font-bold tracking-wide text-white drop-shadow-[0_10px_30px_rgba(0,0,0,0.8)]">
+      South Haven <span className="text-yellow-300">Pride</span>
     </h1>
 
-    <p className="mt-3 text-lg sm:text-xl text-yellow-200 font-semibold">
+    <p className="mt-4 text-xl text-yellow-100 font-semibold">
       The Official Pride Celebration of South Haven, Michigan
     </p>
 
-    {/* 🌞 CLICKABLE DATE BANNER */}
-    <div
-      className="
-        mt-6 inline-block 
-        bg-gradient-to-r from-yellow-300 via-amber-400 to-yellow-600
-        px-6 py-3 
-        rounded-none font-bold shadow-xl border-2 border-white
-        cursor-pointer hover:opacity-90 transition
-        text-black
-      "
-      onClick={() => {
-        if (
-          window.confirm(
-            "You’re being redirected to the official Pride Festival page on Karaoverse!\n\nContinue?"
-          )
-        ) {
-          window.location.href = prideEvent
-            ? `https://karaoverse.com/events/${prideEvent.slug}`
-            : "https://karaoverse.com";
-        }
-      }}
-    >
-      {prideEvent ? (
-        <>
-          🌟{" "}
-          {new Date(prideEvent.date + "T00:00:00").toLocaleDateString(
-            "en-US",
-            {
-              weekday: "long",
-              month: "long",
-              day: "numeric",
-              year: "numeric",
-            }
-          )}{" "}
-          • {prideEvent.city}, {prideEvent.state}
-        </>
-      ) : (
-        "🌟 June 2026 • Pride Event"
-      )}
-    </div>
-  </div>
-</section>
-      <hr className="rainbow-hr" />
-      {/* 🟡 EVENT OVERVIEW */}
-      <section className="max-w-4xl mx-auto text-center px-2 py-2">
-        <h2 className="text-3xl font-bold text-yellow-300 mb-4">
-          The Biggest Pride Event <br /> in South Haven, MI
-        </h2>
-
-        <p className="text-yellow-100 leading-relaxed text-lg">
-          Every June, thousands come together in South Haven, MI to celebrate
-          love, identity, diversity, and resilience. The South Haven, MI Pride
-          Festival features live entertainment, vendors, community resources, a
-          massive parade, and a celebration that lights up the city.
-        </p>
-      </section>
-      {/* 🎭 MAIN FEATURES */}
-      <AnnualPrideEventDetails />
-      <div className=" px-3">
-        <PrideItinerary />
-      </div>
-      {/* 🌈 PRIDE PARTNERS SHOWCASE */}
-      <section className="relative w-full px-2 py-2 overflow-hidden">
-        {/* 🌈 Ambient Pride Glow */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-10 left-10 w-72 h-72 bg-pink-500/20 blur-3xl rounded-full" />
-          <div className="absolute bottom-10 right-10 w-96 h-96 bg-yellow-400/20 blur-3xl rounded-full" />
-          <div className="absolute top-1/3 right-1/4 w-64 h-64 bg-purple-500/20 blur-3xl rounded-full" />
-        </div>
-
-        <div className="relative max-w-7xl mx-auto">
-          {/* 🌈 MAIN HEADER */}
-     
+    {/* Event Date Badge */}
 <div
   className="
-    relative overflow-hidden
-    rounded-3xl p-6 sm:p-8
-    border border-white/10
-    bg-gradient-to-b from-black/60 via-black/40 to-black/60
-    backdrop-blur-xl
-    shadow-[0_25px_70px_-40px_rgba(0,0,0,0.9)]
-    text-center
+    mt-8 inline-flex items-center
+    bg-gradient-to-r from-yellow-300 via-amber-400 to-yellow-500
+    text-black
+    px-8 py-1
+    rounded-full
+    font-bold
+    text-lg
+    shadow-[0_10px_40px_rgba(255,215,0,0.5)]
+    border border-white/30
+    cursor-pointer
+    hover:scale-105 hover:brightness-110
+    transition
   "
+  onClick={() => {
+    if (
+      window.confirm(
+        "You’re being redirected to the full event page on Karaoverse!\n\nContinue?"
+      )
+    ) {
+      window.location.href =
+        "https://karaoverse.com/event/south-haven-pride";
+    }
+  }}
 >
+  {prideEvent ? (
+    new Date(prideEvent.date + "T00:00:00").toLocaleDateString(
+      "en-US",
+      {
+        weekday: "long",
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+      }
+    )
+  ) : (
+    "June 2026"
+  )}
+</div>
+  </div>
+</section>
+       <hr className="rainbow-hr" />
 
-  {/* glow accents */}
-  <div className="pointer-events-none absolute -top-20 -left-20 h-56 w-56 rounded-full bg-pink-500/20 blur-3xl" />
-  <div className="pointer-events-none absolute -bottom-24 -right-20 h-64 w-64 rounded-full bg-yellow-400/15 blur-3xl" />
 
-  <div className="relative">
+{/* 🌈 OVERVIEW SECTION */}
+<section className="relative py-20 bg-gradient-to-b from-black to-slate-900 text-center">
 
-    {/* IMAGE */}
-    <div className="relative mb-6">
-      <img
-        src="https://main-stream.org/wp-content/uploads/2024/05/call-for-Pride-volunteers-cover-image-770x434-1.jpg"
-        alt="Pride event volunteer helping at the festival"
-        className="
-          w-full max-w-2xl mx-auto
-          rounded-2xl
-          border border-white/10
-          shadow-[0_20px_60px_-30px_rgba(250,204,21,0.6)]
-          object-cover
-        "
-      />
+  <div className="max-w-5xl mx-auto px-6">
 
-      <div className="absolute inset-0 rounded-2xl ring-1 ring-yellow-300/20 pointer-events-none" />
-    </div>
-
-    {/* TITLE */}
-    <h2 className="text-3xl sm:text-4xl font-extrabold text-yellow-300 mb-3 drop-shadow-lg">
-      💛 Become a Volunteer
+    <h2 className="text-4xl font-bold text-yellow-300 mb-8">
+      South Haven Pride 2026
     </h2>
 
-    {/* TEXT */}
-    <p className="text-yellow-100/85 text-lg sm:text-xl mb-6 max-w-2xl mx-auto leading-relaxed">
-      Support South Haven Pride by lending a helping hand and being part of
-      something unforgettable for the community.
-    </p>
-
-    {/* BUTTON */}
-    <button
-      onClick={() => navigate("/contact")}
+    {/* Glass card */}
+    <div
+      ref={scrollRef}
       className="
-        inline-flex items-center justify-center gap-2
+        backdrop-blur-xl
+        bg-white/5
+        border border-white/10
+        rounded-3xl
+        shadow-2xl
+        p-8
+        text-yellow-100
+        text-lg
+        leading-relaxed
+        max-h-[300px]
+        overflow-auto
+      "
+    >
+      The South Haven LGBTQ+ Advocacy, strengthens and sustains
+      Michigan's LGBTQ+ community through direct services, advocacy,
+      and statewide collaboration. We provide housing navigation and
+      stabilization support to help individuals secure and maintain safe,
+      affirming homes and resources to support and uplift the community. Our team connects community members to culturally
+      responsive physical and mental health care, reduces barriers to services,
+      and promotes long-term wellness.
+    </div>
+
+  </div>
+
+</section>
+
+
+{/* 📍 FESTIVAL LOCATION */}
+<section className="relative py-10 bg-gradient-to-b from-slate-900 to-black">
+  <div className="max-w-4xl mx-auto px-6">
+
+    <h2 className="text-4xl font-bold text-center text-white mb-10">
+      Festival Location
+    </h2>
+
+    <div
+      className="
+        relative
+        rounded-3xl
+        overflow-hidden
+        shadow-[0_30px_80px_-30px_rgba(0,0,0,0.9)]
+        border border-white/10
+      "
+    >
+      <iframe
+        className="w-full h-[420px]"
+        src="https://www.google.com/maps?q=Stanley+Johnston+Park,+South+Haven,+MI&z=17&output=embed"
+        allowFullScreen
+        loading="lazy"
+      />
+    </div>
+
+  </div>
+</section>
+       <hr className="rainbow-hr" />
+
+      {/* 🎭 MAIN FEATURES */}
+      <div className=" ">
+        <PrideItinerary />
+      </div>
+            <AnnualPrideEventDetails />
+
+      {/* 🌈 PRIDE PARTNERS SHOWCASE */}
+      {/* 🎤 BECOME A PERFORMER */}
+
+
+      {/* 🌈 PRIDE PARTNER INTRO */}
+<section className="relative w-full py-10  overflow-hidden">
+
+
+
+  <div className="relative max-w-full mx-auto">
+
+    {/* Header */}
+    <div className="text-center px-1 mb-10">
+      <h2 className="text-4xl sm:text-5xl font-extrabold text-yellow-300 drop-shadow-lg">
+        🌈 Why Become a Pride Partner
+      </h2>
+
+      <p className="mt-4 text-lg text-yellow-100 max-w-3xl mx-auto leading-relaxed">
+        South Haven, MI Pride is designed to elevate queer artists across disciplines —
+        visual, literary, performance, drag, and music — while reflecting the
+        professionalism, creativity, and cultural leadership of South Haven's diverse
+        LGBTQIA+ community.
+      </p>
+    </div>
+       <hr className="rainbow-hr" />
+
+    {/* Card */}
+    <div className="
+      rounded-none
+      p-8 sm:p-10
+      border border-white/10
+      bg-gradient-to-b from-white via-white to-white/60
+      backdrop-blur-xl
+      shadow-[0_30px_80px_-40px_rgba(0,0,0,0.9)]
+      text-center
+    ">
+
+      <p className="text-black text-lg leading-relaxed max-w-3xl mx-auto mb-8">
+        As a <span className="text-blue-800 font-bold">Pride Partner</span>,
+        your organization plays a meaningful role in bringing this vision to life.
+        Rather than traditional sponsorship or tabling, Pride Partners are
+        intentionally integrated into the experience of the event — enriching the
+        atmosphere while connecting authentically with the community.
+      </p>
+
+      {/* Partner Benefits */}
+      <div className="grid md:grid-cols-3 gap-6 text-left">
+
+        <div className="bg-gradient-to-br from-red-500 via-red-700 to-orange-400 rounded-xl p-5 border border-white/10">
+          <h4 className="text-lg font-bold text-white mb-2">
+            🌟 Celebrate Pride
+          </h4>
+          <p className="text-yellow-100 font-semibold text-sm leading-relaxed">
+            Stand alongside South Haven's LGBTQ+ community to celebrate artistic
+            expression and cultural pride while contributing to storytelling
+            throughout the day via our media partners.
+          </p>
+        </div>
+
+
+        <div className="bg-gradient-to-br from-green-500 via-green-700 to-green-400 rounded-xl p-5 border border-white/10">
+          <h4 className="text-lg font-bold text-white mb-2">
+            🎉 Enhance the Experience
+          </h4>
+          <p className="text-yellow-100 text-sm font-semibold leading-relaxed">
+            Help elevate the atmosphere of Pride through thoughtful presence,
+            engagement, and creative social activities that add to the festival
+            experience.
+          </p>
+        </div>
+        <div className="bg-gradient-to-br from-blue-500 via-cyan-700 to-blue-400 rounded-xl p-5 border border-white/10">
+          <h4 className="text-lg font-bold text-white mb-2">
+            🤝 Show Your Commitment
+          </h4>
+          <p className="text-yellow-100 font-semibold text-sm leading-relaxed">
+    As a Pride Partner, your organization will play a meaningful role in helping bring this vision to
+life. Rather than traditional sponsorship or tabling, Pride Partners are intentionally integrated
+into the experience of the event, helping to enrich the atmosphere while connecting
+authentically with the community.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+       <hr className="rainbow-hr" />
+
+<section className="
+  relative w-full
+  bg-gradient-to-br from-pink-400 via-white to-purple-400
+  py-12 overflow-hidden
+  shadow-[inset_0_0_80px_rgba(0,0,0,0.35)]
+">
+
+  {/* MAIN CONTENT CONTAINER */}
+  <div className="relative max-w-full mx-auto space-y-10">
+
+    {/* 🏆 SPONSORS */}
+    <div className="rounded-none p-8 border border-white/10 bg-black/50 backdrop-blur-xl shadow-2xl text-center">
+
+      <SectionHeader
+        icon="🏆"
+        title="Sponsors"
+        subtitle="Supporting Pride at the highest level"
+      />
+
+      <div className="flex justify-center mt-8">
+        <SponsorSlider />
+      </div>
+
+    </div>
+
+   
+    {/* 💛 VOLUNTEERS */}
+    <div className="rounded-none p-8 border border-white/10 bg-black/50 backdrop-blur-xl shadow-2xl text-center">
+
+      <img
+        src="https://main-stream.org/wp-content/uploads/2024/05/call-for-Pride-volunteers-cover-image-770x434-1.jpg"
+        alt="Volunteer helping at Pride"
+        className="w-full max-w-3xl mx-auto rounded-2xl mb-6 border border-white/10 shadow-xl"
+      />
+
+      <h2 className="text-3xl font-extrabold text-yellow-300 mb-3">
+        💛 Become a Volunteer
+      </h2>
+
+      <p className="text-yellow-100/90 text-lg max-w-2xl mx-auto mb-6">
+        Join our volunteer team and help bring Pride to life.
+        From stage assistance to community outreach,
+        your support helps create an unforgettable celebration.
+      </p>
+
+      <button
+        onClick={() => navigate("/contact")}
+        className="
         px-8 py-3 rounded-2xl
         bg-gradient-to-r from-yellow-300 via-amber-400 to-yellow-500
         text-black font-extrabold
-        shadow-[0_20px_50px_-25px_rgba(250,204,21,0.85)]
-        hover:brightness-110 hover:scale-[1.03]
-        active:scale-[0.99]
+        shadow-xl
+        hover:scale-105 hover:brightness-110
         transition
-        focus:outline-none focus:ring-2 focus:ring-yellow-200/70
-      "
-    >
-      Contact Us
-      <span className="opacity-80">↗</span>
-    </button>
+        "
+      >
+        Contact Us
+      </button>
+
+    </div>
+
+
+
+
+    {/* 🛍️ VENDORS */}
+    <div className="rounded-none p-8 border border-white/10 bg-black/50 backdrop-blur-xl shadow-2xl text-center">
+
+      <SectionHeader
+        icon="🛍️"
+        title="Vendors"
+        subtitle="Local businesses bringing the magic"
+      />
+
+      <div className="flex justify-center mt-8">
+        <VendorSlider />
+      </div>
+
+    </div>
+ <div className="rounded-none p-8 border border-white/10 bg-black/50 backdrop-blur-xl shadow-2xl text-center">
+
+      <img
+        src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819"
+        alt="Performer on stage"
+        className="w-full max-w-3xl mx-auto rounded-2xl mb-6 border border-white/10 shadow-xl"
+      />
+
+      <h2 className="text-3xl sm:text-4xl font-extrabold text-purple-300 mb-3">
+        🎤 Are you a Performer?
+      </h2>
+
+      <p className="text-yellow-100/90 text-lg max-w-2xl mx-auto mb-6">
+        Drag performers, DJs, artists, dancers, and LGBTQIA+ entertainers —
+        apply through Karaoverse and showcase your talent at
+        <span className="text-yellow-300 font-bold"> South Haven, MI Pride.</span>
+      </p>
+
+      <a
+        href="https://karaoverse.com/job-postings"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="
+        inline-flex items-center gap-2
+        px-8 py-3 rounded-2xl
+        bg-gradient-to-r from-fuchsia-500 via-purple-600 to-indigo-600
+        text-white font-extrabold
+        shadow-xl
+        hover:scale-105 hover:brightness-110
+        transition
+        "
+      >
+        Apply on Karaoverse ↗
+      </a>
+
+    </div>
+
+
+
+    {/* 💖 FUNDERS */}
+    <div className="rounded-none p-8 border border-white/10 bg-black/50 backdrop-blur-xl shadow-2xl text-center">
+
+      <SectionHeader
+        icon="💖"
+        title="Funders"
+        subtitle="Community champions making it happen"
+      />
+
+      <div className="flex justify-center mt-8">
+        <PublicFundersSection />
+      </div>
+
+    </div>
 
   </div>
-</div>
-          {/* 🏆 SPONSORS */}
-       <div
-            className="
-    max-w-6xl mx-auto mt-6 mb-6
-    rounded-3xl p-6 sm:p-8
-    border border-white/10
-    bg-gradient-to-b from-black/60 via-black/40 to-black/60
-    backdrop-blur-xl
-    shadow-[0_25px_70px_-40px_rgba(0,0,0,0.9)]
-    text-center
-    relative overflow-hidden
-  "
-          >
-            {/* soft glow accents */}
-            <div className="pointer-events-none absolute -top-20 -left-20 h-56 w-56 rounded-full bg-yellow-400/20 blur-3xl" />
-            <div className="pointer-events-none absolute -bottom-24 -right-20 h-64 w-64 rounded-full bg-pink-500/15 blur-3xl" />
 
-            <div className="relative">
-              <SectionHeader
-                icon="🏆"
-                title="Sponsors"
-                subtitle="Supporting Pride at the highest level"
-              />
-
-              <div className="flex justify-center mt-6">
-                <SponsorSlider />
-              </div>
-            </div>
-          </div>
-
- 
-
-          {/* 🛍️ VENDORS */}
-    <div
-            className="
-    max-w-6xl mx-auto mb-6
-    rounded-3xl p-6 sm:p-8
-    border border-white/10
-    bg-gradient-to-b from-black/60 via-black/40 to-black/60
-    backdrop-blur-xl
-    shadow-[0_25px_70px_-40px_rgba(0,0,0,0.9)]
-    text-center
-    relative overflow-hidden
-  "
-          >
-            {/* soft glow accents */}
-            <div className="pointer-events-none absolute -top-20 -left-20 h-56 w-56 rounded-full bg-pink-500/20 blur-3xl" />
-            <div className="pointer-events-none absolute -bottom-24 -right-20 h-64 w-64 rounded-full bg-yellow-400/15 blur-3xl" />
-
-            <div className="relative">
-              <SectionHeader
-                icon="🛍️"
-                title="Vendors"
-                subtitle="Local businesses bringing the magic"
-              />
-
-              <div className="flex justify-center mt-6">
-                <VendorSlider />
-              </div>
-            </div>
-          </div>
-
-
-          {/* 💖 FUNDERS */}
-    <div
-            className="
-    max-w-6xl mx-auto mb-6
-    rounded-3xl p-6 sm:p-8
-    border border-white/10
-    bg-gradient-to-b from-black/60 via-black/40 to-black/60
-    backdrop-blur-xl
-    shadow-[0_25px_70px_-40px_rgba(0,0,0,0.9)]
-    text-center
-    relative overflow-hidden
-  "
-          >
-            {/* soft glow accents */}
-            <div className="pointer-events-none absolute -top-20 -left-20 h-56 w-56 rounded-full bg-pink-500/20 blur-3xl" />
-            <div className="pointer-events-none absolute -bottom-24 -right-20 h-64 w-64 rounded-full bg-yellow-400/15 blur-3xl" />
-
-            <div className="relative">
-              <SectionHeader
-                icon="💖"
-                title="Funders"
-                subtitle="Community champions making it happen"
-              />
-
-              <div className="flex justify-center mt-6">
-                <PublicFundersSection />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+</section>
       {/* 🛍️ VENDOR / SPONSOR / VOLUNTEER */}
       {/* ⭐ Sponsor Modal */}
       {showSponsorModal && (
@@ -339,24 +508,9 @@ useEffect(() => {
         </div>
       )}
       {/* 📍 MAP */}
-      <section className="max-w-4xl mx-auto px-6 pb-16">
-        <h2 className="text-3xl font-bold text-center text-white mb-4">
-          Festival Location
-        </h2>
-        <hr className="rainbow-hr my-4" />
-
-        <div className="relative w-full pt-[56.25%] rounded-2xl overflow-hidden shadow-2xl border-4 border-pink-400">
-          <iframe
-            className="absolute top-0 left-0 w-full h-full"
-            src="https://www.google.com/maps?q=Stanley+Johnston+Park,+South+Haven,+MI&z=18&output=embed"
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
-        </div>
-      </section>
+   
       {/* ⭐ FOOTER — YELLOW THEME */}
-      <section className="bg-gradient-to-br from-yellow-900 via-black to-amber-900 text-yellow-200 py-6 border-t-4 border-yellow-500">
+     <section className="bg-gradient-to-br from-yellow-900 via-black to-amber-900 text-yellow-200 py-6 border-t-4 border-yellow-500">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 divide-y lg:divide-y-0 lg:divide-x lg:divide-yellow-700">
           <div className="text-center lg:text-left">
             <h3 className="text-2xl font-bold text-yellow-400 border-b-2 border-yellow-400 inline-block mb-2">
