@@ -7,6 +7,7 @@ export const EVENT_TYPES = [
   { value: "live_music", label: "🎸 Live Music" },
   { value: "trivia", label: "🧠 Trivia" },
   { value: "paint_sip", label: "🍷 Paint & Sip" },
+{ value: "bingo", label: "🎱 Bingo" },
 
   { value: "theatre", label: "🎭 Theatre Production" },
   { value: "audition", label: "🎬 Auditions" },
@@ -21,7 +22,7 @@ export const EVENT_TYPES = [
   { value: "fair", label: "🎪 Fair" },
   { value: "concert", label: "🎟️ Concert" },
 { value: "speed_dating", label: "💘 Speed Dating" },
-
+{ value: "fundraiser", label: "💖 Fundraiser" },
   { value: "fireworks", label: "🎆 Fireworks" },
   { value: "halloween", label: "🎃 Halloween" },
   { value: "new_years_eve", label: "🎊 New Year’s Eve" },
@@ -56,6 +57,8 @@ export const EVENT_TYPE_STYLES = {
   open_mic:
     "bg-gradient-to-r from-green-600 to-green-400 border-green-700 text-white",
     
+bingo:
+  "bg-gradient-to-r from-teal-500 to-cyan-400 border-teal-700 text-white",
 
   live_music:
     "bg-gradient-to-r from-lime-400 to-lime-200 border-lime-600 text-lime-900",
@@ -69,7 +72,8 @@ export const EVENT_TYPE_STYLES = {
     pride:
   "bg-gradient-to-r from-pink-600 via-yellow-400 to-cyan-400 border-pink-700 text-white",
 
-
+fundraiser:
+  "bg-gradient-to-r from-rose-600 via-pink-500 to-red-500 border-rose-700 text-white",
   audition:
     "bg-gradient-to-r from-indigo-600 to-blue-500 border-indigo-700 text-white",
 
@@ -135,6 +139,8 @@ export const EVENT_TYPE_DESCRIPTION_MAP = {
     "Fabulous queens and kings serving glamour, talent, and sass!",
       pride:
     "Large-scale Pride celebrations featuring parades, festivals, live entertainment, vendors, and community resources.",
+bingo:
+  "Classic bingo nights with prizes, drinks, and lots of cheering!",
 
   trivia:
     "Test your knowledge in a fun team-based competition.",
@@ -183,13 +189,21 @@ export const EVENT_TYPE_DESCRIPTION_MAP = {
 // 📸 Event type → Images
 export const EVENT_TYPE_IMAGE_MAP = {
    karaoke: [
-    "https://www.shutterstock.com/shutterstock/videos/1099781945/thumb/5.jpg?ip=x480",
     "https://www.shutterstock.com/shutterstock/videos/3786634929/thumb/1.jpg?ip=x480",
     "https://media.istockphoto.com/id/1362893836/photo/best-friends-singing-into-a-microphone-on-karaoke-night.jpg?s=612x612&w=0&k=20&c=KPFkclnzSEt0y14ma82CI7_EhEkRPHTPIVnLJuRLOOI=",
     "https://www.shutterstock.com/shutterstock/videos/3756631879/thumb/1.jpg?ip=x480",
-    "https://media.istockphoto.com/id/1045879590/photo/sing-men-dance-club-white-shirt-young-people.jpg?s=612x612&w=0&k=20&c=iM0pfrgmUqZbiOWlJnCC_7NkG9Yxk_LkV14AZFPauig=",
+        "https://media.istockphoto.com/id/1045879590/photo/sing-men-dance-club-white-shirt-young-people.jpg?s=612x612&w=0&k=20&c=iM0pfrgmUqZbiOWlJnCC_7NkG9Yxk_LkV14AZFPauig=",
+        "https://www.popsci.com/wp-content/uploads/2023/08/22/turn-laptop-into-karaoke-machine.jpg?quality=85&w=2000",
+        "https://static.vecteezy.com/system/resources/previews/028/215/543/large_2x/music-karaoke-party-vivid-background-free-photo.jpg",
+        "https://static.vecteezy.com/system/resources/previews/029/561/970/non_2x/music-karaoke-party-vivid-background-free-photo.jpg"
     
   ],
+  bingo: [
+  "https://media.istockphoto.com/id/1307432016/photo/people-playing-bingo-at-community-center.jpg?s=612x612&w=0&k=20&c=9x6Z4PzZK9q2mC8zVZpKZkZ9zQy5pR1YqKpF3ZpZk2Y=",
+  "https://media.istockphoto.com/id/1173564024/photo/senior-women-playing-bingo.jpg?s=612x612&w=0&k=20&c=2zKpFZ0F8ZkKpR1YqZ9pQy5ZVZpZK9q2mC8zZ4PzZk2Y=",
+  "https://media.istockphoto.com/id/1221041043/photo/group-of-friends-playing-bingo-at-party.jpg?s=612x612&w=0&k=20&c=KpZ9q2mC8zZ4PzZK9q2mC8zVZpZkZ9zQy5pR1YqFZ0F8Zk="
+],
+
   trivia: [
     "https://media.gettyimages.com/id/1488505160/video/retro-television-gameshow-broadcast.jpg?s=640x640&k=20&c=bDEurbWFYi9G4tBthwZe-M6rtyyw6iTmxCG_rjUmg6Q=",
     "https://media.istockphoto.com/id/1280011167/vector/happy-participants-playing-quiz-game.jpg?s=612x612&w=0&k=20&c=IoS7QaJUEoQFRuAb8mCi7Aze_PDLAKEOhe9OWUza-KA=",
@@ -202,6 +216,9 @@ export const EVENT_TYPE_IMAGE_MAP = {
   open_mic: [
     "https://media.istockphoto.com/id/1197537243/photo/female-singer-performing-on-the-stage.jpg?s=612x612&w=0&k=20&c=Iv1R7ah5I7aMizqUIaslL7P2mUbNzuOcQRH2fnF324I=",
     "https://dt7v1i9vyp3mf.cloudfront.net/styles/news_large/s3/imagelibrary/O/OpenMic_01-.Z3VXFxkoqaNTVwNPD77IHCpD7qLDSUW.jpg",
+    "https://flypaper.soundfly.com/wp-content/uploads/2018/11/open-mic-II.jpg",
+    "https://vocalist.org.uk/wp-content/uploads/2020/09/open-mic-nights.jpg",
+    "https://img1.wsimg.com/isteam/ip/bf8bdfdc-ebc0-4936-b136-e9d7c50b01b3/PIC10.jpg/:/cr=t:0%25,l:0%25,w:100%25,h:100%25/rs=w:1280",
   ],
   audition: [
     "https://d26oc3sg82pgk3.cloudfront.net/files/media/edit/image/5535/article_full%403x.jpg",
@@ -251,9 +268,14 @@ speed_dating: [
   "https://cdn2.stylecraze.com/wp-content/uploads/2022/09/A-young-couple-in-love-walking-in-park-in-autumn-time-.jpg.webp"
 ],
 pride: [
-  "https://media.gettyimages.com/id/1140717310/photo/pride-parade.jpg?s=612x612&w=0&k=20&c=fdc8UEDs1lE9I-eKh-NN6FyycHLT4e5qZyQm5a_sJ3c=",
-  "https://media.istockphoto.com/id/1164089117/photo/pride-parade-with-rainbow-flags.jpg?s=612x612&w=0&k=20&c=8pZ7P3EN4MZb9pRZ8GFn7D5sS7Z6w4q8YvJzZsE7zXo=",
-  "https://media.istockphoto.com/id/1325901754/photo/pride-celebration-crowd.jpg?s=612x612&w=0&k=20&c=Hc6v9f1lYv1B5m6wJwz5ZP0BzHXYm1P7Z0F7m0p6l1A=",
+  "https://i.natgeofe.com/n/8e402067-e0bf-4421-8e06-41a964e1e055/2JG1MPC.jpg",
+  "https://npr.brightspotcdn.com/dims3/default/strip/false/crop/5000x3333+0+0/resize/1100/quality/50/format/jpeg/?url=http%3A%2F%2Fnpr-brightspot.s3.amazonaws.com%2F86%2F8d%2Fccfdec7c40d8bc10edc5a68a4285%2Fgettyimages-1241554435.jpg",
+  "https://media.cnn.com/api/v1/images/stellar/prod/170626132817-pride-parade.jpg?q=w_4625,h_2862,x_0,y_0,c_fill",
+],
+fundraiser: [
+  "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExdXptYmFvdWhwam01eXhpZHg3MGR5b3o3eWszNDJlZG56aDh2NmcxMCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/f7jpBp3CvXdq3z2G2H/giphy.gif",
+  "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExZnpnOTFveDZhZTBmeTc0dzZpcWp0N3NsN2dwOWJhc251aXcxY2xwMSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/aUQScPkg6B0rZGuRLX/giphy.gif",
+  "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExYTJkZWdsZnpydTZkdThiZnZ2cHpkb2l0MThsYXV5MXU3Y21icng3MiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/ILdR27kxgbknhAiYzO/giphy.webp",
 ],
 
 
