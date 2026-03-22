@@ -5,8 +5,8 @@ import { useAuth } from "./AuthContext";
 import { motion, AnimatePresence } from "framer-motion";
 
 const API = "https://singspacebackend.onrender.com";
-const CLOUD_NAME = "dcw0wqlse";
-const UPLOAD_PRESET = "karaoke";
+const CLOUD_NAME = "dincfzdau";
+const UPLOAD_PRESET = "pridecenters";
 
 const STATUS_OPTIONS = [
   "pending",

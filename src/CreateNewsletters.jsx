@@ -56,27 +56,37 @@ function formatPhone(value) {
   };
 
   // ---------------- FILE UPLOAD ----------------
-  const handleFileUpload = async (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
+const CLOUD_NAME = "dincfzdau";
+const UPLOAD_PRESET = "pridecenters";
 
-    const data = new FormData();
-    data.append("file", file);
-    data.append("upload_preset", "karaoke");
+const handleFileUpload = async (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
 
-    try {
-      const res = await fetch(
-        "https://api.cloudinary.com/v1_1/dcw0wqlse/image/upload",
-        { method: "POST", body: data }
-      );
+  const data = new FormData();
+  data.append("file", file);
+  data.append("upload_preset", UPLOAD_PRESET);
 
-      const json = await res.json();
-      if (json.secure_url) setImageUrl(json.secure_url);
+  try {
+    const res = await fetch(
+      `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`,
+      { method: "POST", body: data }
+    );
 
-    } catch {
-      alert("Image upload failed");
+    const json = await res.json();
+
+    if (json.secure_url) {
+      setImageUrl(json.secure_url);
+    } else {
+      console.error(json);
+      alert("Upload failed");
     }
-  };
+
+  } catch (err) {
+    console.error(err);
+    alert("Image upload failed");
+  }
+};
 
   // ---------------- CHECKBOX ----------------
   const toggleType = (type) => {
