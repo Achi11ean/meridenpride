@@ -104,7 +104,7 @@ useEffect(() => {
     `}
   >
     <video
-      src="/pride.MOV"
+      src="/Video.MP4"
       autoPlay
       muted
       playsInline
