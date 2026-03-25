@@ -60,11 +60,14 @@ const [vendorsSubTab, setVendorsSubTab] = useState("add");
       </div>
 
       {/* ───────── PRIMARY TABS ───────── */}
-      <div className="
-        flex flex-wrap gap-3
-        bg-black/40 border border-yellow-500/20
-        rounded-2xl p-3
-      ">
+<div
+  className="
+    grid grid-cols-2 gap-3
+    sm:flex sm:flex-wrap
+    bg-black/40 border border-yellow-500/20
+    rounded-2xl p-3
+  "
+>
         {[
           ["dashboard", "Dashboard"],
           ["sponsors", "Sponsors"],

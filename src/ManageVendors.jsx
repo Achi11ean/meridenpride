@@ -24,7 +24,31 @@ export default function ManageVendors() {
   const [editingId, setEditingId] = useState(null);
   const [editForm, setEditForm] = useState({});
   const [loading, setLoading] = useState(true);
+const cycleStatus = async (vendor) => {
+  const currentIndex = STATUS_OPTIONS.indexOf(vendor.status);
+  const nextIndex = (currentIndex + 1) % STATUS_OPTIONS.length;
+  const nextStatus = STATUS_OPTIONS[nextIndex];
 
+  try {
+    await axios.patch(
+      `${API}/api/pride-vendors/${vendor.id}`,
+      { status: nextStatus },
+      { headers: { Authorization: `Bearer ${token}` } }
+    );
+
+    // 🔥 Optimistic UI update (instant feel)
+    setVendors((prev) =>
+      prev.map((v) =>
+        v.id === vendor.id ? { ...v, status: nextStatus } : v
+      )
+    );
+
+    toast.success(`Status → ${nextStatus}`);
+  } catch (err) {
+    console.error(err);
+    toast.error("Failed to update status");
+  }
+};
   /* ───────────────── Fetch Vendors ───────────────── */
   const fetchVendors = async () => {
     try {
@@ -441,11 +465,23 @@ const removeListItem = (type, index) => {
   </a>
 ))}
 
-                <div className="mt-2 text-xs">
-                  <span className="px-2 py-0.5 rounded bg-yellow-400/20 border border-yellow-400 text-yellow-200">
-                    {v.status}
-                  </span>
-                </div>
+      <button
+  onClick={() => cycleStatus(v)}
+  className={`
+    px-3 py-1 rounded text-xs font-bold
+    border transition-all duration-200
+    hover:scale-105 active:scale-95
+
+    ${v.status === "pending" && "bg-yellow-400/20 border-yellow-400 text-yellow-200"}
+    ${v.status === "approved" && "bg-green-500/20 border-green-400 text-green-200"}
+    ${v.status === "confirmed" && "bg-blue-500/20 border-blue-400 text-blue-200"}
+    ${v.status === "declined" && "bg-red-500/20 border-red-400 text-red-200"}
+    ${v.status === "cancelled" && "bg-gray-500/20 border-gray-400 text-gray-200"}
+  `}
+  title="Click to change status"
+>
+  {v.status}
+</button>
               </div>
 
               <div className="flex flex-col gap-2">
