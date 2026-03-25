@@ -29,17 +29,18 @@ const STATUS_OPTIONS = [
 export default function CreateVendor() {
   const { token, prideId } = useAuth();
 
-  const [form, setForm] = useState({
-    company_name: "",
-    vendor_type: "",
-    contact_name: "",
-    contact_email: "",
-    website_url: "",
-    image_url: "", // 🖼 NEW
-    start_time: "",
-    end_time: "",
-    status: "pending",
-  });
+const [form, setForm] = useState({
+  company_name: "",
+  vendor_type: "",
+  contact_name: "",
+  contact_email: "",
+  websites: [""],   // 🔥 NEW
+  socials: [""],    // 🔥 NEW
+  image_url: "",
+  start_time: "",
+  end_time: "",
+  status: "pending",
+});
 
   const [submitting, setSubmitting] = useState(false);
 
@@ -74,7 +75,27 @@ export default function CreateVendor() {
       toast.error("❌ Image upload failed");
     }
   };
+const updateListItem = (type, index, value) => {
+  setForm((prev) => {
+    const updated = [...prev[type]];
+    updated[index] = value;
+    return { ...prev, [type]: updated };
+  });
+};
 
+const addListItem = (type) => {
+  setForm((prev) => ({
+    ...prev,
+    [type]: [...prev[type], ""],
+  }));
+};
+
+const removeListItem = (type, index) => {
+  setForm((prev) => ({
+    ...prev,
+    [type]: prev[type].filter((_, i) => i !== index),
+  }));
+};
   /* ───────────────────────────── */
   /* 🚀 Submit */
   /* ───────────────────────────── */
@@ -83,29 +104,39 @@ export default function CreateVendor() {
     setSubmitting(true);
 
     try {
-      await axios.post(
-        `${API}/api/pride/${prideId}/vendors`,
-        {
-          ...form,
-          start_time: form.start_time || null,
-          end_time: form.end_time || null,
-        },
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
+     await axios.post(
+  `${API}/api/pride/${prideId}/vendors`,
+  {
+    ...form,
+
+    website_url: form.websites
+      .filter((w) => w && w.trim())
+      .join(","),
+
+    social_links: form.socials
+      .filter((s) => s && s.trim())
+      .join(","),
+
+    start_time: form.start_time || null,
+    end_time: form.end_time || null,
+  },
+  { headers: { Authorization: `Bearer ${token}` } }
+);
 
       toast.success("🏳️‍🌈 Vendor added successfully!");
 
-      setForm({
-        company_name: "",
-        vendor_type: "",
-        contact_name: "",
-        contact_email: "",
-        website_url: "",
-        image_url: "",
-        start_time: "",
-        end_time: "",
-        status: "pending",
-      });
+    setForm({
+  company_name: "",
+  vendor_type: "",
+  contact_name: "",
+  contact_email: "",
+  websites: [""],
+  socials: [""],
+  image_url: "",
+  start_time: "",
+  end_time: "",
+  status: "pending",
+});
     } catch (err) {
       console.error(err);
       toast.error("❌ Failed to add vendor");
@@ -173,13 +204,78 @@ export default function CreateVendor() {
         </div>
 
         {/* Website */}
-        <input
-          name="website_url"
-          value={form.website_url}
-          onChange={handleChange}
-          placeholder="Website URL (optional)"
-          className="w-full px-4 py-2 rounded bg-black text-yellow-100 border border-yellow-400/40"
-        />
+<div className="space-y-2">
+  <label className="text-sm font-bold text-yellow-200">
+    🌐 Websites
+  </label>
+
+  {form.websites.map((site, i) => (
+    <div key={i} className="flex gap-2">
+      <input
+        value={site}
+        onChange={(e) =>
+          updateListItem("websites", i, e.target.value)
+        }
+        placeholder="https://yourwebsite.com"
+        className="flex-1 px-4 py-2 rounded bg-black text-yellow-100 border border-yellow-400/40"
+      />
+
+      {form.websites.length > 1 && (
+        <button
+          type="button"
+          onClick={() => removeListItem("websites", i)}
+          className="px-3 bg-red-600 text-white rounded"
+        >
+          ✕
+        </button>
+      )}
+    </div>
+  ))}
+
+  <button
+    type="button"
+    onClick={() => addListItem("websites")}
+    className="text-xs text-yellow-300 hover:underline"
+  >
+    ➕ Add Website
+  </button>
+</div>
+<div className="space-y-2">
+  <label className="text-sm font-bold text-yellow-200">
+    📱 Social Links
+  </label>
+
+  {form.socials.map((social, i) => (
+    <div key={i} className="flex gap-2">
+      <input
+        value={social}
+        onChange={(e) =>
+          updateListItem("socials", i, e.target.value)
+        }
+        placeholder="https://instagram.com/..."
+        className="flex-1 px-4 py-2 rounded bg-black text-yellow-100 border border-yellow-400/40"
+      />
+
+      {form.socials.length > 1 && (
+        <button
+          type="button"
+          onClick={() => removeListItem("socials", i)}
+          className="px-3 bg-red-600 text-white rounded"
+        >
+          ✕
+        </button>
+      )}
+    </div>
+  ))}
+
+  <button
+    type="button"
+    onClick={() => addListItem("socials")}
+    className="text-xs text-yellow-300 hover:underline"
+  >
+    ➕ Add Social
+  </button>
+</div>
 
         {/* 🖼 Vendor Image */}
         <div className="space-y-2">

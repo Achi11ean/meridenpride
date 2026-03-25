@@ -74,21 +74,61 @@ export default function ManageVendors() {
   /* ───────────────── Actions ───────────────── */
   const startEdit = (vendor) => {
     setEditingId(vendor.id);
-    setEditForm({ ...vendor });
-  };
+setEditForm({
+  ...vendor,
+  websites: vendor.websites?.length
+    ? vendor.websites
+    : [""],
+  socials: vendor.socials?.length
+    ? vendor.socials
+    : [""],
+});  };
 
   const cancelEdit = () => {
     setEditingId(null);
     setEditForm({});
   };
+const updateListItem = (type, index, value) => {
+  setEditForm((prev) => {
+    const updated = [...(prev[type] || [])];
+    updated[index] = value;
+    return { ...prev, [type]: updated };
+  });
+};
 
+const addListItem = (type) => {
+  setEditForm((prev) => ({
+    ...prev,
+    [type]: [...(prev[type] || []), ""],
+  }));
+};
+
+const removeListItem = (type, index) => {
+  setEditForm((prev) => ({
+    ...prev,
+    [type]: (prev[type] || []).filter((_, i) => i !== index),
+  }));
+};
   const saveEdit = async (id) => {
     try {
-      await axios.patch(
-        `${API}/api/pride-vendors/${id}`,
-        editForm,
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
+     await axios.patch(
+  `${API}/api/pride-vendors/${id}`,
+  {
+    ...editForm,
+
+    website_url: (editForm.websites || [])
+      .filter((w) => w && w.trim())
+      .join(","),
+
+    social_links: (editForm.socials || [])
+      .filter((s) => s && s.trim())
+      .join(","),
+
+    start_time: editForm.start_time || null,
+    end_time: editForm.end_time || null,
+  },
+  { headers: { Authorization: `Bearer ${token}` } }
+);
 
       toast.success("Vendor updated");
       setEditingId(null);
@@ -181,15 +221,76 @@ export default function ManageVendors() {
               </div>
 
               {/* Website */}
-              <input
-                value={editForm.website_url || ""}
-                onChange={(e) =>
-                  setEditForm({ ...editForm, website_url: e.target.value })
-                }
-                placeholder="Website URL"
-                className="w-full px-3 py-2 bg-black border border-yellow-400 text-yellow-100 rounded"
-              />
+     <div className="space-y-2">
+  <label className="text-sm font-bold text-yellow-200">
+    🌐 Websites
+  </label>
 
+  {(editForm.websites || []).map((site, i) => (
+    <div key={i} className="flex gap-2">
+      <input
+        value={site}
+        onChange={(e) =>
+          updateListItem("websites", i, e.target.value)
+        }
+        className="flex-1 px-3 py-2 bg-black border border-yellow-400 text-yellow-100 rounded"
+      />
+
+      {(editForm.websites || []).length > 1 && (
+        <button
+          type="button"
+          onClick={() => removeListItem("websites", i)}
+          className="px-3 bg-red-600 text-white rounded"
+        >
+          ✕
+        </button>
+      )}
+    </div>
+  ))}
+
+  <button
+    type="button"
+    onClick={() => addListItem("websites")}
+    className="text-xs text-yellow-300 hover:underline"
+  >
+    ➕ Add Website
+  </button>
+</div>
+<div className="space-y-2">
+  <label className="text-sm font-bold text-yellow-200">
+    📱 Social Links
+  </label>
+
+  {(editForm.socials || []).map((social, i) => (
+    <div key={i} className="flex gap-2">
+      <input
+        value={social}
+        onChange={(e) =>
+          updateListItem("socials", i, e.target.value)
+        }
+        className="flex-1 px-3 py-2 bg-black border border-yellow-400 text-yellow-100 rounded"
+      />
+
+      {(editForm.socials || []).length > 1 && (
+        <button
+          type="button"
+          onClick={() => removeListItem("socials", i)}
+          className="px-3 bg-red-600 text-white rounded"
+        >
+          ✕
+        </button>
+      )}
+    </div>
+  ))}
+
+  <button
+    type="button"
+    onClick={() => addListItem("socials")}
+    className="text-xs text-yellow-300 hover:underline"
+  >
+    ➕ Add Social
+  </button>
+</div>
               {/* 🖼 Vendor Image */}
               <div className="space-y-2">
                 <label className="text-sm font-bold text-yellow-200">
@@ -316,16 +417,29 @@ export default function ManageVendors() {
                   </a>
                 </p>
 
-                {v.website_url && (
-                  <a
-                    href={v.website_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block text-xs text-blue-300 underline mt-1"
-                  >
-                    Visit website
-                  </a>
-                )}
+            {v.websites?.map((site, i) => (
+  <a
+    key={i}
+    href={site}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="block text-xs text-blue-300 underline mt-1"
+  >
+    🌐 {site}
+  </a>
+))}
+
+{v.socials?.map((social, i) => (
+  <a
+    key={i}
+    href={social}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="block text-xs text-pink-300 underline"
+  >
+    📱 {social}
+  </a>
+))}
 
                 <div className="mt-2 text-xs">
                   <span className="px-2 py-0.5 rounded bg-yellow-400/20 border border-yellow-400 text-yellow-200">
