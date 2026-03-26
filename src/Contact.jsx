@@ -314,9 +314,6 @@ Contact Us
   <div className="relative z-10">
     {/* header */}
     <div className="mb-6 text-center">
-      <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-white/70">
-        Contact Form
-      </div>
 
       <h2 className="mt-3 text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
         Let’s Connect
