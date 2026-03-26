@@ -260,7 +260,7 @@ const handleTopicSelect = (e) => {
 
 <h2
   className="
-    pt-4 text-7xl lg:text-8xl
+    pt-2 text-7xl lg:text-8xl
     font-extrabold font-[Aspire] tracking-tight text-center
     relative
     bg-gradient-to-r from-violet-700 via-violet-400 to-violet-900
@@ -299,7 +299,7 @@ Contact Us
     bg-gradient-to-br from-slate-950/95 via-black/90 to-slate-900/95
     border border-white/10
     rounded-[28px]
-    p-4 sm:p-6 md:p-8
+    p-2 sm:p-6 md:p-8
     shadow-[0_20px_80px_rgba(0,0,0,0.55)]
     backdrop-blur-xl
   "
@@ -341,7 +341,7 @@ Contact Us
             w-full min-w-0
             rounded-2xl border border-white/10
             bg-white text-black
-            px-4 py-3.5
+            px-4 py-2
             text-sm sm:text-base
             placeholder:text-slate-400
             shadow-[inset_0_1px_0_rgba(255,255,255,0.35)]
@@ -368,7 +368,7 @@ Contact Us
             w-full min-w-0
             rounded-2xl border border-white/10
             bg-white text-black
-            px-4 py-3.5
+            px-4 py-2
             text-sm sm:text-base
             placeholder:text-slate-400
             shadow-[inset_0_1px_0_rgba(255,255,255,0.35)]
@@ -393,7 +393,7 @@ Contact Us
             w-full min-w-0
             rounded-2xl border border-white/10
             bg-white text-black
-            px-4 py-3.5
+            px-4 py-2
             text-sm sm:text-base
             placeholder:text-slate-400
             shadow-[inset_0_1px_0_rgba(255,255,255,0.35)]

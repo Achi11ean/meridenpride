@@ -196,6 +196,7 @@ const removeListItem = (type, index) => {
       <h2 className="text-2xl font-extrabold text-yellow-300 border-b border-yellow-400 mb-2">
         🛠 Manage Vendors
       </h2>
+<div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-start">
 
       {vendors.map((v) => (
         <div
@@ -414,94 +415,172 @@ const removeListItem = (type, index) => {
               </div>
             </div>
           ) : (
-            <div className="flex justify-between gap-4">
-              <div>
-                <h3 className="text-lg font-bold text-yellow-300">
-                  {v.company_name}
-                </h3>
-                <p className="text-sm text-yellow-100">
-                  {v.vendor_type}
-                </p>
+           <div className="grid grid-cols-1 md:grid-cols-[120px_1fr_auto] gap-4 items-start">
 
-                {v.image_url && (
-                  <img
-                    src={v.image_url}
-                    alt={v.company_name}
-                    className="mt-2 h-20 rounded shadow object-cover"
-                  />
-                )}
+  {/* 🖼 IMAGE (CONTAINED, NOT CROPPED) */}
+  {v.image_url && (
+    <div className="
+      w-full md:w-[120px]
+      h-[100px]
+      bg-black/40
+      border border-yellow-400/20
+      rounded-xl
+      flex items-center justify-center
+      p-2
+    ">
+      <img
+        src={v.image_url}
+        alt={v.company_name}
+        className="
+          max-h-full max-w-full
+          object-contain
+        "
+      />
+    </div>
+  )}
 
-                <p className="text-xs text-yellow-200 mt-2">
-                  <strong>Contact:</strong> {v.contact_name} ·{" "}
-                  <a
-                    href={`mailto:${v.contact_email}`}
-                    className="underline"
-                  >
-                    {v.contact_email}
-                  </a>
-                </p>
+  {/* 📋 MAIN INFO */}
+  <div className="space-y-2 min-w-0">
 
-            {v.websites?.map((site, i) => (
-  <a
-    key={i}
-    href={site}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="block text-xs text-blue-300 underline mt-1"
-  >
-    🌐 {site}
-  </a>
-))}
+    {/* HEADER */}
+    <div>
+      <h3 className="
+        text-lg sm:text-xl font-extrabold
+        text-yellow-300 tracking-wide
+        truncate
+      ">
+        {v.company_name}
+      </h3>
 
-{v.socials?.map((social, i) => (
-  <a
-    key={i}
-    href={social}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="block text-xs text-pink-300 underline"
-  >
-    📱 {social}
-  </a>
-))}
+      <p className="text-sm text-yellow-100/80">
+        {v.vendor_type}
+      </p>
+    </div>
 
-      <button
-  onClick={() => cycleStatus(v)}
-  className={`
-    px-3 py-1 rounded text-xs font-bold
-    border transition-all duration-200
-    hover:scale-105 active:scale-95
+    {/* CONTACT */}
+    <div className="
+      text-xs text-yellow-200/90
+      bg-black/30 border border-yellow-400/10
+      rounded-lg px-3 py-2
+    ">
+      <strong className="text-yellow-300">Contact:</strong>{" "}
+      {v.contact_name}
+      {v.contact_email && (
+        <>
+          {" "}·{" "}
+          <a
+            href={`mailto:${v.contact_email}`}
+            className="underline hover:text-yellow-300"
+          >
+            {v.contact_email}
+          </a>
+        </>
+      )}
+    </div>
 
-    ${v.status === "pending" && "bg-yellow-400/20 border-yellow-400 text-yellow-200"}
-    ${v.status === "approved" && "bg-green-500/20 border-green-400 text-green-200"}
-    ${v.status === "confirmed" && "bg-blue-500/20 border-blue-400 text-blue-200"}
-    ${v.status === "declined" && "bg-red-500/20 border-red-400 text-red-200"}
-    ${v.status === "cancelled" && "bg-gray-500/20 border-gray-400 text-gray-200"}
-  `}
-  title="Click to change status"
->
-  {v.status}
-</button>
-              </div>
+    {/* LINKS */}
+    <div className="flex flex-wrap gap-2">
 
-              <div className="flex flex-col gap-2">
-                <button
-                  onClick={() => startEdit(v)}
-                  className="px-3 py-1 bg-yellow-400 text-black font-bold rounded"
-                >
-                  Edit
-                </button>
-                <button
-                  onClick={() => deleteVendor(v.id)}
-                  className="px-3 py-1 bg-red-500 text-white font-bold rounded"
-                >
-                  Delete
-                </button>
-              </div>
-            </div>
-          )}
-        </div>
+      {v.websites?.map((site, i) => (
+        <a
+          key={i}
+          href={site}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="
+            text-xs px-3 py-1 rounded-full
+            bg-blue-500/20 text-blue-200
+            border border-blue-400/30
+            hover:bg-blue-500/30
+            transition
+            whitespace-nowrap
+          "
+        >
+          🌐 Website
+        </a>
       ))}
+
+      {v.socials?.map((social, i) => (
+        <a
+          key={i}
+          href={social}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="
+            text-xs px-3 py-1 rounded-full
+            bg-pink-500/20 text-pink-200
+            border border-pink-400/30
+            hover:bg-pink-500/30
+            transition
+            whitespace-nowrap
+          "
+        >
+          📱 Social
+        </a>
+      ))}
+
+    </div>
+
+    {/* STATUS */}
+    <button
+      onClick={() => cycleStatus(v)}
+      className={`
+        w-fit px-4 py-1.5 rounded-full text-xs font-bold border
+        transition-all duration-200 hover:scale-105
+
+        ${v.status === "pending" && "bg-yellow-400/20 border-yellow-400 text-yellow-200"}
+        ${v.status === "approved" && "bg-green-500/20 border-green-400 text-green-200"}
+        ${v.status === "confirmed" && "bg-blue-500/20 border-blue-400 text-blue-200"}
+        ${v.status === "declined" && "bg-red-500/20 border-red-400 text-red-200"}
+        ${v.status === "cancelled" && "bg-gray-500/20 border-gray-400 text-gray-200"}
+      `}
+      title="Click to change status"
+    >
+      {v.status}
+    </button>
+
+  </div>
+
+  {/* ⚙️ ACTIONS */}
+  <div className="
+    flex md:flex-col gap-2
+    justify-start md:justify-between
+  ">
+    <button
+      onClick={() => startEdit(v)}
+      className="
+        px-4 py-2 rounded-lg
+        bg-gradient-to-br from-yellow-400 to-yellow-500
+        text-black font-bold
+        shadow-md
+        hover:scale-105 transition
+      "
+    >
+      Edit
+    </button>
+
+    <button
+      onClick={() => deleteVendor(v.id)}
+      className="
+        px-4 py-2 rounded-lg
+        bg-gradient-to-br from-red-500 to-red-600
+        text-white font-bold
+        shadow-md
+        hover:scale-105 transition
+      "
+    >
+      Delete
+    </button>
+  </div>
+
+</div>
+          )}
+          
+        </div>
+        
+      ))}
+
+          </div>
     </div>
   );
 }
