@@ -243,7 +243,7 @@ const handleTopicSelect = (e) => {
     mt-24 sm:mt-28  /* 👈 ADD THIS LINE */
   "
   style={{
-    backgroundImage: "url('/logo1.png')",
+    backgroundImage: "url('/Logo1.png')",
   }}
 >
   <div
