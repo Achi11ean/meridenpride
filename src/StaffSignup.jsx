@@ -264,6 +264,7 @@ const [form, setForm] = useState({
               text-yellow-300 font-bold cursor-not-allowed
             "
           />
+  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
 
           <input
             autoFocus
@@ -285,6 +286,8 @@ const [form, setForm] = useState({
             required
             className="w-full p-3 rounded-xl bg-black/40 border border-yellow-500/40 text-yellow-100"
           />
+</div>
+  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
 
 <input
   type="email"
@@ -340,7 +343,7 @@ const [form, setForm] = useState({
             required
             className="w-full p-3 rounded-xl bg-black/40 border border-yellow-500/40 text-yellow-100"
           />
-
+</div>
 
 <label className="block text-yellow-300 font-semibold">
   Staff Role(s)
