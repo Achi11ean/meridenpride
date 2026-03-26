@@ -151,205 +151,261 @@ const removeListItem = (type, index) => {
         ➕ Add Pride Vendor
       </h2>
 
-      <form
-        onSubmit={handleSubmit}
-        className="space-y-4 bg-black/60 border border-yellow-500/30 rounded-xl p-6 shadow-lg"
+    <form
+  onSubmit={handleSubmit}
+  className="
+    space-y-6
+    bg-gradient-to-br from-black/80 via-slate-900/90 to-black/80
+    border border-yellow-400/20
+    rounded-2xl p-5 sm:p-6
+    shadow-[0_10px_40px_rgba(0,0,0,0.6)]
+    backdrop-blur-xl
+  "
+>
+
+  {/* HEADER */}
+  <div className="text-center">
+    <h2 className="text-2xl font-extrabold text-yellow-300">
+      🏪 Vendor Setup
+    </h2>
+    <p className="text-xs text-yellow-100/60">
+      Create or update vendor information
+    </p>
+  </div>
+
+  {/* BASIC INFO */}
+  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+    <div className="form-group sm:col-span-2">
+      <label>Company / Organization</label>
+      <input
+        name="company_name"
+        value={form.company_name}
+        onChange={handleChange}
+        required
+        className="input-pro"
+      />
+    </div>
+
+    <div className="form-group">
+      <label>Vendor Type</label>
+      <select
+        name="vendor_type"
+        value={form.vendor_type}
+        onChange={handleChange}
+        required
+        className="input-pro"
       >
-        {/* Company Name */}
-        <input
-          name="company_name"
-          value={form.company_name}
-          onChange={handleChange}
-          placeholder="Company / Organization Name"
-          required
-          className="w-full px-4 py-2 rounded bg-black text-yellow-100 border border-yellow-400/40"
-        />
-
-        {/* Vendor Type */}
-        <select
-          name="vendor_type"
-          value={form.vendor_type}
-          onChange={handleChange}
-          required
-          className="w-full px-4 py-2 rounded bg-black text-yellow-100 border border-yellow-400/40"
-        >
-          <option value="">Select vendor type</option>
-          {VENDOR_TYPES.map((type) => (
-            <option key={type} value={type}>
-              {type}
-            </option>
-          ))}
-        </select>
-
-        {/* Contact Info */}
-        <div className="grid sm:grid-cols-2 gap-4">
-          <input
-            name="contact_name"
-            value={form.contact_name}
-            onChange={handleChange}
-            placeholder="Contact Name"
-            required
-            className="px-4 py-2 rounded bg-black text-yellow-100 border border-yellow-400/40"
-          />
-
-          <input
-            type="email"
-            name="contact_email"
-            value={form.contact_email}
-            onChange={handleChange}
-            placeholder="Contact Email"
-            required
-            className="px-4 py-2 rounded bg-black text-yellow-100 border border-yellow-400/40"
-          />
-        </div>
-
-        {/* Website */}
-<div className="space-y-2">
-  <label className="text-sm font-bold text-yellow-200">
-    🌐 Websites
-  </label>
-
-  {form.websites.map((site, i) => (
-    <div key={i} className="flex gap-2">
-      <input
-        value={site}
-        onChange={(e) =>
-          updateListItem("websites", i, e.target.value)
-        }
-        placeholder="https://yourwebsite.com"
-        className="flex-1 px-4 py-2 rounded bg-black text-yellow-100 border border-yellow-400/40"
-      />
-
-      {form.websites.length > 1 && (
-        <button
-          type="button"
-          onClick={() => removeListItem("websites", i)}
-          className="px-3 bg-red-600 text-white rounded"
-        >
-          ✕
-        </button>
-      )}
+        <option value="">Select type</option>
+        {VENDOR_TYPES.map((type) => (
+          <option key={type}>{type}</option>
+        ))}
+      </select>
     </div>
-  ))}
 
-  <button
-    type="button"
-    onClick={() => addListItem("websites")}
-    className="text-xs text-yellow-300 hover:underline"
-  >
-    ➕ Add Website
-  </button>
-</div>
-<div className="space-y-2">
-  <label className="text-sm font-bold text-yellow-200">
-    📱 Social Links
-  </label>
-
-  {form.socials.map((social, i) => (
-    <div key={i} className="flex gap-2">
-      <input
-        value={social}
-        onChange={(e) =>
-          updateListItem("socials", i, e.target.value)
-        }
-        placeholder="https://instagram.com/..."
-        className="flex-1 px-4 py-2 rounded bg-black text-yellow-100 border border-yellow-400/40"
-      />
-
-      {form.socials.length > 1 && (
-        <button
-          type="button"
-          onClick={() => removeListItem("socials", i)}
-          className="px-3 bg-red-600 text-white rounded"
-        >
-          ✕
-        </button>
-      )}
+    <div className="form-group">
+      <label>Status</label>
+      <select
+        name="status"
+        value={form.status}
+        onChange={handleChange}
+        className="input-pro"
+      >
+        {STATUS_OPTIONS.map((s) => (
+          <option key={s} value={s}>
+            {s}
+          </option>
+        ))}
+      </select>
     </div>
-  ))}
 
-  <button
-    type="button"
-    onClick={() => addListItem("socials")}
-    className="text-xs text-yellow-300 hover:underline"
-  >
-    ➕ Add Social
-  </button>
-</div>
+  </div>
 
-        {/* 🖼 Vendor Image */}
-        <div className="space-y-2">
-          <label className="text-sm font-bold text-yellow-200">
-            Vendor Image (optional)
-          </label>
+  {/* CONTACT */}
+  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <div className="form-group">
+      <label>Contact Name</label>
+      <input
+        name="contact_name"
+        value={form.contact_name}
+        onChange={handleChange}
+        required
+        className="input-pro"
+      />
+    </div>
 
+    <div className="form-group">
+      <label>Contact Email</label>
+      <input
+        type="email"
+        name="contact_email"
+        value={form.contact_email}
+        onChange={handleChange}
+        required
+        className="input-pro"
+      />
+    </div>
+  </div>
+
+  {/* LINKS */}
+  <div className="grid sm:grid-cols-2 gap-4">
+
+    {/* Websites */}
+    <div className="space-y-2">
+      <label className="label">🌐 Websites</label>
+
+      {(form.websites || []).map((site, i) => (
+        <div key={i} className="flex gap-2">
           <input
-            type="file"
-            accept="image/*"
-            onChange={handleImageUpload}
-            className="w-full text-yellow-100"
+            value={site}
+            onChange={(e) =>
+              updateListItem("websites", i, e.target.value)
+            }
+            className="input-pro"
+            placeholder="https://..."
           />
 
-          <input
-            name="image_url"
-            value={form.image_url}
-            onChange={handleChange}
-            placeholder="Or paste image URL"
-            className="w-full px-4 py-2 rounded bg-black text-yellow-100 border border-yellow-400/40"
-          />
-
-          {form.image_url && (
-            <img
-              src={form.image_url}
-              alt="Preview"
-              className="mt-2 h-32 rounded shadow object-cover"
-            />
+          {form.websites.length > 1 && (
+            <button
+              type="button"
+              onClick={() => removeListItem("websites", i)}
+              className="btn-danger-sm"
+            >
+              ✕
+            </button>
           )}
         </div>
+      ))}
 
-        {/* Event Times */}
-        <div className="grid sm:grid-cols-2 gap-4">
+      <button
+        type="button"
+        onClick={() => addListItem("websites")}
+        className="text-xs text-yellow-300 hover:underline"
+      >
+        ➕ Add
+      </button>
+    </div>
+
+    {/* Socials */}
+    <div className="space-y-2">
+      <label className="label">📱 Social Links</label>
+
+      {(form.socials || []).map((social, i) => (
+        <div key={i} className="flex gap-2">
           <input
-            type="datetime-local"
-            name="start_time"
-            value={form.start_time}
-            onChange={handleChange}
-            className="px-4 py-2 rounded bg-black text-yellow-100 border border-yellow-400/40"
+            value={social}
+            onChange={(e) =>
+              updateListItem("socials", i, e.target.value)
+            }
+            className="input-pro"
+            placeholder="https://..."
           />
 
-          <input
-            type="datetime-local"
-            name="end_time"
-            value={form.end_time}
-            onChange={handleChange}
-            className="px-4 py-2 rounded bg-black text-yellow-100 border border-yellow-400/40"
-          />
+          {form.socials.length > 1 && (
+            <button
+              type="button"
+              onClick={() => removeListItem("socials", i)}
+              className="btn-danger-sm"
+            >
+              ✕
+            </button>
+          )}
         </div>
+      ))}
 
-        {/* Status */}
-        <select
-          name="status"
-          value={form.status}
-          onChange={handleChange}
-          className="w-full px-4 py-2 rounded bg-black text-yellow-100 border border-yellow-400/40"
-        >
-          {STATUS_OPTIONS.map((s) => (
-            <option key={s} value={s}>
-              {s.charAt(0).toUpperCase() + s.slice(1)}
-            </option>
-          ))}
-        </select>
+      <button
+        type="button"
+        onClick={() => addListItem("socials")}
+        className="text-xs text-yellow-300 hover:underline"
+      >
+        ➕ Add
+      </button>
+    </div>
 
-        <button
-          type="submit"
-          disabled={submitting}
-          className="w-full py-3 font-bold rounded
-            bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-600
-            text-black hover:brightness-110 transition"
-        >
-          {submitting ? "Saving…" : "Save Vendor"}
-        </button>
-      </form>
+  </div>
+
+  {/* IMAGE */}
+  <div className="space-y-3">
+    <label className="label">🖼 Vendor Image</label>
+
+    <div className="grid sm:grid-cols-2 gap-4">
+
+      <input
+        type="file"
+        accept="image/*"
+        onChange={handleImageUpload}
+        className="input-pro"
+      />
+
+      <input
+        name="image_url"
+        value={form.image_url}
+        onChange={handleChange}
+        placeholder="Paste image URL"
+        className="input-pro"
+      />
+
+    </div>
+
+    {form.image_url && (
+      <div className="flex justify-center">
+        <img
+          src={form.image_url}
+          alt="Preview"
+          className="
+            max-h-40
+            object-contain
+            rounded-xl
+            border border-yellow-400/30
+            bg-black/40 p-2
+          "
+        />
+      </div>
+    )}
+  </div>
+
+  {/* TIMES */}
+  <div className="grid sm:grid-cols-2 gap-4">
+    <div className="form-group">
+      <label>Start Time</label>
+      <input
+        type="datetime-local"
+        name="start_time"
+        value={form.start_time}
+        onChange={handleChange}
+        className="input-pro"
+      />
+    </div>
+
+    <div className="form-group">
+      <label>End Time</label>
+      <input
+        type="datetime-local"
+        name="end_time"
+        value={form.end_time}
+        onChange={handleChange}
+        className="input-pro"
+      />
+    </div>
+  </div>
+
+  {/* SUBMIT */}
+  <button
+    type="submit"
+    disabled={submitting}
+    className="
+      w-full py-4 rounded-xl font-extrabold text-lg
+      bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-600
+      text-black
+      shadow-lg
+      hover:scale-105 hover:shadow-yellow-400/40
+      transition-all duration-300
+    "
+  >
+    {submitting ? "Saving…" : "💾 Save Vendor"}
+  </button>
+
+</form>
     </div>
   );
 }
