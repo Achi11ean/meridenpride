@@ -31,7 +31,8 @@ export default function AdminDashboard() {
   const navigate = useNavigate();
   const { isAuthenticated, isAdmin, user, logout } = useAuth();
 const [servicesSubTab, setServicesSubTab] = useState("add");
-const [vendorsSubTab, setVendorsSubTab] = useState("add");
+const [vendorsSubTab, setVendorsSubTab] = useState("manage");
+const [showCreate, setShowCreate] = useState(false);
 const [newsletterSubTab, setNewsletterSubTab] = useState("subscribers");
 const [committeesSubTab, setCommitteesSubTab] = useState("create");
 const [fundersSubTab, setFundersSubTab] = useState("create");
@@ -160,26 +161,35 @@ const [sponsorSubTab, setSponsorSubTab] = useState("add_prospect");
   <div className="w-full space-y-6">
 
     {/* Vendors Sub Tabs */}
-    <div className="flex gap-3 flex-wrap">
-      <SubTabButton
-        label="➕ Add Vendor"
-        active={vendorsSubTab === "add"}
-        onClick={() => setVendorsSubTab("add")}
-      />
-      <SubTabButton
-        label="🛠 Manage Vendors"
-        active={vendorsSubTab === "manage"}
-        onClick={() => setVendorsSubTab("manage")}
-      />
-    </div>
+<div className="flex justify-between items-center mb-4">
+
+  <h2 className="text-2xl font-extrabold text-yellow-300">
+    🛠 Manage Vendors
+  </h2>
+
+  <button
+    onClick={() => setShowCreate(prev => !prev)}
+    className="
+      px-4 py-2 rounded-full
+      bg-gradient-to-r from-yellow-400 to-yellow-500
+      text-black font-bold text-sm
+      shadow-md
+      hover:scale-105 transition
+    "
+  >
+    {showCreate ? "✖ Close" : "➕ ADD NEW"}
+  </button>
+
+</div>
+{showCreate && (
+  <div className="mb-6 animate-fade-in">
+    <CreateVendor />
+  </div>
+)}
+       <hr className="rainbow-hr" />
 
     {/* Sub Tab Content */}
-    {vendorsSubTab === "add" && <CreateVendor />}
-
-    {vendorsSubTab === "manage" && (
-      <ManageVendors />
-
-    )}
+ <ManageVendors />
 
   </div>
 )}

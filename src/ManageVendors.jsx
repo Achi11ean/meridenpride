@@ -193,9 +193,7 @@ const removeListItem = (type, index) => {
   /* ───────────────── Render ───────────────── */
   return (
     <div className="w-full space-y-4">
-      <h2 className="text-2xl font-extrabold text-yellow-300 border-b border-yellow-400 mb-2">
-        🛠 Manage Vendors
-      </h2>
+ 
 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-start">
 
       {vendors.map((v) => (

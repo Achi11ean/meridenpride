@@ -146,7 +146,7 @@ const removeListItem = (type, index) => {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto">
+    <div className="w-full max-w-full mx-auto">
       <h2 className="text-2xl font-extrabold text-yellow-300 mb-4 border-b border-yellow-400">
         ➕ Add Pride Vendor
       </h2>
