@@ -29,6 +29,7 @@ const cycleStatus = async (vendor) => {
   const nextIndex = (currentIndex + 1) % STATUS_OPTIONS.length;
   const nextStatus = STATUS_OPTIONS[nextIndex];
 
+
   try {
     await axios.patch(
       `${API}/api/pride-vendors/${vendor.id}`,
@@ -177,6 +178,21 @@ const removeListItem = (type, index) => {
     }
   };
 
+  const [searchTerm, setSearchTerm] = useState("");
+const [statusFilter, setStatusFilter] = useState("");
+  const filteredVendors = vendors.filter((v) => {
+  const matchesSearch =
+    !searchTerm ||
+    v.company_name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    v.vendor_type?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    v.contact_name?.toLowerCase().includes(searchTerm.toLowerCase());
+
+  const matchesStatus =
+    !statusFilter || v.status === statusFilter;
+
+  return matchesSearch && matchesStatus;
+});
+
   /* ───────────────── UI States ───────────────── */
   if (loading) {
     return <p className="text-yellow-200">Loading vendors…</p>;
@@ -193,11 +209,45 @@ const removeListItem = (type, index) => {
   /* ───────────────── Render ───────────────── */
   return (
     <div className="w-full space-y-4">
- 
+ <div className="flex flex-col md:flex-row gap-3 mb-4">
+
+  {/* 🔍 SEARCH */}
+  <input
+    type="text"
+    placeholder="Search vendors..."
+    value={searchTerm}
+    onChange={(e) => setSearchTerm(e.target.value)}
+    className="
+      flex-1 px-4 py-2 rounded-full
+      bg-black border-2 border-yellow-400
+      text-yellow-100 placeholder-yellow-300/60
+      focus:outline-none focus:ring-2 focus:ring-yellow-300
+    "
+  />
+
+  {/* 📊 STATUS FILTER */}
+  <select
+    value={statusFilter}
+    onChange={(e) => setStatusFilter(e.target.value)}
+    className="
+      px-4 py-2 rounded-full
+      bg-black border-2 border-yellow-400
+      text-yellow-100 font-bold
+      text-center
+    "
+  >
+    <option value="">All Statuses</option>
+    {STATUS_OPTIONS.map((s) => (
+      <option key={s} value={s}>
+        {s}
+      </option>
+    ))}
+  </select>
+
+</div>
 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-start">
 
-      {vendors.map((v) => (
-        <div
+{filteredVendors.map((v) => (        <div
           key={v.id}
           className="bg-black/60 border border-yellow-500/30 rounded-xl p-4 shadow-lg"
         >
