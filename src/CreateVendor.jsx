@@ -17,6 +17,29 @@ const VENDOR_TYPES = [
   "Food and Beverage",
   "Community Service or Nonprofit",
   "Political or Activism",
+
+  // 🔥 NEW ADDITIONS
+  "Clothing or Fashion",
+  "Jewelry or Accessories",
+  "Home Goods or Decor",
+  "Digital Products or Services",
+  "Photography or Videography",
+  "Music or Entertainment",
+  "Performing Arts (Theatre, Dance, Drag)",
+  "Health or Fitness",
+  "Spiritual or Holistic",
+  "Education or Workshops",
+  "Technology or IT Services",
+  "Business Services (Marketing, Finance, Legal)",
+  "Pet Services or Products",
+  "Local Small Business",
+ "Tattoo or Piercing", 
+  "Handmade or Custom Goods",
+  "Vintage or Thrift",
+  "LGBTQIA+ Resources",
+  "Event Services (Planning, Rentals, Staffing)",
+  "Nonprofit Fundraising or Outreach",
+  "Other"
 ];
 const STATUS_OPTIONS = [
   "pending",

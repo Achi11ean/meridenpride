@@ -466,27 +466,28 @@ const [statusFilter, setStatusFilter] = useState("");
            <div className="grid grid-cols-1 md:grid-cols-[120px_1fr_auto] gap-4 items-start">
 
   {/* 🖼 IMAGE (CONTAINED, NOT CROPPED) */}
-  {v.image_url && (
-    <div className="
-      w-full md:w-[120px]
-      h-[100px]
-      bg-black/40
-      border border-yellow-400/20
-      rounded-xl
-      flex items-center justify-center
-      p-2
-    ">
-      <img
-        src={v.image_url}
-        alt={v.company_name}
-        className="
-          max-h-full max-w-full
-          object-contain
-        "
-      />
-    </div>
-  )}
-
+  <div className="
+  w-full md:w-[120px]
+  h-[100px]
+  bg-black/40
+  border border-yellow-400/20
+  rounded-xl
+  flex items-center justify-center
+  p-2
+">
+  <img
+    src={
+      v.image_url && v.image_url.trim() !== ""
+        ? v.image_url
+        : "https://static.vecteezy.com/system/resources/thumbnails/008/214/517/small_2x/abstract-geometric-logo-or-infinity-line-logo-for-your-company-free-vector.jpg"
+    }
+    alt={v.company_name}
+    className={`
+      max-h-full max-w-full object-contain
+      ${!v.image_url ? "" : ""}
+    `}
+  />
+</div>
   {/* 📋 MAIN INFO */}
   <div className="space-y-2 min-w-0">
 
