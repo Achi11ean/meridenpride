@@ -56,19 +56,26 @@ const [form, setForm] = useState({
   company_name: "",
   vendor_type: "",
   contact_name: "",
+    description: "", // ⭐ NEW
+
   contact_email: "",
   websites: [""],   // 🔥 NEW
   socials: [""],    // 🔥 NEW
   image_url: "",
-  start_time: "",
-  end_time: "",
+  start_time: "2026-06-27T12:00",
+  end_time: "2026-06-28T14:00",
   status: "pending",
 });
 
   const [submitting, setSubmitting] = useState(false);
 
-  const handleChange = (e) =>
-    setForm({ ...form, [e.target.name]: e.target.value });
+const handleChange = (e) => {
+  const { name, value } = e.target;
+
+  if (name === "description" && value.length > 1000) return;
+
+  setForm({ ...form, [name]: value });
+};
 
   /* ───────────────────────────── */
   /* 📤 Cloudinary Upload */
@@ -153,6 +160,8 @@ const removeListItem = (type, index) => {
   vendor_type: "",
   contact_name: "",
   contact_email: "",
+    description: "", // ⭐ NEW
+
   websites: [""],
   socials: [""],
   image_url: "",
@@ -410,6 +419,32 @@ const removeListItem = (type, index) => {
         className="input-pro"
       />
     </div>
+    <div className="form-group sm:col-span-2">
+      
+  <label>Description</label>
+
+  <textarea
+    name="description"
+    value={form.description}
+    onChange={handleChange}
+    maxLength={1000}
+    placeholder="Describe your offerings, vibe, products, or services..."
+    className="
+      input-pro min-h-[120px]
+      bg-black/60 border-yellow-400/40
+      focus:ring-yellow-300
+      placeholder:text-yellow-200/50
+    "
+  />
+
+  {/* 🔢 Character Count */}
+ <div className={`
+  text-right text-xs mt-1
+  ${form.description.length > 900 ? "text-red-400" : "text-yellow-200/70"}
+`}>
+  {form.description.length}/1000
+</div>
+</div>
   </div>
 
   {/* SUBMIT */}

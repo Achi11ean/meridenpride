@@ -414,7 +414,37 @@ const [statusFilter, setStatusFilter] = useState("");
                   className="px-3 py-2 bg-black border border-yellow-400 text-yellow-100 rounded"
                 />
               </div>
+{/* 📝 Description */}
+<div className="space-y-1">
+  <label className="text-sm font-bold text-yellow-200">
+    Description
+  </label>
 
+  <textarea
+    value={editForm.description || ""}
+    onChange={(e) => {
+      if (e.target.value.length > 1000) return;
+      setEditForm({ ...editForm, description: e.target.value });
+    }}
+    placeholder="Describe this vendor..."
+    className="
+      w-full px-3 py-2
+      bg-black border border-yellow-400
+      text-yellow-100 rounded
+      min-h-[100px]
+    "
+  />
+
+  {/* 🔢 Character Count */}
+  <div className={`
+    text-right text-xs
+    ${(editForm.description || "").length > 900
+      ? "text-red-400"
+      : "text-yellow-300/70"}
+  `}>
+    {(editForm.description || "").length}/1000
+  </div>
+</div>
               {/* Status */}
               <select
                 value={editForm.status}
