@@ -91,6 +91,24 @@ useEffect(() => {
     />
   );
 
+
+useEffect(() => {
+  // ⏱ start fade after 3 seconds
+  const fadeTimer = setTimeout(() => {
+    setFadeOut(true);
+  }, 2000);
+
+  // ⏱ fully remove after fade finishes (1s animation)
+  const removeTimer = setTimeout(() => {
+    setShowIntro(false);
+  }, 3000);
+
+  return () => {
+    clearTimeout(fadeTimer);
+    clearTimeout(removeTimer);
+  };
+}, []);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-700 via-balck to-slate-700 text-white lg:pt-24 pt-4">
 {showIntro && (
@@ -103,35 +121,18 @@ useEffect(() => {
       ${fadeOut ? "opacity-0" : "opacity-100"}
     `}
   >
-    <video
-      src="/Video4.Mov"
-      autoPlay
-      muted
-      playsInline
-      className="
-        w-[90%] max-w-2xl
-        h-auto
-        max-h-[80vh]
-        object-contain
-        rounded-2xl
-        shadow-2xl
-      "
-
-      // 🔥 start fade in last second
-      onTimeUpdate={(e) => {
-        const video = e.target;
-        if (video.duration - video.currentTime < 1) {
-          setFadeOut(true);
-        }
-      }}
-
-      // 🔥 remove AFTER fade completes
-      onEnded={() => {
-        setTimeout(() => {
-          setShowIntro(false);
-        }, 1000); // must match duration
-      }}
-    />
+<img
+  src="/meridenpride.jpg"
+  alt="Meriden Pride"
+  className={`
+    w-[90%] max-w-2xl
+    h-auto max-h-[80vh]
+    object-contain
+    rounded-2xl shadow-2xl
+    transition-opacity duration-1000
+    ${fadeOut ? "opacity-0" : "opacity-100"}
+  `}
+/>
 
     <div className="absolute inset-0 bg-black/40 pointer-events-none" />
   </div>
@@ -156,11 +157,11 @@ useEffect(() => {
   <div className="relative z-10 max-w-5xl mx-auto px-6">
 
     <h1 className="text-5xl sm:text-7xl font-[Aspire] font-bold tracking-wide text-white drop-shadow-[0_10px_30px_rgba(0,0,0,0.8)]">
-      South Haven <span className="text-yellow-300">Pride</span>
+      Meriden <span className="text-yellow-300">Pride</span>
     </h1>
 
     <p className="mt-4 text-xl text-yellow-100 font-semibold">
-      The Official Pride Celebration of South Haven, Michigan
+      The Official Pride Celebration of Meriden, CT
     </p>
 
     {/* Event Date Badge */}
@@ -210,13 +211,11 @@ useEffect(() => {
 
 
 {/* 🌈 OVERVIEW SECTION */}
-<section className="relative py-20 bg-gradient-to-b from-black to-slate-900 text-center">
+<section className="relative py-10 bg-gradient-to-b from-black to-slate-900 text-center">
 
   <div className="max-w-5xl mx-auto px-6">
 
-    <h2 className="text-4xl font-bold text-yellow-300 mb-8">
-      South Haven Pride 2026
-    </h2>
+
 
     {/* Glass card */}
     <div
@@ -235,8 +234,8 @@ useEffect(() => {
         overflow-auto
       "
     >
-      The South Haven LGBTQ+ Advocacy, strengthens and sustains
-      Michigan's LGBTQ+ community through direct services, advocacy,
+      The Meriden Pride, strengthens and sustains
+      Connecticut's LGBTQ+ community through direct services, advocacy,
       and statewide collaboration. We provide housing navigation and
       stabilization support to help individuals secure and maintain safe,
       affirming homes and resources to support and uplift the community. Our team connects community members to culturally
@@ -266,12 +265,12 @@ useEffect(() => {
         border border-white/10
       "
     >
-      <iframe
-        className="w-full h-[420px]"
-        src="https://www.google.com/maps?q=Stanley+Johnston+Park,+South+Haven,+MI&z=17&output=embed"
-        allowFullScreen
-        loading="lazy"
-      />
+<iframe
+  className="w-full h-[420px]"
+  src="https://www.google.com/maps?q=Hubbard+Park,+Meriden,+CT&z=16&output=embed"
+  allowFullScreen
+  loading="lazy"
+/>
     </div>
 
   </div>
@@ -302,9 +301,9 @@ useEffect(() => {
       </h2>
 
       <p className="mt-4 text-lg text-yellow-100 max-w-3xl mx-auto leading-relaxed">
-        South Haven, MI Pride is designed to elevate queer artists across disciplines —
+          Meriden, CT Pride is designed to elevate queer artists across disciplines —
         visual, literary, performance, drag, and music — while reflecting the
-        professionalism, creativity, and cultural leadership of South Haven's diverse
+        professionalism, creativity, and cultural leadership of Meriden's diverse
         LGBTQIA+ community.
       </p>
     </div>
@@ -337,7 +336,7 @@ useEffect(() => {
             🌟 Celebrate Pride
           </h4>
           <p className="text-yellow-100 font-semibold text-sm leading-relaxed">
-            Stand alongside South Haven's LGBTQ+ community to celebrate artistic
+            Stand alongside Meriden's LGBTQ+ community to celebrate artistic
             expression and cultural pride while contributing to storytelling
             throughout the day via our media partners.
           </p>
@@ -468,7 +467,7 @@ authentically with the community.
       <p className="text-yellow-100/90 text-lg max-w-2xl mx-auto mb-6">
         Drag performers, DJs, artists, dancers, and LGBTQIA+ entertainers —
         apply through Karaoverse and showcase your talent at
-        <span className="text-yellow-300 font-bold"> South Haven, MI Pride.</span>
+        <span className="text-yellow-300 font-bold"> Meriden, CT Pride.</span>
       </p>
 
       <a
@@ -535,7 +534,7 @@ authentically with the community.
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 divide-y lg:divide-y-0 lg:divide-x lg:divide-yellow-700">
           <div className="text-center lg:text-left">
             <h3 className="text-2xl font-bold text-yellow-400 border-b-2 border-yellow-400 inline-block mb-2">
-              South Haven LGBTQ+ Advocacy 🌟
+              Meriden Pride 🌟
             </h3>
             <p className="text-sm font-bold">
               Celebrating identity, community, and love in the heart of South
@@ -595,7 +594,7 @@ authentically with the community.
         </div>
 
         <div className="mt-6 text-center text-xs text-yellow-500">
-          © {new Date().getFullYear()} South Haven LGBTQ+ Advocacy - Non Profit
+          © {new Date().getFullYear()} Meriden Pride - Non Profit
           Organization.
         </div>
       </section>

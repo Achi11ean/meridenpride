@@ -24,7 +24,7 @@ export default function Resources() {
           </h1>
      <p className="mt-4 text-lg text-yellow-100/90 font-semibold">
   Support, safety, education, and connection — curated for the LGBTQIA+ 
-  community and allies in and around South Haven, Michigan and Southwest MI.
+  community and allies in and around Meriden, CT and surrounding areas.
 </p>
 
         </motion.div>

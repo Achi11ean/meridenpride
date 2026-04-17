@@ -114,7 +114,7 @@ const isSingleSponsor = sponsors.length === 1;
           </h2>
 
           <p className="text-yellow-100 text-lg mb-6">
-            Support South Haven Pride while gaining powerful brand visibility.
+            Support Meriden Pride while gaining powerful brand visibility.
           </p>
 
 <button

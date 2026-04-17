@@ -62,7 +62,7 @@ const navItems = [
         <Link to="/" className="inline-block">
           <div className="inline-block  ">
             <img
-              src="/Logo1.png"
+              src="/meridenpride.jpg"
               alt="Pride Logo"
               className="block  border-2 border-white h-12 sm:h-20 md:h-24"
             />

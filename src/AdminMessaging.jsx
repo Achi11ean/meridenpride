@@ -11,7 +11,7 @@ export default function AdminMessaging() {
           💬 Admin Messaging
         </h2>
         <p className="text-yellow-200 text-sm mt-1">
-          South Haven LGBTQ+ Advocacy — Private Admin Discord
+          Meriden Pride — Private Admin Discord
         </p>
       </div>
 
