@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FaTimes, FaGlobe } from "react-icons/fa";
 
 const API = "https://singspacebackend.onrender.com";
-const PRIDE_ID = 1; // 🔒 hard-coded (global Pride)
+const PRIDE_ID = 3; // 🔒 hard-coded (global Pride)
 
 export default function SponsorSlider() {
   const [sponsors, setSponsors] = useState([]);

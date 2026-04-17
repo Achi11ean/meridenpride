@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 const API = "https://singspacebackend.onrender.com";
-const PRIDE_ID = 1;
+const PRIDE_ID = 3;
 
 export default function PrideServicePage() {
   const { slug } = useParams();

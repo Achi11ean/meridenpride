@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { motion, AnimatePresence } from "framer-motion";
 
-export default function EmailSubscribe({ prideId = 1 }) {
+export default function EmailSubscribe({ prideId = 3 }) {
   const [form, setForm] = useState({
     first_name: "",
     last_name: "",

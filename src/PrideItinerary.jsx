@@ -19,7 +19,7 @@ export default function PrideItinerary() {
   };
 
 useEffect(() => {
-  const PRIDE_ID = 1;
+  const PRIDE_ID = 3;
 
   console.log("🚀 Fetching Pride itinerary for ID:", PRIDE_ID);
 

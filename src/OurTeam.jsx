@@ -5,7 +5,7 @@ import axios from "axios";
 import CommitteesPublic from "./CommitteesPublic";
 
 const API = "https://singspacebackend.onrender.com";
-const PRIDE_ID = 1; // later: route param
+const PRIDE_ID = 3; // later: route param
 
 export default function OurTeamYellowTemplate() {
   const [teamMembers, setTeamMembers] = useState([]);

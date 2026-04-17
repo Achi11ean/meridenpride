@@ -9,7 +9,7 @@ const SERVICE_ID = "service_ud7473n";
 const TEMPLATE_ID = "template_8kscp7c";
 const PUBLIC_KEY = "BDPsT3cNRMnCg-OaU";
 
-export default function CreateNewsletters({ prideId = 1 }) {
+export default function CreateNewsletters({ prideId = 3 }) {
 
   // ---------------- STATE ----------------
   const [title, setTitle] = useState("");

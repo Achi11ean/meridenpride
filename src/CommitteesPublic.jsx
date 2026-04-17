@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 const API_BASE = "https://singspacebackend.onrender.com";
-const PRIDE_ID = 1;
+const PRIDE_ID = 3;
 
 export default function CommitteesPublic() {
   const [committees, setCommittees] = useState([]);

@@ -12,7 +12,7 @@ import {
   FaCalendarAlt,
 } from "react-icons/fa";
 const API = "https://singspacebackend.onrender.com";
-const PRIDE_ID = 1;
+const PRIDE_ID = 3;
 
 export default function CapitalEvents() {
   const [events, setEvents] = useState([]);

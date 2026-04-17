@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 const API = "https://singspacebackend.onrender.com";
-const PRIDE_ID = 1;
+const PRIDE_ID = 3;
 
 export default function FundersPage() {
   const [funders, setFunders] = useState([]);

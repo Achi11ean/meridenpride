@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FaTimes, FaGlobe } from "react-icons/fa";
 
 const API = "https://singspacebackend.onrender.com";
-const PRIDE_ID = 1;
+const PRIDE_ID = 3;
 
 export default function PublicFundersSection() {
   const [funders, setFunders] = useState([]);

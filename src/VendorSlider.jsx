@@ -12,7 +12,7 @@ import {
 
 import { SiTiktok } from "react-icons/si";
 const API = "https://singspacebackend.onrender.com";
-const PRIDE_ID = 1; // 🔒 hard-coded (global Pride)
+const PRIDE_ID = 3; // 🔒 hard-coded (global Pride)
 
 export default function VendorSlider() {
   const [vendors, setVendors] = useState([]);

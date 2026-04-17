@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { FaCalendarAlt, FaMapMarkerAlt, FaTicketAlt } from "react-icons/fa";
 
 const API = "https://singspacebackend.onrender.com";
-const PRIDE_ID = 1;
+const PRIDE_ID = 3;
 
 export default function AnnualPrideEventDetails() {
   const [event, setEvent] = useState(null);
