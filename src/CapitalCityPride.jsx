@@ -576,7 +576,7 @@ authentically with the community.
             </h4>
             <div className="flex items-center justify-center lg:justify-start gap-4 text-2xl">
               <a
-                href="https://www.facebook.com/SouthHavenLGBTQAdvocacy/"
+                href="https://www.facebook.com/p/Meriden-Pride-Center-61564157697841/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-yellow-300"
@@ -584,7 +584,7 @@ authentically with the community.
                 <FaFacebook />
               </a>
               <a
-                href="mailto:blanca@lgbtqadvocacy.org"
+                href="mailto:meridenpride@gmail.com"
                 className="hover:text-yellow-300"
               >
                 <FaEnvelope />

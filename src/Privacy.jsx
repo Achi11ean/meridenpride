@@ -103,10 +103,10 @@ export default function Privacy() {
               You have the right to request access, correction, or deletion of your
               data at any time. Please contact us at{" "}
               <a
-                href="mailto:blanca@lgbtqadvocacy.org"
+                href="mailto:meridenpride@gmail.com"
                 className="text-yellow-300 underline hover:text-white"
               >
-                Blanca@lgbtqadvocacy.org
+                meridenpride@gmail.com
               </a>{" "}
               for any privacy-related inquiries.
             </p>

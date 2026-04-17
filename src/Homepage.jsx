@@ -387,10 +387,10 @@ export default function HomePage() {
 <p className="mt-3 text-sm font-semibold">
   📧{" "}
   <a
-    href="mailto:southhavenpride@gmail.com"
+    href="mailto:meridenpride@gmail.com"
     className="underline hover:text-yellow-300"
   >
-    southhavenpride@gmail.com
+    meridenpride@gmail.com
   </a>
 </p>
 
@@ -405,7 +405,7 @@ export default function HomePage() {
 </p>
               <div className="mt-6 flex items-center gap-4 border-t border-yellow-400/30 pt-4">
                 <a
-                  href="https://www.facebook.com/SouthHavenLGBTQAdvocacy"
+                  href="https://www.facebook.com/p/Meriden-Pride-Center-61564157697841/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-yellow-300"
@@ -414,7 +414,7 @@ export default function HomePage() {
                   <FaFacebook className="text-2xl" />
                 </a>
                 <a
-                  href="mailto:blanca@lgbtqadvocacy.org"
+                  href="mailto:meridenpride@gmail.com"
                   className="hover:text-yellow-300"
                   aria-label="Email"
                 >
