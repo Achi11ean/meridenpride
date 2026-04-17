@@ -41,7 +41,7 @@ export default function HomePage() {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              src="/Logo1.png"
+              src="meridenpride.jpg"
               alt="South Haven LGBTQ+ Advocacy Logo"
               className="w-full max-w-md sm:max-w-lg border-2 border-white shadow-2xl border border-"
             />
