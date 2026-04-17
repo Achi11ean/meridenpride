@@ -146,7 +146,7 @@ const handleSubmit = async (e) => {
 
   try {
    const res = await axios.post(
-`${API}/api/pride/1/admins`,
+`${API}/api/pride/3/admins`,
   {
     name: form.name,
     email: form.email,

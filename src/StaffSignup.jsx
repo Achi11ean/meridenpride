@@ -39,7 +39,7 @@ const STAFF_ROLE_OPTIONS = STAFF_ROLES.map(r => ({
 useEffect(() => {
   const fetchPride = async () => {
     try {
-      const res = await axios.get(`${API}/api/pride/1`);
+      const res = await axios.get(`${API}/api/pride/3`);
       setPrideName(res.data.name);
     } catch {
       setPrideName("Pride Center");
@@ -140,7 +140,7 @@ const uploadToCloudinary = async (file) => {
 
 
 const [form, setForm] = useState({
-  pride_id: 1,
+  pride_id: 3,
   first_name: "",
   last_name: "",
   role: "",

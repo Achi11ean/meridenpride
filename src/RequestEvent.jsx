@@ -188,7 +188,7 @@ const buildPayload = () => {
 
   return {
     // 🌈 Always tag as Pride Center ID 1
-    pride_id: 1,
+    pride_id: 3,
 
     ...formData,
 
