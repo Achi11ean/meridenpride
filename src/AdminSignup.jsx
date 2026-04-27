@@ -137,7 +137,7 @@ const roleOptions = ROLE_OPTIONS.map((role) => ({
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
- const prideName = "Meriden Pride ";
+ const prideName = "Template Pride ";
 
 
 const handleSubmit = async (e) => {

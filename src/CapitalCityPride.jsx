@@ -122,8 +122,8 @@ useEffect(() => {
     `}
   >
 <img
-  src="/meridenpride.jpg"
-  alt="Meriden Pride"
+  src="https://img.freepik.com/premium-vector/label-banner-logo-template-black_760861-102.jpg"
+  alt="Template Pride"
   className={`
     w-[90%] max-w-2xl
     h-auto max-h-[80vh]
@@ -157,11 +157,11 @@ useEffect(() => {
   <div className="relative z-10 max-w-5xl mx-auto px-6">
 
     <h1 className="text-5xl sm:text-7xl font-[Aspire] font-bold tracking-wide text-white drop-shadow-[0_10px_30px_rgba(0,0,0,0.8)]">
-      Meriden <span className="text-yellow-300">Pride</span>
+      Template <span className="text-yellow-300">Pride</span>
     </h1>
 
     <p className="mt-4 text-xl text-yellow-100 font-semibold">
-      The Official Pride Celebration of Meriden, CT
+      The Official Pride Celebration of Template, CT
     </p>
 
     {/* Event Date Badge */}
@@ -187,7 +187,7 @@ useEffect(() => {
       )
     ) {
       window.location.href =
-        "https://karaoverse.com/event/south-haven-pride";
+        "https://karaoverse.com";
     }
   }}
 >
@@ -234,7 +234,7 @@ useEffect(() => {
         overflow-auto
       "
     >
-      The Meriden Pride, strengthens and sustains
+      The Template Pride, strengthens and sustains
       Connecticut's LGBTQ+ community through direct services, advocacy,
       and statewide collaboration. We provide housing navigation and
       stabilization support to help individuals secure and maintain safe,
@@ -266,8 +266,8 @@ useEffect(() => {
       "
     >
 <iframe
-  className="w-full h-[420px]"
-  src="https://www.google.com/maps?q=Hubbard+Park,+Meriden,+CT&z=16&output=embed"
+  className="w-full h-[420px] rounded-3xl border border-white/10 shadow-2xl"
+  src="https://www.google.com/maps?q=United+States&z=4&output=embed"
   allowFullScreen
   loading="lazy"
 />
@@ -301,9 +301,9 @@ useEffect(() => {
       </h2>
 
       <p className="mt-4 text-lg text-yellow-100 max-w-3xl mx-auto leading-relaxed">
-          Meriden, CT Pride is designed to elevate queer artists across disciplines —
+          Template, CT Pride is designed to elevate queer artists across disciplines —
         visual, literary, performance, drag, and music — while reflecting the
-        professionalism, creativity, and cultural leadership of Meriden's diverse
+        professionalism, creativity, and cultural leadership of Template's diverse
         LGBTQIA+ community.
       </p>
     </div>
@@ -336,7 +336,7 @@ useEffect(() => {
             🌟 Celebrate Pride
           </h4>
           <p className="text-yellow-100 font-semibold text-sm leading-relaxed">
-            Stand alongside Meriden's LGBTQ+ community to celebrate artistic
+            Stand alongside Template's LGBTQ+ community to celebrate artistic
             expression and cultural pride while contributing to storytelling
             throughout the day via our media partners.
           </p>
@@ -467,7 +467,7 @@ authentically with the community.
       <p className="text-yellow-100/90 text-lg max-w-2xl mx-auto mb-6">
         Drag performers, DJs, artists, dancers, and LGBTQIA+ entertainers —
         apply through Karaoverse and showcase your talent at
-        <span className="text-yellow-300 font-bold"> Meriden, CT Pride.</span>
+        <span className="text-yellow-300 font-bold"> Template, CT Pride.</span>
       </p>
 
       <a
@@ -534,7 +534,7 @@ authentically with the community.
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 divide-y lg:divide-y-0 lg:divide-x lg:divide-yellow-700">
           <div className="text-center lg:text-left">
             <h3 className="text-2xl font-bold text-yellow-400 border-b-2 border-yellow-400 inline-block mb-2">
-              Meriden Pride 🌟
+              Template Pride 🌟
             </h3>
             <p className="text-sm font-bold">
               Celebrating identity, community, and love in the heart of South
@@ -576,7 +576,7 @@ authentically with the community.
             </h4>
             <div className="flex items-center justify-center lg:justify-start gap-4 text-2xl">
               <a
-                href="https://www.facebook.com/p/Meriden-Pride-Center-61564157697841/"
+                href="https://www.facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-yellow-300"
@@ -584,7 +584,7 @@ authentically with the community.
                 <FaFacebook />
               </a>
               <a
-                href="mailto:meridenpride@gmail.com"
+                href="mailto:templatepride@gmail.com"
                 className="hover:text-yellow-300"
               >
                 <FaEnvelope />
@@ -594,7 +594,7 @@ authentically with the community.
         </div>
 
         <div className="mt-6 text-center text-xs text-yellow-500">
-          © {new Date().getFullYear()} Meriden Pride - Non Profit
+          © {new Date().getFullYear()} Template Pride - Non Profit
           Organization.
         </div>
       </section>

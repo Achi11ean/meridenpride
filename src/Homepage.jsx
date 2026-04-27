@@ -41,8 +41,8 @@ export default function HomePage() {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              src="meridenpride.jpg"
-              alt="Meriden Pride Logo"
+              src="https://img.freepik.com/premium-vector/label-banner-logo-template-black_760861-102.jpg"
+              alt="Template Pride Logo"
               className="w-full max-w-md sm:max-w-lg border-2 border-white shadow-2xl border border-"
             />
 <hr className="rainbow-hr" />
@@ -54,11 +54,11 @@ export default function HomePage() {
               className="max-w-3xl"
             >
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight">
-                Meriden Pride
+                Template Pride
               </h1>
               <p className="mt-4 text-lg sm:text-xl text-yellow-100/90 font-semibold">
                 Supporting & promoting LGBTQIA+ safe spaces, resources, and
-                community connection in and around Meriden, CT.
+                community connection in and around Template, CT.
               </p>
 
                   <Link
@@ -67,7 +67,7 @@ export default function HomePage() {
                   bg-gradient-to-r from-[#a21f1f] via-[#3fb541] to-[#a01fba]
                   hover:brightness-110 transition-all duration-300 neon-pulse"
               >
-                Meriden Pride
+                Template Pride
               </Link>
               {/* CTAs */}
               <nav aria-label="Primary">
@@ -297,7 +297,7 @@ export default function HomePage() {
             {/* Org */}
             <div>
               <h3 className="text-xl font-extrabold text-yellow-300">
-                Meriden Pride 🌈
+                Template Pride 🌈
               </h3>
               <p className="mt-2 text-yellow-100/80 font-semibold">
                 Empowering the LGBTQ+ community through support, creativity, and
@@ -387,25 +387,25 @@ export default function HomePage() {
 <p className="mt-3 text-sm font-semibold">
   📧{" "}
   <a
-    href="mailto:meridenpride@gmail.com"
+    href="mailto:templatepride@gmail.com"
     className="underline hover:text-yellow-300"
   >
-    meridenpride@gmail.com
+    templatepride@gmail.com
   </a>
 </p>
 
 <p className="mt-2 text-sm font-semibold">
   📞{" "}
   <a
-    href="tel:+12697678262"
+    href="tel:+9999999999"
     className="underline hover:text-yellow-300"
   >
-    (269) 767-8262
+    (999) 999-9999
   </a>
 </p>
               <div className="mt-6 flex items-center gap-4 border-t border-yellow-400/30 pt-4">
                 <a
-                  href="https://www.facebook.com/p/Meriden-Pride-Center-61564157697841/"
+                  href="https://www.facebook.com"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-yellow-300"
@@ -414,7 +414,7 @@ export default function HomePage() {
                   <FaFacebook className="text-2xl" />
                 </a>
                 <a
-                  href="mailto:meridenpride@gmail.com"
+                  href="mailto:templatepride@gmail.com"
                   className="hover:text-yellow-300"
                   aria-label="Email"
                 >
@@ -425,7 +425,7 @@ export default function HomePage() {
           </div>
 
           <div className="mt-10 text-center text-xs text-white/50 font-semibold">
-            © {year} Meriden LGBTQ+ Pride Center — All Rights Reserved.{" "}
+            © {year} Template LGBTQ+ Pride Center — All Rights Reserved.{" "}
             <Link to="/privacy" className="hover:text-yellow-300 underline">
               Privacy Policy
             </Link>

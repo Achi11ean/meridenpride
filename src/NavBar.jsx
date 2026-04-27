@@ -62,7 +62,7 @@ const navItems = [
         <Link to="/" className="inline-block">
           <div className="inline-block  ">
             <img
-              src="/meridenpride.jpg"
+              src="https://img.freepik.com/premium-vector/label-banner-logo-template-black_760861-102.jpg"
               alt="Pride Logo"
               className="block  border-2 border-white h-12 sm:h-20 md:h-24"
             />
@@ -79,12 +79,12 @@ const navItems = [
         </button>
 
         {/* DESKTOP NAV */}
-        <ul className="hidden md:flex items-center font-serif space-x-4 text-2xl font-bold text-white">
+        <ul className="hidden md:flex items-center font-serif space-x-10 text-2xl font-bold text-white">
           {navItems.map((item) => (
             <li key={item.name}>
               <Link
                 to={item.path}
-                className="hover:underline underline hover:text-yellow-200 transition"
+                className="hover:underline  hover:text-yellow-200 transition"
               >
                 {item.name}
               </Link>

@@ -40,7 +40,7 @@ export default function Privacy() {
             <p className="text-yellow-100 leading-relaxed">
               Welcome to the{" "}
               <span className="text-yellow-300 font-semibold">
-                Meriden Pride
+                Template Pride
               </span>.
               Your privacy is important to us. This policy explains how we collect,
               use, and protect your personal information when you visit our website
@@ -103,10 +103,10 @@ export default function Privacy() {
               You have the right to request access, correction, or deletion of your
               data at any time. Please contact us at{" "}
               <a
-                href="mailto:meridenpride@gmail.com"
+                href="mailto:templatepride@gmail.com"
                 className="text-yellow-300 underline hover:text-white"
               >
-                meridenpride@gmail.com
+                templatepride@gmail.com
               </a>{" "}
               for any privacy-related inquiries.
             </p>

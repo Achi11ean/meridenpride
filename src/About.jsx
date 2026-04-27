@@ -171,7 +171,7 @@ to-[#EA580C]
             <p className="text-base md:text-lg leading-7">
               To create a welcoming and affirming space for all members of the LGBTQIA+ community by fostering connection,
               promoting self-expression, and providing essential resources that empower individuals and strengthen our
-              collective voice in Meriden, CT.
+              collective voice in Template, CT.
             </p>
           </article>
 
@@ -195,7 +195,7 @@ to-[#EA580C]
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.15 }}
         >
-          The <span className="text-yellow-300 font-semibold">+Meriden Pride</span> is dedicated to uplifting
+          The <span className="text-yellow-300 font-semibold">+Template Pride</span> is dedicated to uplifting
           and connecting the LGBTQIA+ community through advocacy, art, education, and celebration.
           We provide inclusive programming, support services, and cultural events that amplify queer voices and promote equality.
         </motion.p>

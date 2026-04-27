@@ -167,7 +167,7 @@ Our Team
       <section className="max-w-6xl mx-auto px-4 pt-4 pb-20">
 
         <p className="text-yellow-400  text-center max-w-6xl  mx-auto mb-4 text-lg font-bold font-[sans] md:text-2xl leading-relaxed">
-          Meet the people who support, organize, and build the Meriden Pride.
+          Meet the people who support, organize, and build the Template Pride.
         </p>
 {/* VIEW TOGGLE */}
 
