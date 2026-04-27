@@ -249,7 +249,7 @@ export default function HomePage() {
             <div className="mt-7 p-5 bg-white/10 border border-yellow-400/20 shadow-xl">
               <p className="text-yellow-100 font-bold text-lg">Featured:</p>
               <video
-                src="/Video2.mp4"
+                src="/Video.mov"
                 autoPlay
                 loop
                 muted
