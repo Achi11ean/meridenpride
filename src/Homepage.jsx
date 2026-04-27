@@ -431,6 +431,78 @@ export default function HomePage() {
               Privacy Policy
             </Link>
           </div>
+<div className="mt-10 max-w-6xl mx-auto">
+  <div className="text-center mb-6">
+    <div className="inline-block px-6 py-2 bg-gradient-to-r from-yellow-400/20 via-amber-300/20 to-yellow-500/20 border border-yellow-300/20 text-yellow-200 uppercase tracking-[0.3em] text-xs font-black shadow-xl">
+      Explore More Designs
+    </div>
+  </div>
+
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+
+    {/* TEMPLATE 2 */}
+    <Link
+      to="/home-page-2"
+      className="group relative overflow-hidden rounded-[2rem] border border-yellow-300/20 bg-gradient-to-br from-[#4a0b0b] via-black to-[#7a1c1c] p-[2px] shadow-[0_0_40px_rgba(250,204,21,0.12)] hover:-translate-y-2 transition duration-300"
+    >
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(250,204,21,0.14),transparent_45%)]" />
+      <div className="relative bg-black/70 backdrop-blur-xl rounded-[1.9rem] p-7 h-full text-center">
+        <div className="text-yellow-300 uppercase tracking-[0.3em] text-xs font-black">
+          Homepage
+        </div>
+        <div className="mt-3 text-5xl font-black text-white group-hover:text-yellow-200 transition">
+          Template 2
+        </div>
+     
+        <div className="mt-5 text-yellow-300 font-black tracking-wide">
+          Preview Design →
+        </div>
+      </div>
+    </Link>
+
+    {/* TEMPLATE 3 */}
+    <Link
+      to="/home-page-3"
+      className="group relative overflow-hidden rounded-[2rem] border border-yellow-300/20 bg-gradient-to-br from-[#3b0a0a] via-[#111] to-[#8d2a12] p-[2px] shadow-[0_0_40px_rgba(250,204,21,0.12)] hover:-translate-y-2 transition duration-300"
+    >
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(250,204,21,0.14),transparent_45%)]" />
+      <div className="relative bg-black/70 backdrop-blur-xl rounded-[1.9rem] p-7 h-full text-center">
+        <div className="text-yellow-300 uppercase tracking-[0.3em] text-xs font-black">
+          Homepage
+        </div>
+        <div className="mt-3 text-5xl font-black text-white group-hover:text-yellow-200 transition">
+          Template 3
+        </div>
+     
+        <div className="mt-5 text-yellow-300 font-black tracking-wide">
+          Preview Design →
+        </div>
+      </div>
+    </Link>
+
+    {/* TEMPLATE 4 */}
+    <Link
+      to="/home-page-4"
+      className="group relative overflow-hidden rounded-[2rem] border border-yellow-300/20 bg-gradient-to-br from-[#280505] via-black to-[#6f1515] p-[2px] shadow-[0_0_40px_rgba(250,204,21,0.12)] hover:-translate-y-2 transition duration-300"
+    >
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_center,rgba(250,204,21,0.14),transparent_45%)]" />
+      <div className="relative bg-black/70 backdrop-blur-xl rounded-[1.9rem] p-7 h-full text-center">
+        <div className="text-yellow-300 uppercase tracking-[0.3em] text-xs font-black">
+          Homepage
+        </div>
+        <div className="mt-3 text-5xl font-black text-white group-hover:text-yellow-200 transition">
+          Template 4
+        </div>
+   
+        <div className="mt-5 text-yellow-300 font-black tracking-wide">
+          Preview Design →
+        </div>
+      </div>
+    </Link>
+
+  </div>
+</div>
+
         </div>
       </footer>
     </div>

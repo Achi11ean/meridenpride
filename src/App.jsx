@@ -10,18 +10,21 @@ import Privacy from "./Privacy";
 import Volunteer from "./Volunteer";
 import Donate from "./Donate";
 import Events from "./Events";
+import HomePage2 from "./HomePage2";
 import HartfordCityPride from "./CapitalCityPride";
 import AdminSignup from "./AdminSignup";
 import Login from "./Login";
 import AdminDashboard from "./AdminDashboard";
 import StaffDashboard from "./StaffDashboard";
 import Signup from "./Signup";
+import HomePage3 from "./Homepage3";
 import OurSponsorYellowTemplate from "./OurSponsors";
 import Resources from "./Resources";
 import SponsorInvitationPage from "./SponsorInvitationPage";
 import PrideServicePage from "./PrideServicePage";
 import FundersPage from "./FundersPage";
 import CommitteePage from "./CommitteePage";
+import HomePage4 from "./HomePage4";
 import CommitteesPage from "./CommitteesPage";
 function App() {
   return (
@@ -33,6 +36,9 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />
         <Route path="/ourteam" element={<OurTeam />} />
+<Route path="/home-page-2" element={<HomePage2 />} />
+        <Route path="/home-page-3" element={<HomePage3 />} />
+        <Route path="/home-page-4" element={<HomePage4 />} />
         <Route path="/contact" element={<ContactPageTemplate />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/volunteer" element={<Volunteer />} />
