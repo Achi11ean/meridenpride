@@ -36,7 +36,7 @@ export default function HomePage() {
 
         <div className="relative z-10 max-w-7xl mx-auto px-6">
           {/* Logo + Tag */}
-          <div className="flex flex-col items-center text-center gap-6">
+          <div className="flex flex-col items-center text-center ">
             <motion.img
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -45,7 +45,10 @@ export default function HomePage() {
               alt="Template Pride Logo"
               className="w-full max-w-md sm:max-w-lg border-2 border-white shadow-2xl border border-"
             />
-<hr className="rainbow-hr" />
+               {/* <h1 className="text-4xl font-serif sm:text-5xl lg:text-6xl font-extrabold tracking-tight">
+                Template Pride
+              </h1> */}
+<hr className="rainbow-hr max-w-lg" />
 
             <motion.div
               initial={{ opacity: 0, y: 14 }}
@@ -53,10 +56,8 @@ export default function HomePage() {
               transition={{ duration: 0.7, delay: 0.1 }}
               className="max-w-3xl"
             >
-              <h1 className="text-4xl font-serif sm:text-5xl lg:text-6xl font-extrabold tracking-tight">
-                Template Pride
-              </h1>
-              <p className="mt-4 text-lg sm:text-xl text-yellow-100/90 font-semibold">
+           
+              <p className=" text-lg sm:text-xl text-yellow-100/90 font-semibold">
                 Supporting & promoting LGBTQIA+ safe spaces, resources, and
                 community connection in and around Template, CT.
               </p>
