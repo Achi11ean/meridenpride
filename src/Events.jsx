@@ -1,201 +1,137 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FaCalendarAlt, FaRainbow } from "react-icons/fa";
+import { FaRainbow, FaCalendarAlt, FaStar } from "react-icons/fa";
 import CapitalEvents from "./CapitalEvents";
 
 export default function Events() {
   return (
-    <div className="
-      min-h-screen 
-      bg-gradient-to-br 
-      from-green-700
-      via-black 
-      to-emerald-700
-      text-white
-        pt-2  ">
+    <div className="min-h-screen bg-gradient-to-br from-black via-emerald-950 to-black text-white overflow-hidden">
 
+      {/* ───────────────── HERO VIDEO BANNER ───────────────── */}
+{/* ───────────────── HERO DYNAMIC BANNER ───────────────── */}
+<section className="relative mt-14 md:mt-16 h-[360px] sm:h-[420px] md:h-[560px] w-full overflow-hidden">
 
-      {/* 🌈 Banner Image */}
-{/* 🌈 Banner Video */}
-{/* 🌟 Proud Partner Section */}
-<section className="w-full text-center mt-20 sm:mt-28 mb-10 ">
+  {/* MOBILE IMAGE */}
+  <img
+    src="/mobile.PNG"
+    alt="Capital City Events"
+    className="block md:hidden w-full h-full object-cover"
+  />
 
-  {/* Video / Logo */}
-  <div className="relative inline-block">
-    <hr className="rainbow-hr" />
+  {/* DESKTOP VIDEO */}
+  <video
+    src="/Video.mov"
+    autoPlay
+    loop
+    muted
+    playsInline
+    className="hidden md:block w-full h-full object-cover"
+  />
 
-    <video
-      src="/Video2.mp4"
-      autoPlay
-      loop
-      muted
-      playsInline
-      className="
-        w-[100%]
-        max-w-[420px]
-        sm:max-w-[600px]
-        drop-shadow-2xl 
-        border-b-4 border-t border-l border-r border-green-700/60
-        rounded-none
-      "
-    >
-      <img
-        src="/karaoversebanner.jpeg"
-        alt="Karaoverse Logo Fallback"
-      />
-    </video>
-    <hr className="rainbow-hr" />
+  {/* DARK CINEMATIC OVERLAY */}
+  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/45 to-emerald-900/20" />
 
-  </div>
+  {/* EMERALD GLOW */}
+  <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.16),transparent_68%)]" />
 
-  {/* Text */}
-  <div className="mt-8 max-w-3xl mx-auto">
+  {/* HERO TEXT */}
+  <div className="absolute inset-0 z-10 flex flex-col justify-end md:justify-center items-center text-center px-6 pb-10 md:pb-0">
 
-    <h2
-      className="
-        text-3xl sm:text-5xl font-extrabold
-        bg-gradient-to-r from-white via-white to-white
-        bg-clip-text text-transparent drop-shadow-lg
-        uppercase tracking-wide
-      "
-    >
-      Proud Partner 
-    </h2>
+    <div className="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-black/30 backdrop-blur px-5 py-2 text-xs sm:text-sm md:text-base text-emerald-200 shadow-xl mb-4 md:mb-5">
+      <FaRainbow />
+      Proud Community Partnership
+    </div>
 
-    <p
-      className="
-        mt-5 text-lg sm:text-xl md:text-2xl text-white font-semibold
-        leading-relaxed drop-shadow-md
-      "
-    >
-      United in creativity, inclusivity, and celebration — our partnership with 
-      <span className="font-bold text-yellow-400"> Karaoverse </span> 
-      amplifies LGBTQIA+ voices, empowers community talent, and helps build 
-      unforgettable moments across arts, entertainment, and culture.
+    <h1 className="text-3xl sm:text-5xl md:text-7xl font-black text-white drop-shadow-[0_5px_25px_rgba(0,0,0,0.9)]">
+      Capital City Events
+    </h1>
+
+    <p className="mt-4 md:mt-5 max-w-4xl text-sm sm:text-lg md:text-2xl text-white/85 font-medium leading-relaxed">
+      In proud collaboration with <span className="text-yellow-400 font-bold">Karaoverse</span>,
+      connecting LGBTQIA+ entertainment, safe spaces, nightlife, artists,
+      and unforgettable experiences throughout Connecticut and beyond.
     </p>
-
   </div>
-
 </section>
 
+      {/* ───────────────── INTRO PARTNER CARD ───────────────── */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 mt-14 mb-16">
+        <div className="rounded-[2rem] border border-white/10 bg-gradient-to-br from-emerald-900/25 via-black to-green-900/20 p-8 md:p-12 shadow-2xl backdrop-blur-xl text-center">
 
-      {/* ───────────────── Header ───────────────── */}
-      <motion.div
-        initial={{ opacity: 0, y: -25 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="mt-10 text-center px-6"
-      >
-        <FaCalendarAlt className="text-green-600 text-6xl mx-auto mb-4 drop-shadow-sm" />
+          <div className="text-sm uppercase tracking-[0.3em] text-emerald-300 mb-3">
+            Powered By Karaoverse
+          </div>
 
-        <h1
-          className="
-          text-4xl sm:text-5xl font-extrabold
-          bg-white
-          bg-clip-text text-transparent
-          drop-shadow-md
-        "
-        >
-          Upcoming Events
-        </h1>
+          <h2 className="text-3xl md:text-5xl font-black mb-5">
+            A Shared Mission of Visibility, Safety & Celebration
+          </h2>
 
-        <p className="mt-3 text-lg sm:text-xl text-green-700 font-semibold">
-          Celebrate, Connect, and Belong 🌈✨
-        </p>
-      </motion.div>
+          <p className="text-white/75 text-lg md:text-xl max-w-4xl mx-auto leading-relaxed">
+            Through this partnership, Karaoverse helps amplify queer voices, showcase local talent,
+            increase event visibility, and build stronger bridges between artists, venues,
+            and the LGBTQIA+ community. Together we are creating a more connected entertainment ecosystem.
+          </p>
+        </div>
+      </section>
 
-      {/* ───────────────── Event List ───────────────── */}
-      <div className="mt-16 px-4 pb-32 max-w-6xl mx-auto">
+      {/* ───────────────── EVENTS FEED ───────────────── */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 pb-20">
+
+        <div className="flex items-center justify-center gap-3 mb-10">
+          <FaCalendarAlt className="text-emerald-400 text-2xl" />
+          <h2 className="text-3xl md:text-5xl font-black">Upcoming Community Events</h2>
+          <FaCalendarAlt className="text-emerald-400 text-2xl" />
+        </div>
+
         <CapitalEvents />
-      </div>
-{/* 🌈 Safe Spaces + Artist + Host Invitation */}
-<section className="w-full px-6 mt-10 mb-20 text-center">
+      </section>
 
-  <h2
-    className="
-      text-3xl sm:text-5xl font-extrabold
-      bg-gradient-to-r from-emerald-600 via-green-700 to-emerald-600
-      bg-clip-text text-transparent drop-shadow-lg
-      tracking-wide
-    "
-  >
-    Build Safe Spaces. Be Seen. Get Connected. 
-  </h2>
+      {/* ───────────────── COMMUNITY CTA SECTION ───────────────── */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-1 pb-24">
+        <div className="rounded-[2rem] border border-white/10 bg-gradient-to-br from-black via-emerald-950/70 to-black p-2 md:p-14 shadow-2xl text-center">
 
-  <p
-    className="
-      max-w-4xl mx-auto mt-6 
-      text-lg sm:text-xl md:text-2xl 
-      text-white font-semibold leading-relaxed
-    "
-  >
-    Karaoverse empowers LGBTQIA+ artists, nightlife hosts, safe-space venues, and 
-    allies to create profiles, connect with their community, share their talents, 
-    and be discovered.  
-    Whether you're building a place to belong, leading events, or raising your 
-    artistic voice — this platform exists to celebrate and elevate you.
-  </p>
+          <FaStar className="mx-auto text-emerald-400 text-3xl mb-5 animate-pulse" />
 
-  <p
-    className="
-      max-w-4xl mx-auto mt-4 
-      text-base sm:text-lg md:text-xl 
-      text-white font-medium leading-relaxed
-    "
-  >
-    From drag shows to support groups — from karaoke hosts to queer musicians — 
-    Karaoverse is helping people find local safe spaces, live LGBTQIA⁺ events, 
-    and meaningful opportunities within our community.
-  </p>
+          <h2 className="text-3xl md:text-5xl font-black mb-6 bg-gradient-to-r from-emerald-300 via-white to-emerald-300 bg-clip-text text-transparent">
+            Build Safe Spaces. Be Seen. Get Connected.
+          </h2>
 
-  {/* CTA Button */}
-  <div className="mt-8">
-    <a
-      href="https://karaoverse.com"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="
-        inline-block px-10 py-4 text-lg font-extrabold
-        bg-gradient-to-r from-green-600 via-emerald-500 to-green-600
-        text-white rounded-full shadow-xl
-        hover:scale-105 hover:shadow-2xl transition
-      "
-    >
-      Visit Karaoverse & Join the Movement →
-    </a>
-  </div>
+          <p className="max-w-4xl mx-auto text-lg md:text-2xl text-white/80 leading-relaxed">
+            Karaoverse empowers LGBTQIA+ artists, nightlife hosts, queer-friendly venues,
+            allies, and community organizations to create profiles, share events,
+            showcase talents, and become discoverable across a growing entertainment universe.
+          </p>
 
-  {/* Credit */}
-  <p
-    className="
-      mt-6 text-sm sm:text-base text-yellow-400 opacity-80 font-medium
-    "
-  >
-    Karaoverse was created and engineered by our on-staff software designer
-    <span className="font-bold"> Jonathen Whitford </span> of{" "}
-    <a
-      href="https://jwhitproductions.com"
-      className="underline hover:text-green-800 font-semibold"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      JWhit Productions
-    </a>
-    .
-  </p>
+          <p className="max-w-4xl mx-auto mt-5 text-base md:text-xl text-white/65 leading-relaxed">
+            From drag shows to karaoke nights, support groups to queer musicians —
+            this platform exists to help people find belonging, opportunities,
+            and unforgettable experiences in one centralized system.
+          </p>
 
-</section>
+          <a
+            href="https://karaoverse.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block mt-9 px-10 py-1 rounded-full bg-gradient-to-r from-emerald-500 via-green-500 to-emerald-500 text-white font-extrabold text-lg shadow-[0_0_30px_rgba(16,185,129,0.35)] hover:scale-105 transition"
+          >
+            Visit Karaoverse →
+          </a>
 
-      {/* ───────────────── Footer Decoration ───────────────── */}
+          <div className="mt-8 text-sm md:text-base text-yellow-400/85">
+            Karaoverse was created and engineered by <span className="font-bold">Jonathen Whitford</span> of JWhit Productions.
+          </div>
+        </div>
+      </section>
+
+      {/* ───────────────── FOOTER ───────────────── */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1 }}
         className="pb-20 flex flex-col items-center space-y-3"
       >
-        <FaRainbow className="text-5xl text-emerald-500 animate-pulse" />
-
-        <p className="text-sm text-white font-medium italic">
+        <FaRainbow className="text-5xl text-emerald-400 animate-pulse" />
+        <p className="text-sm text-white/70 italic">
           “Pride never sleeps — and neither does our community.”
         </p>
       </motion.div>

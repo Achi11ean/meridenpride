@@ -53,7 +53,7 @@ export default function HomePage() {
               transition={{ duration: 0.7, delay: 0.1 }}
               className="max-w-3xl"
             >
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight">
+              <h1 className="text-4xl font-serif sm:text-5xl lg:text-6xl font-extrabold tracking-tight">
                 Template Pride
               </h1>
               <p className="mt-4 text-lg sm:text-xl text-yellow-100/90 font-semibold">
@@ -64,10 +64,10 @@ export default function HomePage() {
                   <Link
                 to="/pride"
                 className="mt-3 inline-block w-full text-center  px-6 py-3 font-extrabold text-white border border-white shadow-lg
-                  bg-gradient-to-r from-[#a21f1f] via-[#3fb541] to-[#a01fba]
+                  bg-gradient-to-br from-[#a21f1f] via-yellow-500 via-green to-[#a01fba]
                   hover:brightness-110 transition-all duration-300 neon-pulse"
               >
-                Template Pride
+              Annual Pride Festival
               </Link>
               {/* CTAs */}
               <nav aria-label="Primary">
